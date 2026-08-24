@@ -153,3 +153,4 @@ dotnet build .\DSMS-Preset-Studio.sln -c Release
 dotnet run --project .\DSMS.Core.Tests -- "PATH_TO_PRESET_FOLDER"
 dotnet run --project .\DSMS.PresetStudio
 ```
+---
