@@ -137,6 +137,7 @@ Updates require confirmation and a valid SHA-256 checksum. Imported icons and se
 - DSMS ModLoader: https://github.com/Hoverbike51/DSMS-ModLoader
 - Studio releases: https://github.com/Hoverbike51/DSMS-Preset-Studio/releases
 - Version history: [CHANGELOG.md](CHANGELOG.md)
+- Virus Total: https://www.virustotal.com/gui/file/56b7125fec4e4223362451e033d0730ff178b65810ceb1b67de046119f185f46
 
 ## Development
 
