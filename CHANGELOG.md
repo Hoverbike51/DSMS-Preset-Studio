@@ -1,6 +1,4 @@
-# DSMS Preset Studio Changelog
-
-A Windows desktop preset builder and validator for **DragonSword: Awakening**, **DSMS JSON v3** and compatible DSMS ModLoader releases.
+# DSMS Preset Studio — Changelog
 
 ## Version 0.5.2
 
@@ -11,6 +9,12 @@ A Windows desktop preset builder and validator for **DragonSword: Awakening**, *
 - Treats missing `/Game/MODS/` assets as unverified information rather than an error, so original custom assets remain safe.
 - Applies only deterministic repairs such as separators, whitespace, known character aliases, missing object suffixes and `_C` suffixes.
 - Keeps every repair unsaved for author review before saving.
+
+## Version 0.5.1 — Withdrawn
+
+- This release attempted to use known presets as an authoritative repair database.
+- It could replace valid custom values when a preset reused a known `UniqueID` or filename.
+- The release was rejected and completely superseded by version 0.5.2.
 
 ## Version 0.5.0
 
@@ -48,20 +52,3 @@ A Windows desktop preset builder and validator for **DragonSword: Awakening**, *
 - Supports English (UK) and French descriptions while preserving all technical DSMS field names in English.
 - Adds the HoverMods Vault About panel, explicit application/ModLoader versions and an offline placeholder for future GitHub update checks.
 - Adds validation result filters for errors, warnings and information.
-
-## Builder and validator
-
-- Builds common Costume, Custom and Weapon presets through a guided visual form.
-- Provides an external character catalog with the important public/internal aliases (`Kalsion`/`Cassius`, `Ornette`/`Onette`).
-- Provides recipes for full costumes, retextures, single/multi-mesh weapons, dedicated outlines and auxiliary meshes.
-- Edits Body, Face, Outline and Weapon material slots in separate tables.
-- Generates a clean JSON v3 document while preserving advanced fields loaded from an existing preset.
-- Opens and formats DSMS JSON v3 presets.
-- Validates required fields, Unreal object paths, target IDs, material slots, morph targets, weapons, auxiliary meshes and body outlines.
-- Scans an entire preset folder and detects duplicate `UniqueID` values.
-- Uses green, orange and red risk levels.
-- Ships character and recipe data separately so the catalog can evolve without redesigning the application.
-
-For bundled known presets, the reference database can detect and restore subtle differences. For a new custom asset, a green result still cannot prove that two skeletal assets share a compatible skeleton, physics setup or Animation Blueprint. Always test mods on a backup save.
-
-The application never writes to the game directory unless the user explicitly chooses that location in **Save as**.

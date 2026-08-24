@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Hoverbike51/DSMS-ModLoader/schema/dsms-v3.schema.json",
+  "title": "DSMS ModLoader JSON preset v3",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Version", "UniqueID", "DisplayName", "Type", "IconPath"],
+  "properties": {
+    "Version": { "const": 3 },
+    "UniqueID": { "type": "string", "minLength": 1 },
+    "DisplayName": { "type": "string", "minLength": 1 },
+    "Type": { "enum": ["Custom", "Costume", "Weapon", "Mounts", "NPC"] },
+    "TargetCharacterID": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
+    "Requirements": { "$ref": "#/$defs/uniqueStrings" },
+    "BodyPath": { "$ref": "#/$defs/objectPath" },
+    "SkeletonPath": { "$ref": "#/$defs/objectPath" },
+    "PhysicsAssetPath": { "$ref": "#/$defs/objectPath" },
+    "FollowerAnimBlueprintPath": { "$ref": "#/$defs/classPath" },
+    "PhysicsAnimBlueprintPath": { "$ref": "#/$defs/classPath" },
+    "BodyClearMaterialOverrides": { "type": "boolean" },
+    "BodyMaterials": { "$ref": "#/$defs/materials" },
+    "BodyMorphTargets": { "$ref": "#/$defs/morphs" },
+    "BodyOutlinePath": { "$ref": "#/$defs/objectPath" },
+    "BodyOutlineClearMaterialOverrides": { "type": "boolean" },
+    "BodyOutlineMaterials": { "$ref": "#/$defs/materials" },
+    "FaceMorphPath": { "$ref": "#/$defs/objectPath" },
+    "FacePath": { "$ref": "#/$defs/objectPath" },
+    "FaceClearMaterialOverrides": { "type": "boolean" },
+    "FaceMaterials": { "$ref": "#/$defs/materials" },
+    "FaceMorphTargets": { "$ref": "#/$defs/morphs" },
+    "AuxiliaryMeshPath": { "$ref": "#/$defs/objectPath" },
+    "AuxiliaryPhysicsAssetPath": { "$ref": "#/$defs/objectPath" },
+    "AuxiliarySpawnOnly": { "type": "boolean" },
+    "AuxiliaryClearMaterialOverrides": { "type": "boolean" },
+    "AuxiliaryMaterials": { "$ref": "#/$defs/materials" },
+    "HiddenComponentMeshMatches": { "$ref": "#/$defs/uniqueStrings" },
+    "LinkedBodyComponentMeshMatches": { "$ref": "#/$defs/uniqueStrings" },
+    "LinkedBodyReplacementPath": { "$ref": "#/$defs/objectPath" },
+    "WeaponPath": { "$ref": "#/$defs/objectPath" },
+    "WeaponPaths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ComponentMatch", "WeaponPath"],
+        "properties": {
+          "ComponentMatch": { "type": "string", "minLength": 1 },
+          "WeaponPath": { "$ref": "#/$defs/objectPath" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "WeaponClearMaterialOverrides": { "type": "boolean" },
+    "WeaponMaterials": { "$ref": "#/$defs/weaponMaterials" },
+    "WeaponMaterialsOnly": { "type": "boolean" },
+    "IconPath": { "$ref": "#/$defs/objectPath" }
+  },
+  "$defs": {
+    "objectPath": { "type": "string", "pattern": "^/Game/.+\\.[^./]+$" },
+    "classPath": { "type": "string", "pattern": "^/Game/.+\\.[^./]+_C$" },
+    "uniqueStrings": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["SlotIndex", "MaterialPath"],
+        "properties": {
+          "SlotIndex": { "type": "integer", "minimum": 0 },
+          "MaterialPath": { "$ref": "#/$defs/objectPath" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "weaponMaterials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["MaterialPath"],
+        "anyOf": [
+          { "required": ["SlotIndex"] },
+          { "required": ["MaterialMatch"] }
+        ],
+        "properties": {
+          "SlotIndex": { "type": "integer", "minimum": 0 },
+          "MaterialMatch": { "type": "string", "minLength": 1 },
+          "MaterialPath": { "$ref": "#/$defs/objectPath" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "morphs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["MorphName", "Value"],
+        "properties": {
+          "MorphName": { "type": "string", "minLength": 1 },
+          "Value": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

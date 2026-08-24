@@ -1,0 +1,65 @@
+[
+  {
+    "Id": "costume-full",
+    "Name": "Full costume replacement",
+    "Description": "Replace a playable character body, face and materials while preserving animation and costume physics.",
+    "Type": "Costume",
+    "RequiredFields": ["TargetCharacterID", "BodyPath", "FaceMorphPath", "PhysicsAssetPath", "PhysicsAnimBlueprintPath", "IconPath"],
+    "RecommendedFields": ["BodyMaterials", "FaceMaterials", "FacePath", "BodyMorphTargets", "FaceMorphTargets"],
+    "Warnings": ["Body, skeleton and Animation Blueprint must be compatible.", "Material slot indexes must match the selected skeletal mesh."]
+  },
+  {
+    "Id": "costume-retexture",
+    "Name": "Costume retexture",
+    "Description": "Keep the body mesh and replace only material instances.",
+    "Type": "Costume",
+    "RequiredFields": ["TargetCharacterID", "BodyPath", "BodyMaterials", "IconPath"],
+    "RecommendedFields": ["BodyClearMaterialOverrides", "FaceMaterials"],
+    "Warnings": ["DSMS supports Material Instances only.", "Do not guess material slots; inspect the skeletal mesh first."]
+  },
+  {
+    "Id": "weapon-single",
+    "Name": "Single-mesh weapon",
+    "Description": "Replace one weapon mesh and its material instances.",
+    "Type": "Weapon",
+    "RequiredFields": ["TargetCharacterID", "WeaponPath", "IconPath"],
+    "RecommendedFields": ["WeaponMaterials", "WeaponClearMaterialOverrides"],
+    "Warnings": ["The weapon component selected at runtime must be compatible with the replacement mesh."]
+  },
+  {
+    "Id": "weapon-multi",
+    "Name": "Multi-component weapon",
+    "Description": "Replace several weapon components using ComponentMatch selectors.",
+    "Type": "Weapon",
+    "RequiredFields": ["TargetCharacterID", "WeaponPaths", "IconPath"],
+    "RecommendedFields": ["WeaponMaterials"],
+    "Warnings": ["Every WeaponPaths entry needs a unique and sufficiently specific ComponentMatch."]
+  },
+  {
+    "Id": "weapon-retexture",
+    "Name": "Weapon material retexture",
+    "Description": "Keep the native weapon mesh and override only its material instances.",
+    "Type": "Weapon",
+    "RequiredFields": ["TargetCharacterID", "WeaponMaterialsOnly", "WeaponMaterials", "IconPath"],
+    "RecommendedFields": ["WeaponClearMaterialOverrides"],
+    "Warnings": ["Set WeaponMaterialsOnly to true and do not invent a WeaponPath."]
+  },
+  {
+    "Id": "custom-outline",
+    "Name": "Custom body with dedicated outline",
+    "Description": "Load a custom body and a parallel outline skeletal mesh.",
+    "Type": "Custom",
+    "RequiredFields": ["TargetCharacterID", "BodyPath", "BodyOutlinePath", "BodyOutlineMaterials", "FaceMorphPath", "IconPath"],
+    "RecommendedFields": ["BodyOutlineClearMaterialOverrides", "PhysicsAssetPath", "PhysicsAnimBlueprintPath"],
+    "Warnings": ["BodyOutlinePath must reference compatible geometry and skeleton data.", "Never place the same mesh in AuxiliaryMeshPath and BodyPath."]
+  },
+  {
+    "Id": "auxiliary-hide",
+    "Name": "Auxiliary mesh and component hiding",
+    "Description": "Replace or hide extra native costume components that are separate from the main body.",
+    "Type": "Costume",
+    "RequiredFields": ["TargetCharacterID", "BodyPath", "HiddenComponentMeshMatches", "IconPath"],
+    "RecommendedFields": ["AuxiliaryMeshPath", "AuxiliaryMaterials", "AuxiliaryPhysicsAssetPath"],
+    "Warnings": ["Use exact component mesh selectors.", "If AuxiliaryMeshPath is identical to BodyPath, confirm that DSMS replaces an existing component instead of spawning a duplicate."]
+  }
+]

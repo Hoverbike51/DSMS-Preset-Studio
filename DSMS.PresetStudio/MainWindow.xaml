@@ -1,0 +1,348 @@
+<Window x:Class="DSMS.PresetStudio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:DSMS.PresetStudio.Controls"
+        Title="DSMS Preset Studio" Height="920" Width="1500" MinHeight="720" MinWidth="1120"
+        WindowStartupLocation="CenterScreen" Icon="Assets/Castella_icon.ico">
+    <Grid Background="{DynamicResource AppBackgroundBrush}">
+        <Border Background="{DynamicResource AppBackgroundImageBrush}"/>
+        <Grid Margin="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="68"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="205"/>
+                <RowDefinition Height="28"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="DSMS PRESET STUDIO" FontSize="25" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
+                    <TextBlock x:Name="HeaderSubtitleText" Text="DragonSword: Awakening · DSMS ModLoader compatibility · JSON v3" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,3,0,0"/>
+                </StackPanel>
+                <Border Grid.Column="1" x:Name="RiskBadge" Background="#176A3A" BorderBrush="{DynamicResource SuccessBrush}" BorderThickness="1"
+                        CornerRadius="15" Padding="15,6" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal"><TextBlock Text="✓" Margin="0,0,7,0" FontWeight="Bold"/><TextBlock x:Name="RiskText" Text="VALID" FontWeight="Bold"/></StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Grid.Row="1" Style="{StaticResource CardStyle}" Padding="8" Margin="0,0,0,8">
+                <DockPanel LastChildFill="True">
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                        <Button Content="▣  New" Click="NewPreset_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="▱  Open JSON" Click="OpenJson_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="⌕  Scan folder" Click="ScanFolder_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="&lt;/&gt;  Generate JSON" Click="GenerateJson_Click" Style="{StaticResource ToolbarPrimaryButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="◇  Validate &amp; repair" Click="Validate_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="≡  Format" Click="Format_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,7,0"/>
+                        <Button Content="▤  Save as" Click="SaveAs_Click" Style="{StaticResource ToolbarButtonStyle}"/>
+                    </StackPanel>
+                    <TextBlock x:Name="FilePathText" Text="New unsaved preset" Foreground="{DynamicResource TextSecondaryBrush}"
+                               TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="18,0,0,0"/>
+                </DockPanel>
+            </Border>
+
+            <TabControl Grid.Row="2" x:Name="WorkspaceTabs" Background="Transparent" BorderThickness="0" Margin="0,0,0,8">
+                <TabItem Header="Visual Builder">
+                    <Grid x:Name="BuilderWorkspaceGrid" Margin="0,8,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/><ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition x:Name="DetailsColumn" Width="520" MinWidth="380"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <Button x:Name="IdentityStepButton" Tag="Identity" Click="StepButton_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,8" Padding="12">
+                                <Grid Width="210"><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                    <Border x:Name="IdentityStepBadge" Background="{DynamicResource PrimaryBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="1" Foreground="#071118" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <StackPanel Grid.Column="1"><TextBlock Text="Identity" FontWeight="SemiBold"/><TextBlock Text="Preset identity" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11"/></StackPanel>
+                                </Grid>
+                            </Button>
+                            <Button x:Name="BodyStepButton" Tag="Body" Click="StepButton_Click" Margin="0,0,0,8" Padding="12">
+                                <Grid Width="210"><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                    <Border x:Name="BodyStepBadge" Background="{DynamicResource BorderBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="2" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <StackPanel Grid.Column="1"><TextBlock Text="Body &amp; Face" FontWeight="SemiBold"/><TextBlock Text="Paths &amp; meshes" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11"/></StackPanel>
+                                </Grid>
+                            </Button>
+                            <Button x:Name="MaterialsStepButton" Tag="Materials" Click="StepButton_Click" Margin="0,0,0,8" Padding="12">
+                                <Grid Width="210"><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                    <Border x:Name="MaterialsStepBadge" Background="{DynamicResource BorderBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="3" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <StackPanel Grid.Column="1"><TextBlock Text="Materials" FontWeight="SemiBold"/><TextBlock Text="Material instances" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11"/></StackPanel>
+                                </Grid>
+                            </Button>
+                            <Button x:Name="AdvancedStepButton" Tag="Advanced" Click="StepButton_Click" Margin="0,0,0,8" Padding="12">
+                                <Grid Width="210"><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                    <Border x:Name="AdvancedStepBadge" Background="{DynamicResource BorderBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="4" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <StackPanel Grid.Column="1"><TextBlock Text="Advanced" FontWeight="SemiBold"/><TextBlock Text="Options &amp; requirements" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11"/></StackPanel>
+                                </Grid>
+                            </Button>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,8,0,0">
+                                <StackPanel>
+                                    <TextBlock Text="QUICK SAFETY" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/>
+                                    <TextBlock Text="Use full Unreal object paths. Never paste Windows paths in a preset." Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Column="2" x:Name="BuilderScrollViewer" VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <Border x:Name="IdentitySection" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="♙  Preset identity" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryBrush}"/>
+                                        <Grid Margin="0,14,0,0">
+                                            <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <TextBlock Text="Recipe" VerticalAlignment="Center"/><ComboBox Grid.Column="1" x:Name="RecipeCombo" SelectionChanged="RecipeCombo_SelectionChanged"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Name}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
+                                            <TextBlock Grid.Row="1" Text="Preset type" VerticalAlignment="Center" Margin="0,9,0,0"/><ComboBox Grid.Row="1" Grid.Column="1" x:Name="TypeCombo" Margin="0,9,0,0" SelectionChanged="TypeCombo_SelectionChanged"/>
+                                            <TextBlock Grid.Row="2" Text="Character" VerticalAlignment="Center" Margin="0,9,0,0"/><ComboBox Grid.Row="2" Grid.Column="1" x:Name="CharacterCombo" SelectionChanged="CharacterCombo_SelectionChanged" Margin="0,9,0,0"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
+                                            <TextBlock Grid.Row="3" Text="TargetCharacterID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="TargetIdBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="4" Text="UniqueID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="UniqueIdBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="5" Text="DisplayName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="DisplayNameBox" Margin="0,9,0,0"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border x:Name="BodySection" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="▱  Paths" Style="{StaticResource SectionTitleStyle}"/>
+                                        <Grid Margin="0,14,0,0">
+                                            <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <TextBlock Text="BodyPath" VerticalAlignment="Center"/><TextBox Grid.Column="1" x:Name="BodyPathBox"/>
+                                            <TextBlock Grid.Row="1" Text="FaceMorphPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="1" Grid.Column="1" x:Name="FaceMorphPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="2" Text="FacePath (optional)" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="FacePathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="3" Text="PhysicsAssetPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="PhysicsAssetPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="4" Text="Physics ABP" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="PhysicsAbpPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="5" Text="IconPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="IconPathBox" Margin="0,9,0,0" TextChanged="IconPathBox_TextChanged"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border x:Name="AdvancedSection" Style="{StaticResource CardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="⚙  Advanced meshes" Style="{StaticResource SectionTitleStyle}"/>
+                                        <Grid Margin="0,14,0,0">
+                                            <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <TextBlock Text="BodyOutlinePath" VerticalAlignment="Center"/><TextBox Grid.Column="1" x:Name="BodyOutlinePathBox"/>
+                                            <TextBlock Grid.Row="1" Text="AuxiliaryMeshPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="1" Grid.Column="1" x:Name="AuxiliaryMeshPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="2" Text="WeaponPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="WeaponPathBox" Margin="0,9,0,0"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <GridSplitter Grid.Column="3" Width="6" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="{DynamicResource BorderBrush}" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext"/>
+
+                        <ScrollViewer Grid.Column="4" x:Name="DetailsScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="♙  Active recipe" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock x:Name="RecipeNameText" Text="Full costume replacement" Foreground="{DynamicResource PrimaryBrush}" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="RecipeDescriptionText" TextWrapping="Wrap" Foreground="{DynamicResource TextPrimaryBrush}" Margin="0,7,0,0"/>
+                                        <TextBlock x:Name="RecipeFieldsText" TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,9,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition Width="12"/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                        <Border Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="8" Width="150" Height="150" ClipToBounds="True">
+                                            <Image x:Name="IconPreviewImage" Stretch="UniformToFill" Margin="0"/>
+                                        </Border>
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock Text="▣  Icon preview" Style="{StaticResource SectionTitleStyle}"/>
+                                            <TextBlock x:Name="IconSourceText" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold" Margin="0,9,0,0"/>
+                                            <TextBlock x:Name="IconStatusText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Button Content="Import image…" Click="ImportIcon_Click" Margin="0,0,7,0"/>
+                                                <Button x:Name="ApplySuggestedIconButton" Content="Apply suggested path" Click="ApplySuggestedIcon_Click" Style="{StaticResource PrimaryButtonStyle}" Visibility="Collapsed"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <Border x:Name="MaterialsSection" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                            <TextBlock Text="▰  Material instances" Style="{StaticResource SectionTitleStyle}" VerticalAlignment="Center"/>
+                                            <Button Grid.Column="1" x:Name="ExpandMaterialsButton" Content="Expand materials" Click="ExpandMaterials_Click" Padding="10,5"/>
+                                        </Grid>
+                                        <TabControl Background="Transparent" BorderThickness="0" Margin="0,8,0,0">
+                                            <TabItem Header="Body"><DataGrid x:Name="BodyMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                            <TabItem Header="Face"><DataGrid x:Name="FaceMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                            <TabItem Header="Outline"><DataGrid x:Name="OutlineMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                            <TabItem Header="Weapon"><DataGrid x:Name="WeaponMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Current material match (optional)" Binding="{Binding MaterialMatch}" Width="230"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                        </TabControl>
+                                        <TextBlock x:Name="MaterialHintText" Foreground="{DynamicResource WarningBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border x:Name="OptionsSection" Style="{StaticResource CardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="▱  Options" Style="{StaticResource SectionTitleStyle}"/>
+                                        <CheckBox x:Name="BodyClearCheck" Content="Clear native body material overrides" Margin="0,12,0,0"/>
+                                        <CheckBox x:Name="FaceClearCheck" Content="Clear native face material overrides" Margin="0,9,0,0"/>
+                                        <CheckBox x:Name="OutlineClearCheck" Content="Clear native outline material overrides" Margin="0,9,0,0"/>
+                                        <CheckBox x:Name="WeaponClearCheck" Content="Clear native weapon material overrides" Margin="0,9,0,0"/>
+                                        <CheckBox x:Name="WeaponMaterialsOnlyCheck" Content="Weapon retexture only (keep native mesh)" Margin="0,9,0,0"/>
+                                        <TextBlock Text="Requirements (comma-separated)" Margin="0,14,0,5"/>
+                                        <TextBox x:Name="RequirementsBox" Text="None"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="JSON Editor">
+                    <Grid Margin="0,8,0,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="10"/><ColumnDefinition Width="320"/></Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource CardStyle}" Padding="1">
+                            <controls:JsonSyntaxEditor x:Name="JsonEditor" AcceptsTab="True"
+                                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                     Background="{DynamicResource InputBrush}" Foreground="{DynamicResource TextPrimaryBrush}"
+                                     CaretBrush="{DynamicResource PrimaryBrush}" SelectionBrush="{DynamicResource BorderBrush}"
+                                     FontFamily="Cascadia Mono, Consolas" FontSize="13" BorderThickness="0" Padding="14"
+                                     TextChanged="JsonEditor_TextChanged"/>
+                        </Border>
+                        <Border Grid.Column="2" Style="{StaticResource CardStyle}">
+                            <StackPanel>
+                                <TextBlock Text="ADVANCED MODE" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/>
+                                <TextBlock Text="Edit every JSON v3 field directly. Format and validate before returning to the Visual Builder." TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,10,0,0"/>
+                                <TextBlock Text="Technical field names and Unreal paths are never localized." TextWrapping="Wrap" Foreground="{DynamicResource WarningBrush}" Margin="0,15,0,0"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Settings">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,8,0,0">
+                        <Grid MaxWidth="1120" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="540"/><ColumnDefinition Width="14"/><ColumnDefinition Width="540"/></Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                                    <StackPanel>
+                                        <TextBlock Text="⚙  Settings" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryBrush}"/>
+                                        <TextBlock x:Name="SettingsDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                                    <StackPanel>
+                                        <TextBlock Text="◈  Theme" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock x:Name="ThemeHelpText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,7,0,10"/>
+                                        <ComboBox x:Name="ThemeCombo" DisplayMemberPath="Name"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Content="Apply theme" Click="ApplyTheme_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,8,0"/>
+                                            <Button Content="Import theme…" Click="ImportTheme_Click" Margin="0,0,8,0"/>
+                                            <Button Content="Open HTML designer" Click="OpenThemeDesigner_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                                    <StackPanel>
+                                        <TextBlock Text="A  Language" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock x:Name="LanguageHelpText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,7,0,10"/>
+                                        <ComboBox x:Name="LanguageCombo" SelectionChanged="LanguageCombo_SelectionChanged">
+                                            <ComboBoxItem Content="English (UK)" Tag="en-GB"/>
+                                            <ComboBoxItem Content="Français" Tag="fr-FR"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource CardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="▣  Asset sources" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock Text="FModel export root (select the DS/Content folder)" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,9,0,5"/>
+                                        <DockPanel><Button DockPanel.Dock="Right" Content="Browse…" Click="BrowseFModelRoot_Click" Margin="8,0,0,0"/><TextBox x:Name="FModelRootBox" LostFocus="AssetPaths_LostFocus"/></DockPanel>
+                                        <Button x:Name="IndexFModelButton" Content="Index FModel exports" Click="IndexFModel_Click" HorizontalAlignment="Left" Margin="0,9,0,0"/>
+                                        <TextBlock x:Name="FModelIndexStatusText" TextWrapping="Wrap" Margin="0,7,0,0" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                        <TextBlock Text="DSMS ModLoader Scripts folder" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,12,0,5"/>
+                                        <DockPanel><Button DockPanel.Dock="Right" Content="Browse…" Click="BrowseModLoader_Click" Margin="8,0,0,0"/><TextBox x:Name="ModLoaderPathBox" LostFocus="AssetPaths_LostFocus"/></DockPanel>
+                                        <TextBlock x:Name="ModLoaderStatusText" TextWrapping="Wrap" Margin="0,9,0,0" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Content="Detect ModLoader" Click="DetectModLoader_Click" Margin="0,0,8,0"/>
+                                            <Button Content="Open Icons folder" Click="OpenIconsFolder_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                                    <StackPanel>
+                                        <TextBlock Text="ⓘ  About" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock Text="HoverMods Vault" Foreground="{DynamicResource PrimaryBrush}" FontSize="20" FontWeight="Bold" Margin="0,12,0,0"/>
+                                        <TextBlock Text="DSMS Preset Studio" FontSize="16" FontWeight="SemiBold" Margin="0,3,0,0"/>
+                                        <TextBlock x:Name="AboutDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                                        <Grid Margin="0,15,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+                                            <Border Background="{DynamicResource InputBrush}" CornerRadius="6" Padding="10" Margin="0,0,6,0"><StackPanel><TextBlock Text="APPLICATION" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="10"/><TextBlock x:Name="StudioVersionText" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel></Border>
+                                            <Border Grid.Column="1" Background="{DynamicResource InputBrush}" CornerRadius="6" Padding="10" Margin="6,0,0,0"><StackPanel><TextBlock Text="DSMS MODLOADER" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="10"/><TextBlock x:Name="ModLoaderVersionText" FontWeight="SemiBold" Margin="0,3,0,0"/></StackPanel></Border>
+                                        </Grid>
+                                        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                                            <Button Content="Open DSMS ModLoader on GitHub" Click="OpenGithub_Click" Margin="0,0,8,0"/>
+                                            <Button Content="Visit HoverMods Vault on Patreon" Click="OpenPatreon_Click" Style="{StaticResource PrimaryButtonStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                                <Border Style="{StaticResource CardStyle}">
+                                    <StackPanel>
+                                        <TextBlock Text="↻  Updates" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock x:Name="UpdateDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,12"/>
+                                        <Border Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="6" Padding="12">
+                                            <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                                                <StackPanel><TextBlock Text="GitHub release service"/><TextBlock x:Name="UpdateStatusText" Text="Ready to check" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11" TextWrapping="Wrap"/></StackPanel>
+                                                <Border Grid.Column="1" Background="#173747" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="1" CornerRadius="10" Padding="9,3"><TextBlock x:Name="UpdateBadgeText" Text="READY" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/></Border>
+                                            </Grid>
+                                        </Border>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button x:Name="CheckUpdatesButton" Content="Check for updates" Click="CheckUpdates_Click" Margin="0,0,8,0"/>
+                                            <Button x:Name="InstallUpdateButton" Content="Download and install" Click="InstallUpdate_Click" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="False"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+
+            <Border Grid.Row="3" Style="{StaticResource CardStyle}" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions><RowDefinition Height="48"/><RowDefinition/></Grid.RowDefinitions>
+                    <Grid Margin="14,0">
+                        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                        <TextBlock x:Name="IssueHeader" Text="◇  Validation results" Style="{StaticResource SectionTitleStyle}" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <Button Tag="All" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="All "/><TextBlock x:Name="AllCountText" Text="0" Foreground="{DynamicResource PrimaryBrush}"/></StackPanel></Button>
+                            <Button Tag="Error" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="Errors "/><TextBlock x:Name="ErrorCountText" Text="0" Foreground="{DynamicResource ErrorBrush}"/></StackPanel></Button>
+                            <Button Tag="Warning" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="Warnings "/><TextBlock x:Name="WarningCountText" Text="0" Foreground="{DynamicResource WarningBrush}"/></StackPanel></Button>
+                            <Button Tag="Info" Click="FilterIssues_Click" Padding="10,5"><StackPanel Orientation="Horizontal"><TextBlock Text="Info "/><TextBlock x:Name="InfoCountText" Text="0" Foreground="{DynamicResource SecondaryBrush}"/></StackPanel></Button>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid x:Name="IssuesGrid" AutoGenerateColumns="False" IsReadOnly="True" AlternationCount="2" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Level" Binding="{Binding SeverityLabel}" Width="110"/>
+                                <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="90"/>
+                                <DataGridTextColumn Header="File / Field" Binding="{Binding Location}" Width="280"/>
+                                <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <StackPanel x:Name="NoIssuesPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="✓" Foreground="{DynamicResource SuccessBrush}" FontSize="28" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="NoIssuesText" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <DockPanel Grid.Row="4" Margin="3,5,3,0">
+                <TextBlock x:Name="BottomRiskText" Text="✓ VALID" Foreground="{DynamicResource SuccessBrush}" FontWeight="SemiBold" Margin="0,0,9,0"/>
+                <TextBlock x:Name="StatusText" Text="GREEN · 0 errors · 0 warnings" Foreground="{DynamicResource TextSecondaryBrush}"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

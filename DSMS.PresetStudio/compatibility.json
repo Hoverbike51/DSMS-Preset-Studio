@@ -1,0 +1,7 @@
+{
+  "SupportedJsonSchemas": [3],
+  "MinimumModLoaderVersion": "0.7.0",
+  "TestedModLoaderVersions": ["0.7.0", "0.7.1"],
+  "RecommendedModLoaderVersion": "0.7.1",
+  "StudioReleaseRepository": "Hoverbike51/DSMS-Preset-Studio"
+}

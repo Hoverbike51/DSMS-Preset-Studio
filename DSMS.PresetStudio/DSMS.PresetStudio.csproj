@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSMS.Core\DSMS.Core.csproj" />
+    <Resource Include="Assets\Castella_icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Data\*.json">
+      <Link>Data\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tools\ThemeDesigner\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\Imported\README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="compatibility.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Version>0.5.2</Version>
+    <AssemblyVersion>0.5.2.0</AssemblyVersion>
+    <FileVersion>0.5.2.0</FileVersion>
+    <Authors>HoverMods Vault</Authors>
+    <Company>HoverMods Vault</Company>
+    <Product>DSMS Preset Studio</Product>
+    <AssemblyTitle>DSMS Preset Studio</AssemblyTitle>
+    <Description>JSON v3 preset builder and validator for DSMS ModLoader.</Description>
+    <Copyright>Copyright © HoverMods Vault</Copyright>
+    <ApplicationIcon>Assets\Castella_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+</Project>

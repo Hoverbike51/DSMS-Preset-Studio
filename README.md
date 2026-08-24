@@ -136,5 +136,20 @@ Updates require confirmation and a valid SHA-256 checksum. Imported icons and se
 
 - DSMS ModLoader: https://github.com/Hoverbike51/DSMS-ModLoader
 - Studio releases: https://github.com/Hoverbike51/DSMS-Preset-Studio/releases
-- Virus Total: https://www.virustotal.com/gui/file/56b7125fec4e4223362451e033d0730ff178b65810ceb1b67de046119f185f46
 - Version history: [CHANGELOG.md](CHANGELOG.md)
+
+## Development
+
+Build requirements:
+
+- Windows 10 or Windows 11, 64-bit.
+- .NET 8 SDK with the Windows Desktop workload available.
+- Visual Studio 2022 is optional; the command-line .NET SDK is sufficient.
+
+The repository does not require private NuGet feeds or embedded API keys.
+
+```powershell
+dotnet build .\DSMS-Preset-Studio.sln -c Release
+dotnet run --project .\DSMS.Core.Tests -- "PATH_TO_PRESET_FOLDER"
+dotnet run --project .\DSMS.PresetStudio
+```
