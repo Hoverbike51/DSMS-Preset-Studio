@@ -1,0 +1,36 @@
+# Build outputs
+bin/
+obj/
+Release/
+artifacts/
+
+# Local package caches
+.nuget/
+packages/
+
+# Visual Studio and user state
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Test and coverage outputs
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Runtime/user-generated files
+Icons/Imported/*
+!Icons/Imported/README.txt
+*.log
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
