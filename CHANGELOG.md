@@ -52,3 +52,4 @@
 - Supports English (UK) and French descriptions while preserving all technical DSMS field names in English.
 - Adds the HoverMods Vault About panel, explicit application/ModLoader versions and an offline placeholder for future GitHub update checks.
 - Adds validation result filters for errors, warnings and information.
+---
