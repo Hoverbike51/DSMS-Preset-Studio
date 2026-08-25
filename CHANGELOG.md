@@ -1,5 +1,19 @@
 # DSMS Preset Studio — Changelog
 
+## Version 0.5.3
+
+- Adds full DSMS ModLoader 0.7.2 support for `FaceOutlinePath`, `FaceOutlineMaterials` and `FaceOutlineClearMaterialOverrides` across the model, visual builder, validation, repair, FModel checks and JSON schema.
+- Adds 0.7.2 to the tested ModLoader versions and makes it the recommended release.
+- Adds an optional automatic GitHub release check at application startup with a theme-aware confirmation window.
+- Applies explicit Update state colors: READY/success `#35D07F`, CHECKING/warning `#F5B942`, CURRENT/theme base and failures/error `#FF6174`.
+- Rebuilds the Theme Designer preview around the real Visual Builder, JSON Editor and Settings layouts, with functional preview navigation.
+- Adds independent UI and text opacity controls to custom themes.
+- Adds a persistent multi-theme library with visible theme names and authors.
+- Certifies bundled themes as read-only `Official Theme System` themes authored by `HoverModsVault`; imported JSON can never claim this certification.
+- Allows bundled themes to be previewed or exported only as renamed, non-certified custom copies.
+- Makes Theme Designer load installed system/custom themes and edit custom themes while protecting reserved system names.
+- Fixes JSON Editor token colors so they follow the selected theme and consistently respect text opacity.
+
 ## Version 0.5.2
 
 - Removes the unsafe known-preset replacement system introduced in 0.5.1. A custom preset is never replaced from its `UniqueID` or filename.

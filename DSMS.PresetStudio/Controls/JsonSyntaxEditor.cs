@@ -125,11 +125,11 @@ public sealed class JsonSyntaxEditor : RichTextBox
     {
         var resourceKey = kind switch
         {
-            JsonTokenKind.Property => "PrimaryBrush",
-            JsonTokenKind.String => "SuccessBrush",
-            JsonTokenKind.Number => "WarningBrush",
-            JsonTokenKind.Keyword => "SecondaryBrush",
-            _ => "TextPrimaryBrush"
+            JsonTokenKind.Property => "JsonPropertyBrush",
+            JsonTokenKind.String => "JsonStringBrush",
+            JsonTokenKind.Number => "JsonNumberBrush",
+            JsonTokenKind.Keyword => "JsonKeywordBrush",
+            _ => "JsonDefaultBrush"
         };
         return (Brush?)Application.Current.TryFindResource(resourceKey) ?? Foreground;
     }

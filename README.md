@@ -2,16 +2,16 @@
 
 **DSMS Preset Studio** is a Windows desktop application for creating, reviewing and validating **DragonSword: Awakening** presets for **DSMS ModLoader**.
 
-Current Studio version: **0.5.2**  
-Preset format: **DSMS JSON v3**  
-Recommended ModLoader version: **0.7.1**
+- Current Studio version: **0.5.3**
+- Preset format: **DSMS JSON v3**
+- Recommended ModLoader version: **0.7.2**
 
 ## What the application does
 
 - Creates Costume, Custom and Weapon presets through a guided visual builder.
 - Opens and edits existing DSMS JSON v3 files.
 - Generates consistently formatted JSON.
-- Validates required fields, target character IDs, Unreal paths, material slots, morph targets, outlines, auxiliary meshes and weapon components.
+- Validates required fields, target character IDs, Unreal paths, material slots, morph targets, body and face outlines, auxiliary meshes and weapon components.
 - Applies only deterministic and reviewable repairs.
 - Scans preset folders and reports duplicate `UniqueID` values.
 - Optionally verifies exported game assets against an FModel export folder.
@@ -46,7 +46,7 @@ The Visual Builder provides recipes for:
 - costume retexture;
 - single-mesh and multi-component weapons;
 - weapon retexture;
-- custom body with a dedicated outline;
+- custom body with dedicated body and optional face outlines;
 - auxiliary meshes and native-component hiding.
 
 Select the target character before entering asset paths. Public character names and internal aliases such as `Kalsion/Cassius` and `Ornette/Onette` are handled by the character catalog.
@@ -115,12 +115,13 @@ When no compatible image is found, Studio displays the generic Costume, Custom o
 ## Settings
 
 - Choose English or French.
-- Select a built-in theme or import a custom theme.
-- Open the included offline HTML Theme Designer.
+- Browse all bundled and imported themes with their name, author and provenance. Bundled themes are read-only `Official Theme System` themes authored by `HoverModsVault`.
+- Keep multiple custom themes, edit them in the offline HTML Theme Designer, and preview Visual Builder, JSON Editor and Settings.
+- Use a system theme as a base only through a renamed custom copy; exported/imported themes never receive official certification.
 - Configure the FModel export root.
 - Configure or detect the DSMS ModLoader Scripts folder.
 - Open the imported-icons folder.
-- Check GitHub manually for Studio updates.
+- Enable or disable automatic GitHub update checks at startup, or check manually.
 
 Updates require confirmation and a valid SHA-256 checksum. Imported icons and settings stored under `%LocalAppData%\HoverModsVault\DSMSPresetStudio` are preserved.
 
@@ -130,14 +131,13 @@ Updates require confirmation and a valid SHA-256 checksum. Imported icons and se
 - Back up game saves before mod development.
 - A green result means the JSON is structurally valid; it does not guarantee that every referenced asset is compatible at runtime.
 - Studio does not modify the game directory unless you explicitly select it with **Save as**.
-- Internet access is only required for the manual GitHub update check.
+- Internet access is only required when Studio checks GitHub for updates, automatically or manually.
 
 ## Projects and documentation
 
 - DSMS ModLoader: https://github.com/Hoverbike51/DSMS-ModLoader
 - Studio releases: https://github.com/Hoverbike51/DSMS-Preset-Studio/releases
 - Version history: [CHANGELOG.md](CHANGELOG.md)
-- Virus Total: https://www.virustotal.com/gui/file/56b7125fec4e4223362451e033d0730ff178b65810ceb1b67de046119f185f46
 
 ## Development
 

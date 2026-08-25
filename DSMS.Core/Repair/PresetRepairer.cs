@@ -46,6 +46,7 @@ public sealed class PresetRepairer(CharacterCatalog characterCatalog)
         NormalizeAssetPath(preset.BodyOutlinePath, value => preset.BodyOutlinePath = value, "BodyOutlinePath", changes);
         NormalizeAssetPath(preset.FaceMorphPath, value => preset.FaceMorphPath = value, "FaceMorphPath", changes);
         NormalizeAssetPath(preset.FacePath, value => preset.FacePath = value, "FacePath", changes);
+        NormalizeAssetPath(preset.FaceOutlinePath, value => preset.FaceOutlinePath = value, "FaceOutlinePath", changes);
         NormalizeAssetPath(preset.AuxiliaryMeshPath, value => preset.AuxiliaryMeshPath = value, "AuxiliaryMeshPath", changes);
         NormalizeAssetPath(preset.AuxiliaryPhysicsAssetPath, value => preset.AuxiliaryPhysicsAssetPath = value, "AuxiliaryPhysicsAssetPath", changes);
         NormalizeAssetPath(preset.LinkedBodyReplacementPath, value => preset.LinkedBodyReplacementPath = value, "LinkedBodyReplacementPath", changes);
@@ -57,6 +58,7 @@ public sealed class PresetRepairer(CharacterCatalog characterCatalog)
         NormalizeMaterials(preset.BodyMaterials, "BodyMaterials", changes);
         NormalizeMaterials(preset.BodyOutlineMaterials, "BodyOutlineMaterials", changes);
         NormalizeMaterials(preset.FaceMaterials, "FaceMaterials", changes);
+        NormalizeMaterials(preset.FaceOutlineMaterials, "FaceOutlineMaterials", changes);
         NormalizeMaterials(preset.AuxiliaryMaterials, "AuxiliaryMaterials", changes);
         NormalizeMaterials(preset.WeaponMaterials, "WeaponMaterials", changes);
         NormalizeMorphs(preset.BodyMorphTargets, "BodyMorphTargets", changes);

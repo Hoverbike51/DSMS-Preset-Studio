@@ -26,8 +26,8 @@ coverage/
 *.coveragexml
 
 # Runtime/user-generated files
-Icons/Imported/*
-!Icons/Imported/README.txt
+DSMS.PresetStudio/Icons/Imported/*
+!DSMS.PresetStudio/Icons/Imported/README.txt
 *.log
 
 # Operating-system files

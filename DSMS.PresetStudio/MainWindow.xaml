@@ -123,10 +123,11 @@
                                         <TextBlock Text="⚙  Advanced meshes" Style="{StaticResource SectionTitleStyle}"/>
                                         <Grid Margin="0,14,0,0">
                                             <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
                                             <TextBlock Text="BodyOutlinePath" VerticalAlignment="Center"/><TextBox Grid.Column="1" x:Name="BodyOutlinePathBox"/>
-                                            <TextBlock Grid.Row="1" Text="AuxiliaryMeshPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="1" Grid.Column="1" x:Name="AuxiliaryMeshPathBox" Margin="0,9,0,0"/>
-                                            <TextBlock Grid.Row="2" Text="WeaponPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="WeaponPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="1" Text="FaceOutlinePath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="1" Grid.Column="1" x:Name="FaceOutlinePathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="2" Text="AuxiliaryMeshPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="AuxiliaryMeshPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="3" Text="WeaponPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="WeaponPathBox" Margin="0,9,0,0"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
@@ -174,7 +175,8 @@
                                         <TabControl Background="Transparent" BorderThickness="0" Margin="0,8,0,0">
                                             <TabItem Header="Body"><DataGrid x:Name="BodyMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
                                             <TabItem Header="Face"><DataGrid x:Name="FaceMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
-                                            <TabItem Header="Outline"><DataGrid x:Name="OutlineMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                            <TabItem Header="Body Outline"><DataGrid x:Name="OutlineMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
+                                            <TabItem Header="Face Outline"><DataGrid x:Name="FaceOutlineMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
                                             <TabItem Header="Weapon"><DataGrid x:Name="WeaponMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Current material match (optional)" Binding="{Binding MaterialMatch}" Width="230"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
                                         </TabControl>
                                         <TextBlock x:Name="MaterialHintText" Foreground="{DynamicResource WarningBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
@@ -186,7 +188,8 @@
                                         <TextBlock Text="▱  Options" Style="{StaticResource SectionTitleStyle}"/>
                                         <CheckBox x:Name="BodyClearCheck" Content="Clear native body material overrides" Margin="0,12,0,0"/>
                                         <CheckBox x:Name="FaceClearCheck" Content="Clear native face material overrides" Margin="0,9,0,0"/>
-                                        <CheckBox x:Name="OutlineClearCheck" Content="Clear native outline material overrides" Margin="0,9,0,0"/>
+                                        <CheckBox x:Name="OutlineClearCheck" Content="Clear body outline material overrides" Margin="0,9,0,0"/>
+                                        <CheckBox x:Name="FaceOutlineClearCheck" Content="Clear face outline material overrides" Margin="0,9,0,0"/>
                                         <CheckBox x:Name="WeaponClearCheck" Content="Clear native weapon material overrides" Margin="0,9,0,0"/>
                                         <CheckBox x:Name="WeaponMaterialsOnlyCheck" Content="Weapon retexture only (keep native mesh)" Margin="0,9,0,0"/>
                                         <TextBlock Text="Requirements (comma-separated)" Margin="0,14,0,5"/>
@@ -234,7 +237,19 @@
                                     <StackPanel>
                                         <TextBlock Text="◈  Theme" Style="{StaticResource SectionTitleStyle}"/>
                                         <TextBlock x:Name="ThemeHelpText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,7,0,10"/>
-                                        <ComboBox x:Name="ThemeCombo" DisplayMemberPath="Name"/>
+                                        <ComboBox x:Name="ThemeCombo" SelectionChanged="ThemeCombo_SelectionChanged" MaxDropDownHeight="360">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Margin="2,3">
+                                                        <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold"/>
+                                                        <TextBlock Foreground="{DynamicResource TextSecondaryBrush}" FontSize="10">
+                                                            <Run Text="Author / Auteur: "/><Run Text="{Binding Author}"/>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <TextBlock x:Name="ThemeIdentityText" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11" Margin="0,7,0,0"/>
                                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                             <Button Content="Apply theme" Click="ApplyTheme_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,8,0"/>
                                             <Button Content="Import theme…" Click="ImportTheme_Click" Margin="0,0,8,0"/>
@@ -291,10 +306,12 @@
                                     <StackPanel>
                                         <TextBlock Text="↻  Updates" Style="{StaticResource SectionTitleStyle}"/>
                                         <TextBlock x:Name="UpdateDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,12"/>
+                                        <CheckBox x:Name="StartupUpdateCheckBox" Content="Check for updates when DSMS Preset Studio starts"
+                                                  Click="StartupUpdateCheckBox_Click" Margin="0,0,0,12"/>
                                         <Border Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="6" Padding="12">
                                             <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                                                 <StackPanel><TextBlock Text="GitHub release service"/><TextBlock x:Name="UpdateStatusText" Text="Ready to check" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11" TextWrapping="Wrap"/></StackPanel>
-                                                <Border Grid.Column="1" Background="#173747" BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="1" CornerRadius="10" Padding="9,3"><TextBlock x:Name="UpdateBadgeText" Text="READY" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/></Border>
+                                                <Border x:Name="UpdateBadge" Grid.Column="1" Background="{DynamicResource PanelAltBrush}" BorderBrush="{DynamicResource UpdateReadyBrush}" BorderThickness="1" CornerRadius="10" Padding="9,3"><TextBlock x:Name="UpdateBadgeText" Text="READY" Foreground="{DynamicResource UpdateReadyBrush}" FontWeight="SemiBold"/></Border>
                                             </Grid>
                                         </Border>
                                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">

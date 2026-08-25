@@ -8,8 +8,8 @@ public sealed class CompatibilityProfile
 {
     public int[] SupportedJsonSchemas { get; set; } = [3];
     public string MinimumModLoaderVersion { get; set; } = "0.7.0";
-    public string[] TestedModLoaderVersions { get; set; } = ["0.7.0", "0.7.1"];
-    public string RecommendedModLoaderVersion { get; set; } = "0.7.1";
+    public string[] TestedModLoaderVersions { get; set; } = ["0.7.0", "0.7.1", "0.7.2"];
+    public string RecommendedModLoaderVersion { get; set; } = "0.7.2";
     public string StudioReleaseRepository { get; set; } = "Hoverbike51/DSMS-Preset-Studio";
 }
 

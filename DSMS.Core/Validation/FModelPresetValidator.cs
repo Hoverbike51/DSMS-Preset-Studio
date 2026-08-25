@@ -37,6 +37,7 @@ public sealed class FModelPresetValidator(FModelAssetIndex index)
         yield return ("PhysicsAssetPath", p.PhysicsAssetPath, false); yield return ("FollowerAnimBlueprintPath", p.FollowerAnimBlueprintPath, true);
         yield return ("PhysicsAnimBlueprintPath", p.PhysicsAnimBlueprintPath, true); yield return ("BodyOutlinePath", p.BodyOutlinePath, false);
         yield return ("FaceMorphPath", p.FaceMorphPath, false); yield return ("FacePath", p.FacePath, false);
+        yield return ("FaceOutlinePath", p.FaceOutlinePath, false);
         yield return ("AuxiliaryMeshPath", p.AuxiliaryMeshPath, false); yield return ("AuxiliaryPhysicsAssetPath", p.AuxiliaryPhysicsAssetPath, false);
         yield return ("LinkedBodyReplacementPath", p.LinkedBodyReplacementPath, false); yield return ("WeaponPath", p.WeaponPath, false);
         yield return ("IconPath", p.IconPath, false);
@@ -47,7 +48,8 @@ public sealed class FModelPresetValidator(FModelAssetIndex index)
     private static IEnumerable<(string Field, string? Value, bool GeneratedClass)> Materials(PresetDocument p)
     {
         foreach (var group in new[] { ("BodyMaterials", p.BodyMaterials), ("BodyOutlineMaterials", p.BodyOutlineMaterials),
-                     ("FaceMaterials", p.FaceMaterials), ("AuxiliaryMaterials", p.AuxiliaryMaterials), ("WeaponMaterials", p.WeaponMaterials) })
+                     ("FaceMaterials", p.FaceMaterials), ("FaceOutlineMaterials", p.FaceOutlineMaterials),
+                     ("AuxiliaryMaterials", p.AuxiliaryMaterials), ("WeaponMaterials", p.WeaponMaterials) })
             if (group.Item2 is not null) for (var i = 0; i < group.Item2.Count; i++) yield return ($"{group.Item1}[{i}].MaterialPath", group.Item2[i].MaterialPath, false);
     }
 }

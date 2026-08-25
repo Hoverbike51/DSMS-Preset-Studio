@@ -32,6 +32,7 @@ public partial class MainWindow : Window
     private readonly ObservableCollection<MaterialOverride> _bodyMaterials = [];
     private readonly ObservableCollection<MaterialOverride> _faceMaterials = [];
     private readonly ObservableCollection<MaterialOverride> _outlineMaterials = [];
+    private readonly ObservableCollection<MaterialOverride> _faceOutlineMaterials = [];
     private readonly ObservableCollection<MaterialOverride> _weaponMaterials = [];
     private PresetDocument _workingPreset = new();
     private string? _currentFile;
@@ -44,6 +45,7 @@ public partial class MainWindow : Window
     private readonly CompatibilityProfile _compatibility = CompatibilityService.Load();
     private IconResolution? _iconResolution;
     private StudioUpdate? _availableUpdate;
+    private bool _checkingForUpdates;
     private CharacterCatalog _characterCatalog = new([]);
     private FModelAssetIndex? _fmodelIndex;
     private readonly Dictionary<string, string> _recipeEnglishNames = new(StringComparer.OrdinalIgnoreCase);
@@ -56,17 +58,21 @@ public partial class MainWindow : Window
         BodyMaterialsGrid.ItemsSource = _bodyMaterials;
         FaceMaterialsGrid.ItemsSource = _faceMaterials;
         OutlineMaterialsGrid.ItemsSource = _outlineMaterials;
+        FaceOutlineMaterialsGrid.ItemsSource = _faceOutlineMaterials;
         WeaponMaterialsGrid.ItemsSource = _weaponMaterials;
         SetupSettings();
         LoadCatalogs();
         NewPreset();
+        ContentRendered += MainWindow_ContentRendered;
     }
 
     private void SetupSettings()
     {
         foreach (var theme in ThemeManager.BuiltInThemes) _themes.Add(theme);
-        if (_settings.CustomTheme is not null && _themes.All(x => !x.Name.Equals(_settings.CustomTheme.Name, StringComparison.OrdinalIgnoreCase)))
-            _themes.Add(_settings.CustomTheme);
+        foreach (var theme in _settings.CustomThemes.Where(theme =>
+                     !ThemeManager.IsSystemThemeName(theme.Name) &&
+                     _themes.All(x => !x.Name.Equals(theme.Name, StringComparison.OrdinalIgnoreCase))))
+            _themes.Add(theme);
         ThemeCombo.ItemsSource = _themes;
         ThemeCombo.SelectedItem = _themes.FirstOrDefault(x => x.Name.Equals(_settings.ThemeName, StringComparison.OrdinalIgnoreCase)) ?? _themes[0];
         try
@@ -78,7 +84,6 @@ public partial class MainWindow : Window
             ThemeCombo.SelectedItem = _themes[0];
             ThemeManager.Apply(_themes[0]);
             _settings.ThemeName = _themes[0].Name;
-            _settings.CustomTheme = null;
             SettingsService.Save(_settings);
         }
 
@@ -87,6 +92,7 @@ public partial class MainWindow : Window
             if (string.Equals(item.Tag as string, _settings.Language, StringComparison.OrdinalIgnoreCase))
                 LanguageCombo.SelectedItem = item;
         if (LanguageCombo.SelectedItem is null) LanguageCombo.SelectedIndex = 0;
+        StartupUpdateCheckBox.IsChecked = _settings.CheckForUpdatesOnStartup;
         _syncingSettings = false;
         FModelRootBox.Text = _settings.FModelExportRoot;
         FModelIndexStatusText.Text = UiLocalizer.IsFrench(_settings.Language)
@@ -96,6 +102,7 @@ public partial class MainWindow : Window
         StudioVersionText.Text = $"v{AppVersion.Current}";
         RefreshModLoaderStatus();
         ApplyLanguageDetails();
+        SetUpdateDisplay("READY", Localized("Ready to check", "Prêt à vérifier"), UpdateVisualState.Ready);
     }
 
     private void LoadCatalogs()
@@ -313,17 +320,20 @@ public partial class MainWindow : Window
         PhysicsAbpPathBox.Text = preset.PhysicsAnimBlueprintPath ?? "";
         IconPathBox.Text = preset.IconPath ?? "";
         BodyOutlinePathBox.Text = preset.BodyOutlinePath ?? "";
+        FaceOutlinePathBox.Text = preset.FaceOutlinePath ?? "";
         AuxiliaryMeshPathBox.Text = preset.AuxiliaryMeshPath ?? "";
         WeaponPathBox.Text = preset.WeaponPath ?? "";
         RequirementsBox.Text = string.Join(", ", preset.Requirements ?? ["None"]);
         BodyClearCheck.IsChecked = preset.BodyClearMaterialOverrides == true;
         FaceClearCheck.IsChecked = preset.FaceClearMaterialOverrides == true;
         OutlineClearCheck.IsChecked = preset.BodyOutlineClearMaterialOverrides == true;
+        FaceOutlineClearCheck.IsChecked = preset.FaceOutlineClearMaterialOverrides == true;
         WeaponClearCheck.IsChecked = preset.WeaponClearMaterialOverrides == true;
         WeaponMaterialsOnlyCheck.IsChecked = preset.WeaponMaterialsOnly == true;
         ReplaceCollection(_bodyMaterials, preset.BodyMaterials);
         ReplaceCollection(_faceMaterials, preset.FaceMaterials);
         ReplaceCollection(_outlineMaterials, preset.BodyOutlineMaterials);
+        ReplaceCollection(_faceOutlineMaterials, preset.FaceOutlineMaterials);
         ReplaceCollection(_weaponMaterials, preset.WeaponMaterials);
 
         CharacterCombo.SelectedItem = _characterCatalog.Find(preset.TargetCharacterID);
@@ -383,16 +393,19 @@ public partial class MainWindow : Window
         _workingPreset.PhysicsAnimBlueprintPath = NullIfBlank(PhysicsAbpPathBox.Text);
         _workingPreset.IconPath = NullIfBlank(IconPathBox.Text);
         _workingPreset.BodyOutlinePath = NullIfBlank(BodyOutlinePathBox.Text);
+        _workingPreset.FaceOutlinePath = NullIfBlank(FaceOutlinePathBox.Text);
         _workingPreset.AuxiliaryMeshPath = NullIfBlank(AuxiliaryMeshPathBox.Text);
         _workingPreset.WeaponPath = NullIfBlank(WeaponPathBox.Text);
         _workingPreset.BodyClearMaterialOverrides = BodyClearCheck.IsChecked == true ? true : null;
         _workingPreset.FaceClearMaterialOverrides = FaceClearCheck.IsChecked == true ? true : null;
         _workingPreset.BodyOutlineClearMaterialOverrides = OutlineClearCheck.IsChecked == true ? true : null;
+        _workingPreset.FaceOutlineClearMaterialOverrides = FaceOutlineClearCheck.IsChecked == true ? true : null;
         _workingPreset.WeaponClearMaterialOverrides = WeaponClearCheck.IsChecked == true ? true : null;
         _workingPreset.WeaponMaterialsOnly = WeaponMaterialsOnlyCheck.IsChecked == true ? true : null;
         _workingPreset.BodyMaterials = _bodyMaterials.Count == 0 ? null : _bodyMaterials.ToList();
         _workingPreset.FaceMaterials = _faceMaterials.Count == 0 ? null : _faceMaterials.ToList();
         _workingPreset.BodyOutlineMaterials = _outlineMaterials.Count == 0 ? null : _outlineMaterials.ToList();
+        _workingPreset.FaceOutlineMaterials = _faceOutlineMaterials.Count == 0 ? null : _faceOutlineMaterials.ToList();
         _workingPreset.WeaponMaterials = _weaponMaterials.Count == 0 ? null : _weaponMaterials.ToList();
 
         if (_workingPreset.Type.Equals("Weapon", StringComparison.OrdinalIgnoreCase))
@@ -403,13 +416,16 @@ public partial class MainWindow : Window
             _workingPreset.PhysicsAssetPath = null;
             _workingPreset.PhysicsAnimBlueprintPath = null;
             _workingPreset.BodyOutlinePath = null;
+            _workingPreset.FaceOutlinePath = null;
             _workingPreset.AuxiliaryMeshPath = null;
             _workingPreset.BodyMaterials = null;
             _workingPreset.FaceMaterials = null;
             _workingPreset.BodyOutlineMaterials = null;
+            _workingPreset.FaceOutlineMaterials = null;
             _workingPreset.BodyClearMaterialOverrides = null;
             _workingPreset.FaceClearMaterialOverrides = null;
             _workingPreset.BodyOutlineClearMaterialOverrides = null;
+            _workingPreset.FaceOutlineClearMaterialOverrides = null;
         }
         else
         {
@@ -423,7 +439,7 @@ public partial class MainWindow : Window
 
     private void CommitMaterialEdits()
     {
-        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid, WeaponMaterialsGrid })
+        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid, FaceOutlineMaterialsGrid, WeaponMaterialsGrid })
         {
             grid.CommitEdit(DataGridEditingUnit.Cell, true);
             grid.CommitEdit(DataGridEditingUnit.Row, true);
@@ -488,7 +504,7 @@ public partial class MainWindow : Window
             "weapon-single" => "Remplace un mesh d’arme unique et ses Material Instances.",
             "weapon-multi" => "Remplace plusieurs composants d’arme à l’aide de sélecteurs ComponentMatch.",
             "weapon-retexture" => "Conserve le mesh d’arme natif et remplace uniquement ses Material Instances.",
-            "custom-outline" => "Charge un corps personnalisé accompagné d’un Skeletal Mesh parallèle dédié à l’outline.",
+            "custom-outline" => "Charge un corps personnalisé avec un Skeletal Mesh parallèle pour l’outline du corps et un outline du visage facultatif.",
             "auxiliary-hide" => "Masque ou remplace les composants de costume natifs séparés du corps principal.",
             _ => recipe.Description
         };
@@ -586,8 +602,7 @@ public partial class MainWindow : Window
             SetActiveStep(_activeStep);
             JsonEditor.RefreshHighlighting();
             _settings.ThemeName = theme.Name;
-            if (!ThemeManager.BuiltInThemes.Any(x => x.Name.Equals(theme.Name, StringComparison.OrdinalIgnoreCase)))
-                _settings.CustomTheme = theme;
+            if (!theme.IsOfficialSystemTheme) StoreCustomTheme(theme);
             SettingsService.Save(_settings);
         }
         catch (Exception exception)
@@ -611,7 +626,7 @@ public partial class MainWindow : Window
             SetActiveStep(_activeStep);
             JsonEditor.RefreshHighlighting();
             _settings.ThemeName = theme.Name;
-            _settings.CustomTheme = theme;
+            StoreCustomTheme(theme);
             SettingsService.Save(_settings);
         }
         catch (Exception exception)
@@ -628,7 +643,53 @@ public partial class MainWindow : Window
             MessageBox.Show(this, "Theme Designer was not found in the application folder.", "Missing tool", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-        Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+        try
+        {
+            var selected = ThemeCombo.SelectedItem as ThemeDefinition;
+            var library = _themes.Select(theme => new
+            {
+                theme.Name, theme.Author, theme.Background, theme.Panel, theme.PanelAlt, theme.Input, theme.Border,
+                theme.Primary, theme.Secondary, theme.TextPrimary, theme.TextSecondary, theme.Success, theme.Warning, theme.Error,
+                theme.FontFamily, theme.FontSize, theme.UiOpacity, theme.TextOpacity,
+                theme.BackgroundImageBase64, theme.BackgroundImageOpacity,
+                Official = theme.IsOfficialSystemTheme,
+                Selected = ReferenceEquals(theme, selected)
+            }).ToArray();
+            var marker = "/*__DSMS_THEME_LIBRARY__*/ null";
+            var source = File.ReadAllText(filePath);
+            if (!source.Contains(marker, StringComparison.Ordinal))
+                throw new InvalidDataException("Theme Designer does not contain the theme-library marker.");
+            source = source.Replace(marker, JsonSerializer.Serialize(library), StringComparison.Ordinal);
+            var sessionDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "HoverModsVault", "DSMSPresetStudio", "ThemeDesigner");
+            Directory.CreateDirectory(sessionDirectory);
+            var sessionPath = Path.Combine(sessionDirectory, "index.html");
+            File.WriteAllText(sessionPath, source);
+            Process.Start(new ProcessStartInfo(sessionPath) { UseShellExecute = true });
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show(this, exception.Message, "Theme Designer failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    private void ThemeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateThemeIdentity();
+
+    private void UpdateThemeIdentity()
+    {
+        if (ThemeCombo.SelectedItem is not ThemeDefinition theme) return;
+        var french = UiLocalizer.IsFrench(_settings.Language);
+        ThemeIdentityText.Text = theme.IsOfficialSystemTheme
+            ? $"{ThemeManager.OfficialSystemAuthor} · Official Theme System · {(french ? "lecture seule" : "read-only")}"
+            : $"{theme.Author} · {(french ? "Thème personnalisé" : "Custom Theme")}";
+    }
+
+    private void StoreCustomTheme(ThemeDefinition theme)
+    {
+        var index = _settings.CustomThemes.FindIndex(x => x.Name.Equals(theme.Name, StringComparison.OrdinalIgnoreCase));
+        if (index >= 0) _settings.CustomThemes[index] = theme;
+        else _settings.CustomThemes.Add(theme);
+        _settings.CustomTheme = null;
     }
 
     private void LanguageCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -641,7 +702,11 @@ public partial class MainWindow : Window
 
     private void ApplyLanguageDetails()
     {
+        var updateBadge = UpdateBadgeText.Text;
+        var updateStatus = UpdateStatusText.Text;
         UiLocalizer.Apply(this, _settings.Language);
+        UpdateBadgeText.Text = updateBadge;
+        UpdateStatusText.Text = updateStatus;
         SettingsDescriptionText.Text = DetailLocalizer.Get("SettingsIntro", _settings.Language);
         ThemeHelpText.Text = DetailLocalizer.Get("ThemeHelp", _settings.Language);
         LanguageHelpText.Text = DetailLocalizer.Get("LanguageHelp", _settings.Language);
@@ -655,6 +720,7 @@ public partial class MainWindow : Window
         ExpandMaterialsButton.Content = UiLocalizer.Text(_materialsExpanded ? "Restore layout" : "Expand materials", _settings.Language);
         RefreshIconPreview();
         RefreshModLoaderStatus();
+        UpdateThemeIdentity();
         if (!string.IsNullOrWhiteSpace(JsonEditor.Text)) ValidateEditor();
     }
 
@@ -671,7 +737,7 @@ public partial class MainWindow : Window
 
     private void LocalizeGridHeaders()
     {
-        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid })
+        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid, FaceOutlineMaterialsGrid })
         {
             grid.Columns[0].Header = UiLocalizer.Text("Slot", _settings.Language);
             grid.Columns[1].Header = UiLocalizer.Text("Material instance path", _settings.Language);
@@ -844,64 +910,119 @@ public partial class MainWindow : Window
         Process.Start(new ProcessStartInfo(IconResolver.IconsDirectory) { UseShellExecute = true });
     }
 
-    private async void CheckUpdates_Click(object sender, RoutedEventArgs e)
+    private enum UpdateVisualState { Ready, Checking, Current, Error }
+
+    private async void MainWindow_ContentRendered(object? sender, EventArgs e)
     {
+        ContentRendered -= MainWindow_ContentRendered;
+        if (_settings.CheckForUpdatesOnStartup) await CheckForUpdatesAsync(showPrompt: true);
+    }
+
+    private void StartupUpdateCheckBox_Click(object sender, RoutedEventArgs e)
+    {
+        if (_syncingSettings) return;
+        _settings.CheckForUpdatesOnStartup = StartupUpdateCheckBox.IsChecked == true;
+        SettingsService.Save(_settings);
+    }
+
+    private async void CheckUpdates_Click(object sender, RoutedEventArgs e) =>
+        await CheckForUpdatesAsync(showPrompt: false);
+
+    private async Task CheckForUpdatesAsync(bool showPrompt)
+    {
+        if (_checkingForUpdates) return;
+        _checkingForUpdates = true;
         CheckUpdatesButton.IsEnabled = false;
         InstallUpdateButton.IsEnabled = false;
-        UpdateBadgeText.Text = "CHECKING";
-        UpdateStatusText.Text = "Contacting GitHub…";
+        SetUpdateDisplay("CHECKING", Localized("Contacting GitHub…", "Connexion à GitHub…"), UpdateVisualState.Checking);
         try
         {
             _availableUpdate = await UpdateService.CheckAsync(_compatibility.StudioReleaseRepository);
             if (_availableUpdate is null)
             {
-                UpdateBadgeText.Text = "NO PACKAGE";
-                UpdateStatusText.Text = "The latest release has no compatible ZIP package.";
+                SetUpdateDisplay("NO PACKAGE",
+                    Localized("The latest release has no compatible ZIP package.", "La dernière version ne contient aucun package ZIP compatible."),
+                    UpdateVisualState.Error);
             }
             else if (_availableUpdate.IsNewer)
             {
-                UpdateBadgeText.Text = "AVAILABLE";
-                UpdateStatusText.Text = $"Studio v{_availableUpdate.Version} is available. SHA-256 verification is required before installation.";
+                SetUpdateDisplay("AVAILABLE",
+                    Localized($"Studio v{_availableUpdate.Version} is available. SHA-256 verification is required before installation.",
+                              $"Studio v{_availableUpdate.Version} est disponible. La vérification SHA-256 est obligatoire avant l’installation."),
+                    UpdateVisualState.Ready);
                 InstallUpdateButton.IsEnabled = true;
+                if (showPrompt) await PromptAndInstallUpdateAsync();
             }
             else
             {
-                UpdateBadgeText.Text = "CURRENT";
-                UpdateStatusText.Text = $"DSMS Preset Studio v{AppVersion.Current} is up to date.";
+                SetUpdateDisplay("CURRENT",
+                    Localized($"DSMS Preset Studio v{AppVersion.Current} is up to date.", $"DSMS Preset Studio v{AppVersion.Current} est à jour."),
+                    UpdateVisualState.Current);
             }
         }
         catch (Exception exception)
         {
-            UpdateBadgeText.Text = "FAILED";
-            UpdateStatusText.Text = exception.Message;
+            SetUpdateDisplay("FAILED", exception.Message, UpdateVisualState.Error);
         }
-        finally { CheckUpdatesButton.IsEnabled = true; }
+        finally
+        {
+            _checkingForUpdates = false;
+            CheckUpdatesButton.IsEnabled = true;
+        }
     }
 
-    private async void InstallUpdate_Click(object sender, RoutedEventArgs e)
+    private async void InstallUpdate_Click(object sender, RoutedEventArgs e) => await PromptAndInstallUpdateAsync();
+
+    private async Task PromptAndInstallUpdateAsync()
     {
         if (_availableUpdate is null) return;
-        var answer = MessageBox.Show(this,
-            $"Download DSMS Preset Studio v{_availableUpdate.Version}, verify its SHA-256 and replace this installation after the application closes?\n\nYour imported icons and user settings will be preserved.",
-            "Install verified update", MessageBoxButton.YesNo, MessageBoxImage.Question);
-        if (answer != MessageBoxResult.Yes) return;
+        var prompt = new UpdatePromptWindow(_availableUpdate, _settings.Language) { Owner = this };
+        if (prompt.ShowDialog() == true) await InstallAvailableUpdateAsync();
+    }
+
+    private async Task InstallAvailableUpdateAsync()
+    {
+        if (_availableUpdate is null) return;
         CheckUpdatesButton.IsEnabled = false;
         InstallUpdateButton.IsEnabled = false;
         try
         {
-            var progress = new Progress<string>(message => UpdateStatusText.Text = message);
+            SetUpdateDisplay("CHECKING", Localized("Preparing download…", "Préparation du téléchargement…"), UpdateVisualState.Checking);
+            var progress = new Progress<string>(message =>
+                SetUpdateDisplay("CHECKING", message, UpdateVisualState.Checking));
             var prepared = await UpdateService.DownloadAsync(_availableUpdate, progress);
-            UpdateStatusText.Text = "Verified. Restarting into the updater…";
+            SetUpdateDisplay("CHECKING", Localized("Verified. Restarting into the updater…", "Package vérifié. Redémarrage vers la mise à jour…"), UpdateVisualState.Checking);
             UpdateService.LaunchInstaller(prepared);
             Application.Current.Shutdown();
         }
         catch (Exception exception)
         {
-            MessageBox.Show(this, exception.Message, "Update failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            SetUpdateDisplay("FAILED", exception.Message, UpdateVisualState.Error);
+            MessageBox.Show(this, exception.Message, Localized("Update failed", "Échec de la mise à jour"), MessageBoxButton.OK, MessageBoxImage.Error);
             CheckUpdatesButton.IsEnabled = true;
             InstallUpdateButton.IsEnabled = true;
         }
     }
+
+    private void SetUpdateDisplay(string badge, string message, UpdateVisualState state)
+    {
+        UpdateBadgeText.Text = badge;
+        UpdateStatusText.Text = message;
+        var brushKey = state switch
+        {
+            UpdateVisualState.Ready => "UpdateReadyBrush",
+            UpdateVisualState.Checking => "UpdateCheckingBrush",
+            UpdateVisualState.Error => "UpdateErrorBrush",
+            _ => "PrimaryBrush"
+        };
+        UpdateBadgeText.SetResourceReference(TextBlock.ForegroundProperty, brushKey);
+        UpdateBadge.SetResourceReference(Border.BorderBrushProperty, brushKey);
+        UpdateStatusText.SetResourceReference(TextBlock.ForegroundProperty,
+            state == UpdateVisualState.Error ? "UpdateErrorBrush" : "TextSecondaryBrush");
+    }
+
+    private string Localized(string english, string french) =>
+        UiLocalizer.IsFrench(_settings.Language) ? french : english;
 
     private void OpenGithub_Click(object sender, RoutedEventArgs e)
     {

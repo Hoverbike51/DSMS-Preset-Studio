@@ -31,6 +31,10 @@ public sealed class PresetDocument
     public List<MaterialOverride>? FaceMaterials { get; set; }
     public List<MorphTargetOverride>? FaceMorphTargets { get; set; }
 
+    public string? FaceOutlinePath { get; set; }
+    public bool? FaceOutlineClearMaterialOverrides { get; set; }
+    public List<MaterialOverride>? FaceOutlineMaterials { get; set; }
+
     public string? AuxiliaryMeshPath { get; set; }
     public string? AuxiliaryPhysicsAssetPath { get; set; }
     public bool? AuxiliarySpawnOnly { get; set; }

@@ -3,6 +3,7 @@ using DSMS.Core.Catalog;
 using DSMS.Core.Models;
 using DSMS.Core.Repair;
 using DSMS.Core.Repository;
+using DSMS.Core.Serialization;
 using DSMS.Core.Validation;
 
 var failures = new List<string>();
@@ -23,6 +24,16 @@ var mismatch = ValidCostume(); mismatch.BodyPath = "/Game/mods/Test/Mesh/Ekko_Cu
 Expect("package/object spelling mismatch is rejected", validator.Validate(mismatch, "DSMS-Test.json").Issues.Any(x => x.Code == "DSMS017"));
 var duplicateSlots = ValidCostume(); duplicateSlots.BodyMaterials = [new() { SlotIndex = 0, MaterialPath = "/Game/Test/MI_A.MI_A" }, new() { SlotIndex = 0, MaterialPath = "/Game/Test/MI_B.MI_B" }];
 Expect("duplicate material slots are rejected", validator.Validate(duplicateSlots, "DSMS-Test.json").Issues.Any(x => x.Code == "DSMS032"));
+
+var faceOutline = ValidCostume();
+faceOutline.FaceOutlinePath = "/Game/Test/Test_face_outline.Test_face_outline";
+faceOutline.FaceOutlineClearMaterialOverrides = true;
+faceOutline.FaceOutlineMaterials = [new() { SlotIndex = 0, MaterialPath = "/Game/Test/MI_FaceOutline.MI_FaceOutline" }];
+var serializedFaceOutline = PresetSerializer.Serialize(faceOutline);
+var parsedFaceOutline = PresetSerializer.Deserialize(serializedFaceOutline);
+Expect("Face Outline fields survive JSON serialization", parsedFaceOutline.FaceOutlinePath == faceOutline.FaceOutlinePath &&
+    parsedFaceOutline.FaceOutlineClearMaterialOverrides == true && parsedFaceOutline.FaceOutlineMaterials is { Count: 1 });
+Expect("Face Outline fields are accepted by validation", validator.Validate(parsedFaceOutline, "DSMS-Test.json").Issues.All(x => x.Field is not "FaceOutlinePath" and not "FaceOutlineMaterials"));
 
 var repairTarget = ValidCostume(); repairTarget.Version = 2; repairTarget.Type = "Character"; repairTarget.TargetCharacterID = "Kalsion";
 repairTarget.IconPath = "/Game/Test/Icon"; repairTarget.PhysicsAnimBlueprintPath = "/Game/Test/DsABP_Test_Physics"; repairTarget.Requirements = null;

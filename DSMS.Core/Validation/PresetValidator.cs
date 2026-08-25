@@ -49,6 +49,7 @@ public sealed partial class PresetValidator
         ValidateAssetPath(report, preset.PhysicsAssetPath, "PhysicsAssetPath");
         ValidateAssetPath(report, preset.FaceMorphPath, "FaceMorphPath");
         ValidateAssetPath(report, preset.FacePath, "FacePath");
+        ValidateAssetPath(report, preset.FaceOutlinePath, "FaceOutlinePath");
         ValidateAssetPath(report, preset.AuxiliaryMeshPath, "AuxiliaryMeshPath");
         ValidateAssetPath(report, preset.AuxiliaryPhysicsAssetPath, "AuxiliaryPhysicsAssetPath");
         ValidateAssetPath(report, preset.LinkedBodyReplacementPath, "LinkedBodyReplacementPath");
@@ -58,6 +59,7 @@ public sealed partial class PresetValidator
         ValidateMaterials(report, preset.BodyMaterials, "BodyMaterials");
         ValidateMaterials(report, preset.BodyOutlineMaterials, "BodyOutlineMaterials");
         ValidateMaterials(report, preset.FaceMaterials, "FaceMaterials");
+        ValidateMaterials(report, preset.FaceOutlineMaterials, "FaceOutlineMaterials");
         ValidateMaterials(report, preset.AuxiliaryMaterials, "AuxiliaryMaterials");
         ValidateMaterials(report, preset.WeaponMaterials, "WeaponMaterials", allowMaterialMatch: true);
         ValidateMorphs(report, preset.BodyMorphTargets, "BodyMorphTargets");

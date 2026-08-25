@@ -19,6 +19,14 @@
             <SolidColorBrush x:Key="SuccessBrush" Color="#35D07F"/>
             <SolidColorBrush x:Key="WarningBrush" Color="#F5B942"/>
             <SolidColorBrush x:Key="ErrorBrush" Color="#FF6174"/>
+            <SolidColorBrush x:Key="JsonPropertyBrush" Color="#23CFE5"/>
+            <SolidColorBrush x:Key="JsonStringBrush" Color="#35D07F"/>
+            <SolidColorBrush x:Key="JsonNumberBrush" Color="#F5B942"/>
+            <SolidColorBrush x:Key="JsonKeywordBrush" Color="#8B7CFF"/>
+            <SolidColorBrush x:Key="JsonDefaultBrush" Color="#F4F7FB"/>
+            <SolidColorBrush x:Key="UpdateReadyBrush" Color="#35D07F"/>
+            <SolidColorBrush x:Key="UpdateCheckingBrush" Color="#F5B942"/>
+            <SolidColorBrush x:Key="UpdateErrorBrush" Color="#FF6174"/>
             <FontFamily x:Key="AppFontFamily">Segoe UI</FontFamily>
             <sys:Double x:Key="AppFontSize">13</sys:Double>
             <ResourceDictionary.MergedDictionaries>

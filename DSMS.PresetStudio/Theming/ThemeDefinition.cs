@@ -1,9 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace DSMS.PresetStudio.Theming;
 
 public sealed class ThemeDefinition
 {
     public string Name { get; set; } = "Midnight Cyan";
-    public string Author { get; set; } = "HoverMods Vault";
+    public string Author { get; set; } = "Unknown";
     public string Background { get; set; } = "#080D16";
     public string Panel { get; set; } = "#101927";
     public string PanelAlt { get; set; } = "#162235";
@@ -18,8 +20,19 @@ public sealed class ThemeDefinition
     public string Error { get; set; } = "#FF6174";
     public string FontFamily { get; set; } = "Segoe UI";
     public double FontSize { get; set; } = 13;
+    public double UiOpacity { get; set; } = 1;
+    public double TextOpacity { get; set; } = 1;
     public string? BackgroundImageBase64 { get; set; }
     public double BackgroundImageOpacity { get; set; } = 0.12;
 
-    public override string ToString() => Name;
+    [JsonIgnore]
+    public bool IsOfficialSystemTheme { get; internal set; }
+
+    [JsonIgnore]
+    public string DisplayName => IsOfficialSystemTheme ? $"{Name} (Official Theme System)" : Name;
+
+    [JsonIgnore]
+    public string Provenance => IsOfficialSystemTheme ? "Official Theme System" : "Custom Theme";
+
+    public override string ToString() => DisplayName;
 }

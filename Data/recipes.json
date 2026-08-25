@@ -47,11 +47,11 @@
   {
     "Id": "custom-outline",
     "Name": "Custom body with dedicated outline",
-    "Description": "Load a custom body and a parallel outline skeletal mesh.",
+    "Description": "Load a custom body with a parallel body outline and an optional face outline skeletal mesh.",
     "Type": "Custom",
     "RequiredFields": ["TargetCharacterID", "BodyPath", "BodyOutlinePath", "BodyOutlineMaterials", "FaceMorphPath", "IconPath"],
-    "RecommendedFields": ["BodyOutlineClearMaterialOverrides", "PhysicsAssetPath", "PhysicsAnimBlueprintPath"],
-    "Warnings": ["BodyOutlinePath must reference compatible geometry and skeleton data.", "Never place the same mesh in AuxiliaryMeshPath and BodyPath."]
+    "RecommendedFields": ["BodyOutlineClearMaterialOverrides", "FaceOutlinePath", "FaceOutlineMaterials", "FaceOutlineClearMaterialOverrides", "PhysicsAssetPath", "PhysicsAnimBlueprintPath"],
+    "Warnings": ["BodyOutlinePath must reference compatible geometry and skeleton data.", "FaceOutlinePath must reference a face outline mesh compatible with the in-game face.", "Never place the same mesh in AuxiliaryMeshPath and BodyPath."]
   },
   {
     "Id": "auxiliary-hide",
