@@ -15,6 +15,7 @@
 - Fixes JSON Editor token colors so they follow the selected theme and consistently respect text opacity.
 - Keeps Visual Builder identity, path and advanced-mesh labels in English in the French interface to preserve exact technical terminology.
 - Completes the remaining French dialog, folder-scan, validation, theme and update-service translations.
+- Revalidates compatibility against the current DSMS ModLoader 0.7.2 preset contract; no additional model or JSON schema changes are required.
 
 ## Version 0.5.2
 
@@ -68,4 +69,5 @@
 - Supports English (UK) and French descriptions while preserving all technical DSMS field names in English.
 - Adds the HoverMods Vault About panel, explicit application/ModLoader versions and an offline placeholder for future GitHub update checks.
 - Adds validation result filters for errors, warnings and information.
+
 ---
