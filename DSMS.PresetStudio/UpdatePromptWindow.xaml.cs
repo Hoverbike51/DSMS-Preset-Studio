@@ -11,6 +11,7 @@ public partial class UpdatePromptWindow : Window
     {
         InitializeComponent();
         var french = UiLocalizer.IsFrench(language);
+        Title = french ? "Mise à jour de DSMS Preset Studio" : "DSMS Preset Studio update";
         PromptTitleText.Text = french ? "Mise à jour disponible" : "Update available";
         PromptDescriptionText.Text = french
             ? "Une nouvelle version de DSMS Preset Studio est disponible. Souhaitez-vous la télécharger et l’installer maintenant ?"

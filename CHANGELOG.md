@@ -13,6 +13,8 @@
 - Allows bundled themes to be previewed or exported only as renamed, non-certified custom copies.
 - Makes Theme Designer load installed system/custom themes and edit custom themes while protecting reserved system names.
 - Fixes JSON Editor token colors so they follow the selected theme and consistently respect text opacity.
+- Keeps Visual Builder identity, path and advanced-mesh labels in English in the French interface to preserve exact technical terminology.
+- Completes the remaining French dialog, folder-scan, validation, theme and update-service translations.
 
 ## Version 0.5.2
 

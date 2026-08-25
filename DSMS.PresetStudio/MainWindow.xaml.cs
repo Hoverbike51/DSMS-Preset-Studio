@@ -121,7 +121,7 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            StatusText.Text = $"Catalog warning: {exception.Message}";
+            StatusText.Text = Localized($"Catalog warning: {exception.Message}", $"Avertissement catalogue : {exception.Message}");
         }
     }
 
@@ -157,7 +157,7 @@ public partial class MainWindow : Window
 
     private void OpenJson_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Filter = "DSMS JSON presets (*.json)|*.json|All files (*.*)|*.*" };
+        var dialog = new OpenFileDialog { Filter = Localized("DSMS JSON presets (*.json)|*.json|All files (*.*)|*.*", "Presets JSON DSMS (*.json)|*.json|Tous les fichiers (*.*)|*.*") };
         if (dialog.ShowDialog(this) != true) return;
         _currentFile = dialog.FileName;
         FilePathText.Text = dialog.FileName;
@@ -171,7 +171,7 @@ public partial class MainWindow : Window
 
     private void ScanFolder_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFolderDialog { Title = "Select a DSMS preset folder", Multiselect = false };
+        var dialog = new OpenFolderDialog { Title = Localized("Select a DSMS preset folder", "Sélectionnez un dossier de presets DSMS"), Multiselect = false };
         if (dialog.ShowDialog(this) != true) return;
 
         try
@@ -180,15 +180,21 @@ public partial class MainWindow : Window
             var rows = new List<IssueRow>();
             foreach (var file in result.Files)
                 foreach (var issue in file.Report.Issues)
-                    rows.Add(new(issue.Severity, issue.Code, $"{Path.GetFileName(file.FilePath)} · {issue.Field}", issue.Message));
+                {
+                    var localizedIssue = UiLocalizer.Validation(issue, _settings.Language);
+                    rows.Add(new(localizedIssue.Severity, localizedIssue.Code,
+                        $"{Path.GetFileName(file.FilePath)} · {localizedIssue.Field}", localizedIssue.Message));
+                }
             SetIssues(rows);
-            IssueHeader.Text = $"FOLDER RESULTS · {result.FileCount} PRESETS";
-            StatusText.Text = $"{result.ValidFileCount}/{result.FileCount} structurally valid · {result.ErrorCount} errors · {result.WarningCount} warnings";
+            IssueHeader.Text = Localized($"FOLDER RESULTS · {result.FileCount} PRESETS", $"RÉSULTATS DU DOSSIER · {result.FileCount} PRESETS");
+            StatusText.Text = Localized(
+                $"{result.ValidFileCount}/{result.FileCount} structurally valid · {result.ErrorCount} errors · {result.WarningCount} warnings",
+                $"{result.ValidFileCount}/{result.FileCount} structurellement valides · {result.ErrorCount} erreur(s) · {result.WarningCount} avertissement(s)");
             SetRisk(result.ErrorCount, result.WarningCount);
         }
         catch (Exception exception)
         {
-            MessageBox.Show(this, exception.Message, "Folder scan failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, exception.Message, Localized("Folder scan failed", "Échec de l’analyse du dossier"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -262,11 +268,13 @@ public partial class MainWindow : Window
         catch (JsonException exception) { ShowJsonError(exception); return; }
 
         var suggested = string.IsNullOrWhiteSpace(preset.UniqueID) ? "DSMS-New-Preset.json" : $"DSMS-{preset.UniqueID}.json";
-        var dialog = new SaveFileDialog { Filter = "DSMS JSON presets (*.json)|*.json", FileName = suggested };
+        var dialog = new SaveFileDialog { Filter = Localized("DSMS JSON presets (*.json)|*.json", "Presets JSON DSMS (*.json)|*.json"), FileName = suggested };
         if (dialog.ShowDialog(this) != true) return;
         if (!Path.GetFileName(dialog.FileName).StartsWith("DSMS-", StringComparison.OrdinalIgnoreCase))
         {
-            MessageBox.Show(this, "The filename must start with DSMS-.", "Unsafe filename", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this,
+                Localized("The filename must start with DSMS-.", "Le nom du fichier doit commencer par DSMS-."),
+                Localized("Unsafe filename", "Nom de fichier non sécurisé"), MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         File.WriteAllText(dialog.FileName, PresetSerializer.Serialize(preset));
@@ -293,7 +301,7 @@ public partial class MainWindow : Window
             SetIssues(rows);
             IssueHeader.Text = UiLocalizer.IsFrench(_settings.Language) ? "RÉSULTATS DE VALIDATION" : "VALIDATION RESULTS";
             StatusText.Text = UiLocalizer.IsFrench(_settings.Language)
-                ? $"{report.RiskLevel.ToUpperInvariant()} · {report.ErrorCount} erreur(s) · {report.WarningCount} avertissement(s)" + (_editorDirty ? " · modifications non enregistrées" : "")
+                ? $"{LocalizeRiskLevel(report.RiskLevel)} · {report.ErrorCount} erreur(s) · {report.WarningCount} avertissement(s)" + (_editorDirty ? " · modifications non enregistrées" : "")
                 : $"{report.RiskLevel.ToUpperInvariant()} · {report.ErrorCount} errors · {report.WarningCount} warnings" + (_editorDirty ? " · unsaved changes" : "");
             SetRisk(report.ErrorCount, report.WarningCount);
         }
@@ -607,13 +615,13 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            MessageBox.Show(this, exception.Message, "Invalid theme", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, LocalizeThemeError(exception.Message), Localized("Invalid theme", "Thème invalide"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
     private void ImportTheme_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Filter = "DSMS theme (*.json)|*.json|JSON files (*.json)|*.json" };
+        var dialog = new OpenFileDialog { Filter = Localized("DSMS theme (*.json)|*.json|JSON files (*.json)|*.json", "Thème DSMS (*.json)|*.json|Fichiers JSON (*.json)|*.json") };
         if (dialog.ShowDialog(this) != true) return;
         try
         {
@@ -631,7 +639,7 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            MessageBox.Show(this, exception.Message, "Theme import failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, LocalizeThemeError(exception.Message), Localized("Theme import failed", "Échec de l’importation du thème"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -640,7 +648,9 @@ public partial class MainWindow : Window
         var filePath = Path.Combine(AppContext.BaseDirectory, "Tools", "ThemeDesigner", "index.html");
         if (!File.Exists(filePath))
         {
-            MessageBox.Show(this, "Theme Designer was not found in the application folder.", "Missing tool", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(this,
+                Localized("Theme Designer was not found in the application folder.", "Theme Designer est introuvable dans le dossier de l’application."),
+                Localized("Missing tool", "Outil manquant"), MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
         try
@@ -658,7 +668,7 @@ public partial class MainWindow : Window
             var marker = "/*__DSMS_THEME_LIBRARY__*/ null";
             var source = File.ReadAllText(filePath);
             if (!source.Contains(marker, StringComparison.Ordinal))
-                throw new InvalidDataException("Theme Designer does not contain the theme-library marker.");
+                throw new InvalidDataException(Localized("Theme Designer does not contain the theme-library marker.", "Theme Designer ne contient pas le marqueur de bibliothèque de thèmes."));
             source = source.Replace(marker, JsonSerializer.Serialize(library), StringComparison.Ordinal);
             var sessionDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "HoverModsVault", "DSMSPresetStudio", "ThemeDesigner");
@@ -669,7 +679,7 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            MessageBox.Show(this, exception.Message, "Theme Designer failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(this, LocalizeThemeError(exception.Message), Localized("Theme Designer failed", "Échec de Theme Designer"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -800,17 +810,17 @@ public partial class MainWindow : Window
 
     private void ImportIcon_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Filter = "Images|*.png;*.jpg;*.jpeg;*.bmp;*.webp|All files|*.*" };
+        var dialog = new OpenFileDialog { Filter = Localized("Images|*.png;*.jpg;*.jpeg;*.bmp;*.webp|All files|*.*", "Images|*.png;*.jpg;*.jpeg;*.bmp;*.webp|Tous les fichiers|*.*") };
         if (dialog.ShowDialog(this) != true) return;
         try
         {
             var iconPath = IconPathBox.Text.Trim();
             var assetName = iconPath.Contains('/') ? iconPath[(iconPath.LastIndexOf('/') + 1)..].Split('.')[0] : null;
             var imported = IconResolver.Import(dialog.FileName, assetName);
-            IconStatusText.Text = $"Imported to {imported}.";
+            IconStatusText.Text = Localized($"Imported to {imported}.", $"Importée dans {imported}.");
             RefreshIconPreview();
         }
-        catch (Exception exception) { MessageBox.Show(this, exception.Message, "Icon import failed", MessageBoxButton.OK, MessageBoxImage.Error); }
+        catch (Exception exception) { MessageBox.Show(this, exception.Message, Localized("Icon import failed", "Échec de l’importation de l’icône"), MessageBoxButton.OK, MessageBoxImage.Error); }
     }
 
     private void ApplySuggestedIcon_Click(object sender, RoutedEventArgs e)
@@ -822,7 +832,7 @@ public partial class MainWindow : Window
 
     private void BrowseFModelRoot_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFolderDialog { Title = "Select the FModel DS/Content export folder", Multiselect = false };
+        var dialog = new OpenFolderDialog { Title = Localized("Select the FModel DS/Content export folder", "Sélectionnez le dossier d’export FModel DS/Content"), Multiselect = false };
         if (dialog.ShowDialog(this) != true) return;
         FModelRootBox.Text = dialog.FolderName;
         _settings.FModelExportRoot = dialog.FolderName;
@@ -860,7 +870,7 @@ public partial class MainWindow : Window
 
     private void BrowseModLoader_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFolderDialog { Title = "Select HMVDSMeshSelector or its Scripts folder", Multiselect = false };
+        var dialog = new OpenFolderDialog { Title = Localized("Select HMVDSMeshSelector or its Scripts folder", "Sélectionnez HMVDSMeshSelector ou son dossier Scripts"), Multiselect = false };
         if (dialog.ShowDialog(this) != true) return;
         _settings.ModLoaderScriptsPath = CompatibilityService.NormalizeScriptsPath(dialog.FolderName);
         ModLoaderPathBox.Text = _settings.ModLoaderScriptsPath;
@@ -900,7 +910,9 @@ public partial class MainWindow : Window
             ? (UiLocalizer.IsFrench(_settings.Language) ? $"Introuvable · version recommandée v{_compatibility.RecommendedModLoaderVersion}" : $"Not found · recommended v{_compatibility.RecommendedModLoaderVersion}")
             : $"v{status.Version} · {state}";
         HeaderSubtitleText.Text = status.Version is null
-            ? $"DragonSword: Awakening · DSMS ModLoader v{_compatibility.RecommendedModLoaderVersion} recommended · JSON v3"
+            ? Localized(
+                $"DragonSword: Awakening · DSMS ModLoader v{_compatibility.RecommendedModLoaderVersion} recommended · JSON v3",
+                $"DragonSword: Awakening · DSMS ModLoader v{_compatibility.RecommendedModLoaderVersion} recommandé · JSON v3")
             : $"DragonSword: Awakening · DSMS ModLoader v{status.Version} · JSON v3";
     }
 
@@ -962,7 +974,7 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            SetUpdateDisplay("FAILED", exception.Message, UpdateVisualState.Error);
+            SetUpdateDisplay("FAILED", LocalizeUpdateMessage(exception.Message), UpdateVisualState.Error);
         }
         finally
         {
@@ -989,7 +1001,7 @@ public partial class MainWindow : Window
         {
             SetUpdateDisplay("CHECKING", Localized("Preparing download…", "Préparation du téléchargement…"), UpdateVisualState.Checking);
             var progress = new Progress<string>(message =>
-                SetUpdateDisplay("CHECKING", message, UpdateVisualState.Checking));
+                SetUpdateDisplay("CHECKING", LocalizeUpdateMessage(message), UpdateVisualState.Checking));
             var prepared = await UpdateService.DownloadAsync(_availableUpdate, progress);
             SetUpdateDisplay("CHECKING", Localized("Verified. Restarting into the updater…", "Package vérifié. Redémarrage vers la mise à jour…"), UpdateVisualState.Checking);
             UpdateService.LaunchInstaller(prepared);
@@ -997,8 +1009,9 @@ public partial class MainWindow : Window
         }
         catch (Exception exception)
         {
-            SetUpdateDisplay("FAILED", exception.Message, UpdateVisualState.Error);
-            MessageBox.Show(this, exception.Message, Localized("Update failed", "Échec de la mise à jour"), MessageBoxButton.OK, MessageBoxImage.Error);
+            var message = LocalizeUpdateMessage(exception.Message);
+            SetUpdateDisplay("FAILED", message, UpdateVisualState.Error);
+            MessageBox.Show(this, message, Localized("Update failed", "Échec de la mise à jour"), MessageBoxButton.OK, MessageBoxImage.Error);
             CheckUpdatesButton.IsEnabled = true;
             InstallUpdateButton.IsEnabled = true;
         }
@@ -1024,22 +1037,63 @@ public partial class MainWindow : Window
     private string Localized(string english, string french) =>
         UiLocalizer.IsFrench(_settings.Language) ? french : english;
 
+    private string LocalizeRiskLevel(string riskLevel) => riskLevel.ToUpperInvariant() switch
+    {
+        "GREEN" => "VERT", "YELLOW" => "JAUNE", "RED" => "ROUGE", _ => riskLevel.ToUpperInvariant()
+    };
+
+    private string LocalizeUpdateMessage(string message)
+    {
+        if (!UiLocalizer.IsFrench(_settings.Language)) return message;
+        return message switch
+        {
+            "Downloading release package…" => "Téléchargement du package de mise à jour…",
+            "Verifying SHA-256…" => "Vérification SHA-256…",
+            "Preparing update…" => "Préparation de la mise à jour…",
+            "No public GitHub release is available yet, or the repository is not public." => "Aucune publication GitHub publique n’est encore disponible, ou le dépôt n’est pas public.",
+            "The GitHub release does not provide a SHA-256 digest. Installation was cancelled." => "La publication GitHub ne fournit aucune empreinte SHA-256. L’installation a été annulée.",
+            "The downloaded archive failed SHA-256 verification. Installation was cancelled." => "L’archive téléchargée a échoué à la vérification SHA-256. L’installation a été annulée.",
+            "The release archive does not contain DSMS Preset Studio." => "L’archive de la publication ne contient pas DSMS Preset Studio.",
+            "The running executable path is unavailable." => "Le chemin de l’exécutable en cours d’utilisation est indisponible.",
+            "The update helper could not be started." => "L’assistant de mise à jour n’a pas pu démarrer.",
+            _ => message
+        };
+    }
+
+    private string LocalizeThemeError(string message)
+    {
+        if (!UiLocalizer.IsFrench(_settings.Language)) return message;
+        if (message.StartsWith("'", StringComparison.Ordinal) &&
+            message.EndsWith("is reserved for an Official Theme System. Rename the custom theme before importing it.", StringComparison.Ordinal))
+            return message.Replace(
+                "is reserved for an Official Theme System. Rename the custom theme before importing it.",
+                "est réservé à un Official Theme System. Renommez le thème personnalisé avant de l’importer.",
+                StringComparison.Ordinal);
+        return message switch
+        {
+            "Theme files are limited to 20 MB. Compress the background image before exporting again." => "Les fichiers de thème sont limités à 20 Mo. Compressez l’image d’arrière-plan avant de réexporter le thème.",
+            "The theme file is empty." => "Le fichier de thème est vide.",
+            "The custom theme name is required." => "Le nom du thème personnalisé est obligatoire.",
+            _ => message
+        };
+    }
+
     private void OpenGithub_Click(object sender, RoutedEventArgs e)
     {
         try { Process.Start(new ProcessStartInfo("https://github.com/Hoverbike51/DSMS-ModLoader") { UseShellExecute = true }); }
-        catch (Exception exception) { MessageBox.Show(this, exception.Message, "Could not open the browser", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception exception) { MessageBox.Show(this, exception.Message, Localized("Could not open the browser", "Impossible d’ouvrir le navigateur"), MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
 
     private void OpenPatreon_Click(object sender, RoutedEventArgs e)
     {
         try { Process.Start(new ProcessStartInfo("https://www.patreon.com/Hoverbike/membership") { UseShellExecute = true }); }
-        catch (Exception exception) { MessageBox.Show(this, exception.Message, "Could not open the browser", MessageBoxButton.OK, MessageBoxImage.Warning); }
+        catch (Exception exception) { MessageBox.Show(this, exception.Message, Localized("Could not open the browser", "Impossible d’ouvrir le navigateur"), MessageBoxButton.OK, MessageBoxImage.Warning); }
     }
 
     private void ShowJsonError(JsonException exception)
     {
         ValidateEditor();
-        MessageBox.Show(this, exception.Message, "Invalid JSON", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(this, exception.Message, Localized("Invalid JSON", "JSON invalide"), MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
     private void SetRisk(int errors, int warnings)
