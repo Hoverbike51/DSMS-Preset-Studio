@@ -1,0 +1,55 @@
+{
+  "Version": 3,
+  "UniqueID": "Tarte_Player",
+  "DisplayName": "Tarte - Main Outfit [Costume Base]",
+  "PresetName": "Tarte",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Tarte",
+  "Requirements": ["None"],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_mesh_body_PhysicsAsset.ch_tarte_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Tarte/DsABP_Tarte_Physics.DsABP_Tarte_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_ingame_face.ch_tarte_ingame_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_eye_mi.ch_tarte_eye_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_face_mi.ch_tarte_face_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_mesh_body.ch_tarte_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_bot_mi.ch_tarte_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_hair_mi.ch_tarte_hair_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_hairacc_mi.ch_tarte_hairacc_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_top_mi.ch_tarte_top_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_top_skin_mi.ch_tarte_top_skin_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Tarte/Materials/ch_tarte_bot_skin_mi.ch_tarte_bot_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Tarte.Img_Character_Signal_Tarte"
+}

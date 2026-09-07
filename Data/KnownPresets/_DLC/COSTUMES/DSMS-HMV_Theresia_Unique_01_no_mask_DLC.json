@@ -1,0 +1,62 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_theresia_unique_01_no_mask_dlc",
+  "DisplayName": "Theresia - Blackened Saintess (No Mask) [Costume DLC]",
+  "PresetName": "Theresia",
+  "PresetVariant": "Blackened Saintess (No Mask)",
+  "Type": "Costume",
+  "TargetCharacterID": "Theresia",
+  "Requirements": ["TheresiaDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Meshs/ch_theresia_unique_01_mesh_PhysicsAsset.ch_theresia_unique_01_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Theresia/DsABP_Theresia_Unique_Physics_Costume.DsABP_Theresia_Unique_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Meshs/ch_Theresia_unique_Mesh_Ingame_Face.ch_Theresia_unique_Mesh_Ingame_Face",
+  "FacePath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Face_Mesh.ch_Theresia_Face_Mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_face_hat_mi.ch_theresia_unique_01_face_hat_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_eye_mi.ch_theresia_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "HiddenComponentMeshMatches": [
+    "ch_Theresia_Mesh_Hair01"
+  ],
+  "LinkedBodyComponentMeshMatches": [
+    "ch_Theresia_Mesh_Body_outline"
+  ],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Meshs/ch_theresia_unique_01_mesh_nomask.ch_theresia_unique_01_mesh_nomask",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_bot_mi.ch_theresia_unique_01_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_bot_skin_mi.ch_theresia_unique_01_bot_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_top_mi.ch_theresia_unique_01_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_top_skin_mi.ch_theresia_unique_01_top_skin_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_sdw_M.CH_rute_hair_sdw_M"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_nomask_hair_mi.ch_theresia_unique_01_nomask_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Theresia_Unique_01.Img_Character_Signal_Theresia_Unique_01"
+}

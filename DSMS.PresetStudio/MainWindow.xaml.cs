@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using DSMS.Core.Catalog;
 using DSMS.Core.Assets;
 using DSMS.Core.Models;
+using DSMS.Core.Presentation;
 using DSMS.Core.Recipes;
 using DSMS.Core.Repair;
 using DSMS.Core.Repository;
@@ -34,6 +35,8 @@ public partial class MainWindow : Window
     private readonly ObservableCollection<MaterialOverride> _outlineMaterials = [];
     private readonly ObservableCollection<MaterialOverride> _faceOutlineMaterials = [];
     private readonly ObservableCollection<MaterialOverride> _weaponMaterials = [];
+    private readonly ObservableCollection<MorphTargetOverride> _bodyMorphTargets = [];
+    private readonly ObservableCollection<MorphTargetOverride> _faceMorphTargets = [];
     private PresetDocument _workingPreset = new();
     private string? _currentFile;
     private bool _editorDirty;
@@ -60,6 +63,8 @@ public partial class MainWindow : Window
         OutlineMaterialsGrid.ItemsSource = _outlineMaterials;
         FaceOutlineMaterialsGrid.ItemsSource = _faceOutlineMaterials;
         WeaponMaterialsGrid.ItemsSource = _weaponMaterials;
+        BodyMorphTargetsGrid.ItemsSource = _bodyMorphTargets;
+        FaceMorphTargetsGrid.ItemsSource = _faceMorphTargets;
         SetupSettings();
         LoadCatalogs();
         NewPreset();
@@ -134,6 +139,8 @@ public partial class MainWindow : Window
             Version = 3,
             UniqueID = "author_character_preset",
             DisplayName = "Character - Preset name [Costume Custom]",
+            PresetName = "Character",
+            PresetVariant = "Preset name",
             Type = "Costume",
             TargetCharacterID = "CharacterID",
             Requirements = ["None"],
@@ -143,7 +150,7 @@ public partial class MainWindow : Window
             BodyPath = "/Game/mods/ModAuthor/ModName/Mesh/Character_body.Character_body",
             BodyClearMaterialOverrides = true,
             BodyMaterials = [new() { SlotIndex = 0, MaterialPath = "/Game/mods/ModAuthor/ModName/Materials/MI_Body.MI_Body" }],
-            IconPath = "/Game/Path/Character_Icon.Character_Icon"
+            CharacterIconPath = "/Game/Path/Character_Icon.Character_Icon"
         };
         SetWorkingPreset(preset);
         SetActiveStep("Identity");
@@ -307,7 +314,7 @@ public partial class MainWindow : Window
         }
         catch (JsonException exception)
         {
-            SetIssues([new(ValidationSeverity.Error, "JSON", "Document", exception.Message)]);
+            SetIssues([new(ValidationSeverity.Error, "JSON", "Document", LocalizeJsonErrorMessage(exception.Message))]);
             StatusText.Text = UiLocalizer.IsFrench(_settings.Language) ? "ROUGE · JSON invalide" : "RED · Invalid JSON";
             SetRisk(1, 0);
         }
@@ -321,16 +328,22 @@ public partial class MainWindow : Window
         TargetIdBox.Text = preset.TargetCharacterID ?? "";
         UniqueIdBox.Text = preset.UniqueID ?? "";
         DisplayNameBox.Text = preset.DisplayName ?? "";
+        PresetNameBox.Text = preset.PresetName ?? "";
+        PresetVariantBox.Text = preset.PresetVariant ?? "";
         BodyPathBox.Text = preset.BodyPath ?? "";
         FaceMorphPathBox.Text = preset.FaceMorphPath ?? "";
         FacePathBox.Text = preset.FacePath ?? "";
         PhysicsAssetPathBox.Text = preset.PhysicsAssetPath ?? "";
         PhysicsAbpPathBox.Text = preset.PhysicsAnimBlueprintPath ?? "";
-        IconPathBox.Text = preset.IconPath ?? "";
+        preset.NormalizeIconPathForType();
+        CharacterIconPathBox.Text = preset.ActiveIconPath ?? "";
+        IconPathLabel.Text = preset.IconFieldName;
         BodyOutlinePathBox.Text = preset.BodyOutlinePath ?? "";
         FaceOutlinePathBox.Text = preset.FaceOutlinePath ?? "";
         AuxiliaryMeshPathBox.Text = preset.AuxiliaryMeshPath ?? "";
         WeaponPathBox.Text = preset.WeaponPath ?? "";
+        WeaponActionSourceBlueprintPathBox.Text = preset.WeaponActionSourceBlueprintPath ?? "";
+        RefreshWeaponActionSourceVisibility();
         RequirementsBox.Text = string.Join(", ", preset.Requirements ?? ["None"]);
         BodyClearCheck.IsChecked = preset.BodyClearMaterialOverrides == true;
         FaceClearCheck.IsChecked = preset.FaceClearMaterialOverrides == true;
@@ -343,11 +356,14 @@ public partial class MainWindow : Window
         ReplaceCollection(_outlineMaterials, preset.BodyOutlineMaterials);
         ReplaceCollection(_faceOutlineMaterials, preset.FaceOutlineMaterials);
         ReplaceCollection(_weaponMaterials, preset.WeaponMaterials);
+        ReplaceMorphCollection(_bodyMorphTargets, preset.BodyMorphTargets);
+        ReplaceMorphCollection(_faceMorphTargets, preset.FaceMorphTargets);
 
         CharacterCombo.SelectedItem = _characterCatalog.Find(preset.TargetCharacterID);
         SelectRecipeForPreset(preset);
         _syncing = false;
         RefreshIconPreview();
+        RefreshPresentationPreview();
     }
 
     private void SelectRecipeForPreset(PresetDocument preset)
@@ -390,6 +406,8 @@ public partial class MainWindow : Window
         _workingPreset.Version = 3;
         _workingPreset.UniqueID = NullIfBlank(UniqueIdBox.Text);
         _workingPreset.DisplayName = NullIfBlank(DisplayNameBox.Text);
+        _workingPreset.PresetName = NullIfBlank(PresetNameBox.Text);
+        _workingPreset.PresetVariant = NullIfBlank(PresetVariantBox.Text);
         _workingPreset.Type = TypeCombo.SelectedItem as string ?? "Costume";
         _workingPreset.TargetCharacterID = NullIfBlank(TargetIdBox.Text);
         _workingPreset.Requirements = RequirementsBox.Text.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
@@ -399,11 +417,12 @@ public partial class MainWindow : Window
         _workingPreset.FacePath = NullIfBlank(FacePathBox.Text);
         _workingPreset.PhysicsAssetPath = NullIfBlank(PhysicsAssetPathBox.Text);
         _workingPreset.PhysicsAnimBlueprintPath = NullIfBlank(PhysicsAbpPathBox.Text);
-        _workingPreset.IconPath = NullIfBlank(IconPathBox.Text);
+        _workingPreset.ActiveIconPath = NullIfBlank(CharacterIconPathBox.Text);
         _workingPreset.BodyOutlinePath = NullIfBlank(BodyOutlinePathBox.Text);
         _workingPreset.FaceOutlinePath = NullIfBlank(FaceOutlinePathBox.Text);
         _workingPreset.AuxiliaryMeshPath = NullIfBlank(AuxiliaryMeshPathBox.Text);
         _workingPreset.WeaponPath = NullIfBlank(WeaponPathBox.Text);
+        _workingPreset.WeaponActionSourceBlueprintPath = NullIfBlank(WeaponActionSourceBlueprintPathBox.Text);
         _workingPreset.BodyClearMaterialOverrides = BodyClearCheck.IsChecked == true ? true : null;
         _workingPreset.FaceClearMaterialOverrides = FaceClearCheck.IsChecked == true ? true : null;
         _workingPreset.BodyOutlineClearMaterialOverrides = OutlineClearCheck.IsChecked == true ? true : null;
@@ -415,6 +434,8 @@ public partial class MainWindow : Window
         _workingPreset.BodyOutlineMaterials = _outlineMaterials.Count == 0 ? null : _outlineMaterials.ToList();
         _workingPreset.FaceOutlineMaterials = _faceOutlineMaterials.Count == 0 ? null : _faceOutlineMaterials.ToList();
         _workingPreset.WeaponMaterials = _weaponMaterials.Count == 0 ? null : _weaponMaterials.ToList();
+        _workingPreset.BodyMorphTargets = _bodyMorphTargets.Count == 0 ? null : _bodyMorphTargets.ToList();
+        _workingPreset.FaceMorphTargets = _faceMorphTargets.Count == 0 ? null : _faceMorphTargets.ToList();
 
         if (_workingPreset.Type.Equals("Weapon", StringComparison.OrdinalIgnoreCase))
         {
@@ -442,12 +463,14 @@ public partial class MainWindow : Window
             _workingPreset.WeaponMaterials = null;
             _workingPreset.WeaponMaterialsOnly = null;
             _workingPreset.WeaponClearMaterialOverrides = null;
+            _workingPreset.WeaponActionSourceBlueprintPath = null;
         }
     }
 
     private void CommitMaterialEdits()
     {
-        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid, FaceOutlineMaterialsGrid, WeaponMaterialsGrid })
+        foreach (var grid in new[] { BodyMaterialsGrid, FaceMaterialsGrid, OutlineMaterialsGrid, FaceOutlineMaterialsGrid,
+                     WeaponMaterialsGrid, BodyMorphTargetsGrid, FaceMorphTargetsGrid })
         {
             grid.CommitEdit(DataGridEditingUnit.Cell, true);
             grid.CommitEdit(DataGridEditingUnit.Row, true);
@@ -459,7 +482,72 @@ public partial class MainWindow : Window
         destination.Clear();
         if (source is null) return;
         foreach (var item in source)
-            destination.Add(new MaterialOverride { SlotIndex = item.SlotIndex, MaterialMatch = item.MaterialMatch, MaterialPath = item.MaterialPath });
+            destination.Add(new MaterialOverride
+            {
+                SlotIndex = item.SlotIndex,
+                MaterialMatch = item.MaterialMatch,
+                MaterialPath = item.MaterialPath,
+                ExtraFields = CloneExtraFields(item.ExtraFields)
+            });
+    }
+
+    private static void ReplaceMorphCollection(ObservableCollection<MorphTargetOverride> destination,
+        IEnumerable<MorphTargetOverride>? source)
+    {
+        destination.Clear();
+        if (source is null) return;
+        foreach (var item in source)
+            destination.Add(new MorphTargetOverride
+            {
+                MorphName = item.MorphName,
+                Value = item.Value,
+                Description = item.Description,
+                Min = item.Min,
+                Max = item.Max,
+                Locked = item.Locked,
+                ExtraFields = CloneExtraFields(item.ExtraFields)
+            });
+    }
+
+    private static Dictionary<string, JsonElement>? CloneExtraFields(Dictionary<string, JsonElement>? source) =>
+        source?.ToDictionary(item => item.Key, item => item.Value.Clone(), StringComparer.Ordinal);
+
+    private (ObservableCollection<MorphTargetOverride> Collection, DataGrid Grid) MorphEditor(string kind) =>
+        kind.Equals("Face", StringComparison.OrdinalIgnoreCase)
+            ? (_faceMorphTargets, FaceMorphTargetsGrid)
+            : (_bodyMorphTargets, BodyMorphTargetsGrid);
+
+    private void AddMorph_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button { Tag: string kind }) return;
+        var (collection, grid) = MorphEditor(kind);
+        var morph = new MorphTargetOverride { MorphName = "NewMorph", Value = 0f };
+        collection.Add(morph);
+        grid.SelectedItem = morph;
+        grid.ScrollIntoView(morph);
+    }
+
+    private void RemoveMorph_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button { Tag: string kind }) return;
+        var (collection, grid) = MorphEditor(kind);
+        if (grid.SelectedItem is MorphTargetOverride morph) collection.Remove(morph);
+    }
+
+    private void MoveMorphUp_Click(object sender, RoutedEventArgs e) => MoveMorph(sender, -1);
+    private void MoveMorphDown_Click(object sender, RoutedEventArgs e) => MoveMorph(sender, 1);
+
+    private void MoveMorph(object sender, int offset)
+    {
+        if (sender is not Button { Tag: string kind }) return;
+        var (collection, grid) = MorphEditor(kind);
+        if (grid.SelectedItem is not MorphTargetOverride morph) return;
+        var index = collection.IndexOf(morph);
+        var destination = index + offset;
+        if (index < 0 || destination < 0 || destination >= collection.Count) return;
+        collection.Move(index, destination);
+        grid.SelectedItem = morph;
+        grid.ScrollIntoView(morph);
     }
 
     private static string? NullIfBlank(string? value) => string.IsNullOrWhiteSpace(value) ? null : value.Trim();
@@ -473,7 +561,20 @@ public partial class MainWindow : Window
     private void TypeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_syncing || !IsLoaded) return;
+        _workingPreset.Type = TypeCombo.SelectedItem as string ?? _workingPreset.Type;
+        _workingPreset.ActiveIconPath = NullIfBlank(CharacterIconPathBox.Text);
+        IconPathLabel.Text = _workingPreset.IconFieldName;
+        RefreshWeaponActionSourceVisibility();
         RefreshIconPreview();
+    }
+
+    private void RefreshWeaponActionSourceVisibility()
+    {
+        var visibility = (TypeCombo.SelectedItem as string)?.Equals("Weapon", StringComparison.OrdinalIgnoreCase) == true
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        WeaponActionSourceBlueprintPathLabel.Visibility = visibility;
+        WeaponActionSourceBlueprintPathBox.Visibility = visibility;
     }
 
     private void RecipeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -535,7 +636,7 @@ public partial class MainWindow : Window
                     break;
                 case "Advanced":
                     AdvancedSection.BringIntoView();
-                    OptionsSection.BringIntoView();
+                    MorphTargetsSection.BringIntoView();
                     break;
                 default:
                     IdentitySection.BringIntoView();
@@ -552,8 +653,7 @@ public partial class MainWindow : Window
         var defaultStyle = (Style)FindResource(typeof(Button));
         var primaryBrush = (Brush)FindResource("PrimaryBrush");
         var borderBrush = (Brush)FindResource("BorderBrush");
-        var primaryText = new SolidColorBrush(Color.FromRgb(7, 17, 24));
-        primaryText.Freeze();
+        var primaryText = (Brush)FindResource("PrimaryContrastTextBrush");
         var defaultText = (Brush)FindResource("TextPrimaryBrush");
 
         var steps = new (string Name, Button Button, Border Badge)[]
@@ -723,12 +823,15 @@ public partial class MainWindow : Window
         AboutDescriptionText.Text = DetailLocalizer.Get("About", _settings.Language);
         UpdateDescriptionText.Text = DetailLocalizer.Get("Updates", _settings.Language);
         MaterialHintText.Text = DetailLocalizer.Get("MaterialHint", _settings.Language);
+        MorphHintText.Text = DetailLocalizer.Get("MorphHint", _settings.Language);
+        PresentationHintText.Text = DetailLocalizer.Get("PresentationHint", _settings.Language);
         NoIssuesText.Text = DetailLocalizer.Get("NoIssues", _settings.Language);
         ApplyRecipeLanguage();
         LocalizeGridHeaders();
         if (RecipeCombo.SelectedItem is PresetRecipe recipe) RefreshRecipeText(recipe);
         ExpandMaterialsButton.Content = UiLocalizer.Text(_materialsExpanded ? "Restore layout" : "Expand materials", _settings.Language);
         RefreshIconPreview();
+        RefreshPresentationPreview();
         RefreshModLoaderStatus();
         UpdateThemeIdentity();
         if (!string.IsNullOrWhiteSpace(JsonEditor.Text)) ValidateEditor();
@@ -755,6 +858,15 @@ public partial class MainWindow : Window
         WeaponMaterialsGrid.Columns[0].Header = UiLocalizer.Text("Slot", _settings.Language);
         WeaponMaterialsGrid.Columns[1].Header = UiLocalizer.Text("Current material match (optional)", _settings.Language);
         WeaponMaterialsGrid.Columns[2].Header = UiLocalizer.Text("Material instance path", _settings.Language);
+        foreach (var grid in new[] { BodyMorphTargetsGrid, FaceMorphTargetsGrid })
+        {
+            grid.Columns[0].Header = UiLocalizer.Text("Morph name", _settings.Language);
+            grid.Columns[1].Header = UiLocalizer.Text("Default value", _settings.Language);
+            grid.Columns[2].Header = UiLocalizer.Text("Minimum", _settings.Language);
+            grid.Columns[3].Header = UiLocalizer.Text("Maximum", _settings.Language);
+            grid.Columns[4].Header = UiLocalizer.Text("Locked", _settings.Language);
+            grid.Columns[5].Header = UiLocalizer.Text("Description", _settings.Language);
+        }
         IssuesGrid.Columns[0].Header = UiLocalizer.Text("Level", _settings.Language);
         IssuesGrid.Columns[1].Header = "Code";
         IssuesGrid.Columns[2].Header = UiLocalizer.Text("File / Field", _settings.Language);
@@ -776,18 +888,42 @@ public partial class MainWindow : Window
         return message;
     }
 
-    private void IconPathBox_TextChanged(object sender, TextChangedEventArgs e)
+    private void CharacterIconPathBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (_syncing || !IsLoaded) return;
-        _workingPreset.IconPath = NullIfBlank(IconPathBox.Text);
+        _workingPreset.ActiveIconPath = NullIfBlank(CharacterIconPathBox.Text);
         RefreshIconPreview();
+    }
+
+    private void PresentationField_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_syncing || !IsLoaded) return;
+        RefreshPresentationPreview();
+    }
+
+    private void RefreshPresentationPreview()
+    {
+        if (PresetNamePreviewText is null) return;
+        _workingPreset.UniqueID = NullIfBlank(UniqueIdBox.Text);
+        _workingPreset.DisplayName = NullIfBlank(DisplayNameBox.Text);
+        _workingPreset.PresetName = NullIfBlank(PresetNameBox.Text);
+        _workingPreset.PresetVariant = NullIfBlank(PresetVariantBox.Text);
+        var presentation = PresetPresentation.Resolve(_workingPreset);
+        PresetNamePreviewText.Text = presentation.Name;
+        PresetVariantPreviewText.Text = presentation.Variant ?? "";
+        PresetVariantPreviewRow.Visibility = presentation.Variant is null ? Visibility.Collapsed : Visibility.Visible;
+        PresetVariantHiddenText.Visibility = presentation.Variant is null ? Visibility.Visible : Visibility.Collapsed;
+        PresetVariantHiddenText.Text = Localized(
+            "PresetVariant is omitted: the runtime hides this line.",
+            "PresetVariant est omis : le runtime masque cette ligne.");
     }
 
     private void RefreshIconPreview()
     {
         if (IconPreviewImage is null) return;
-        _workingPreset.IconPath = NullIfBlank(IconPathBox.Text);
         _workingPreset.Type = TypeCombo.SelectedItem as string ?? _workingPreset.Type;
+        _workingPreset.ActiveIconPath = NullIfBlank(CharacterIconPathBox.Text);
+        IconPathLabel.Text = _workingPreset.IconFieldName;
         _workingPreset.TargetCharacterID = NullIfBlank(TargetIdBox.Text);
         _workingPreset.UniqueID = NullIfBlank(UniqueIdBox.Text);
         _workingPreset.DisplayName = NullIfBlank(DisplayNameBox.Text);
@@ -814,7 +950,7 @@ public partial class MainWindow : Window
         if (dialog.ShowDialog(this) != true) return;
         try
         {
-            var iconPath = IconPathBox.Text.Trim();
+            var iconPath = CharacterIconPathBox.Text.Trim();
             var assetName = iconPath.Contains('/') ? iconPath[(iconPath.LastIndexOf('/') + 1)..].Split('.')[0] : null;
             var imported = IconResolver.Import(dialog.FileName, assetName);
             IconStatusText.Text = Localized($"Imported to {imported}.", $"Importée dans {imported}.");
@@ -826,7 +962,7 @@ public partial class MainWindow : Window
     private void ApplySuggestedIcon_Click(object sender, RoutedEventArgs e)
     {
         if (_iconResolution?.SuggestedIconPath is not { } suggested) return;
-        IconPathBox.Text = suggested;
+        CharacterIconPathBox.Text = suggested;
         RefreshIconPreview();
     }
 
@@ -1026,10 +1162,17 @@ public partial class MainWindow : Window
             UpdateVisualState.Ready => "UpdateReadyBrush",
             UpdateVisualState.Checking => "UpdateCheckingBrush",
             UpdateVisualState.Error => "UpdateErrorBrush",
+            _ => "PrimaryTextBrush"
+        };
+        var borderBrushKey = state switch
+        {
+            UpdateVisualState.Ready => "UpdateReadyBorderBrush",
+            UpdateVisualState.Checking => "UpdateCheckingBorderBrush",
+            UpdateVisualState.Error => "UpdateErrorBorderBrush",
             _ => "PrimaryBrush"
         };
         UpdateBadgeText.SetResourceReference(TextBlock.ForegroundProperty, brushKey);
-        UpdateBadge.SetResourceReference(Border.BorderBrushProperty, brushKey);
+        UpdateBadge.SetResourceReference(Border.BorderBrushProperty, borderBrushKey);
         UpdateStatusText.SetResourceReference(TextBlock.ForegroundProperty,
             state == UpdateVisualState.Error ? "UpdateErrorBrush" : "TextSecondaryBrush");
     }
@@ -1056,6 +1199,9 @@ public partial class MainWindow : Window
             "The release archive does not contain DSMS Preset Studio." => "L’archive de la publication ne contient pas DSMS Preset Studio.",
             "The running executable path is unavailable." => "Le chemin de l’exécutable en cours d’utilisation est indisponible.",
             "The update helper could not be started." => "L’assistant de mise à jour n’a pas pu démarrer.",
+            "WeaponIconPath is empty; a generic icon is displayed." => "WeaponIconPath est vide ; une ic\u00f4ne g\u00e9n\u00e9rique est affich\u00e9e.",
+            "WeaponIconPath syntax is invalid. Use /Game/Folder/Asset.Asset." => "La syntaxe de WeaponIconPath est invalide. Utilisez /Game/Dossier/Asset.Asset.",
+            "WeaponIconPath could not be resolved; a generic icon is displayed." => "WeaponIconPath est introuvable ; une ic\u00f4ne g\u00e9n\u00e9rique est affich\u00e9e.",
             _ => message
         };
     }
@@ -1093,7 +1239,19 @@ public partial class MainWindow : Window
     private void ShowJsonError(JsonException exception)
     {
         ValidateEditor();
-        MessageBox.Show(this, exception.Message, Localized("Invalid JSON", "JSON invalide"), MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(this, LocalizeJsonErrorMessage(exception.Message), Localized("Invalid JSON", "JSON invalide"), MessageBoxButton.OK, MessageBoxImage.Error);
+    }
+
+    private string LocalizeJsonErrorMessage(string message)
+    {
+        if (!UiLocalizer.IsFrench(_settings.Language)) return message;
+        return message
+            .Replace("A Morph Target entry must be a JSON object.", "Une entrée de morph target doit être un objet JSON.", StringComparison.Ordinal)
+            .Replace("Morph Target Value is required.", "La propriété Value du morph target est obligatoire.", StringComparison.Ordinal)
+            .Replace("Morph Target ", "La propriété de morph target ", StringComparison.Ordinal)
+            .Replace(" must be a string.", " doit être une chaîne.", StringComparison.Ordinal)
+            .Replace(" must be Boolean.", " doit être un booléen.", StringComparison.Ordinal)
+            .Replace(" must be a finite number.", " doit être un nombre fini.", StringComparison.Ordinal);
     }
 
     private void SetRisk(int errors, int warnings)
@@ -1101,21 +1259,24 @@ public partial class MainWindow : Window
         var french = UiLocalizer.IsFrench(_settings.Language);
         if (errors > 0)
         {
-            RiskBadge.Background = (Brush)FindResource("ErrorBrush");
+            RiskBadge.Background = (Brush)FindResource("ErrorSurfaceBrush");
+            RiskBadge.BorderBrush = (Brush)FindResource("ErrorBorderBrush");
             RiskText.Text = french ? "ERREUR" : "ERROR";
             BottomRiskText.Text = french ? "✕ ERREUR" : "✕ ERROR";
             BottomRiskText.Foreground = (Brush)FindResource("ErrorBrush");
         }
         else if (warnings > 0)
         {
-            RiskBadge.Background = (Brush)FindResource("WarningBrush");
+            RiskBadge.Background = (Brush)FindResource("WarningSurfaceBrush");
+            RiskBadge.BorderBrush = (Brush)FindResource("WarningBorderBrush");
             RiskText.Text = french ? "AVERTISSEMENT" : "WARNING";
             BottomRiskText.Text = french ? "! AVERTISSEMENT" : "! WARNING";
             BottomRiskText.Foreground = (Brush)FindResource("WarningBrush");
         }
         else
         {
-            RiskBadge.Background = (Brush)FindResource("SuccessBrush");
+            RiskBadge.Background = (Brush)FindResource("SuccessSurfaceBrush");
+            RiskBadge.BorderBrush = (Brush)FindResource("SuccessBorderBrush");
             RiskText.Text = french ? "VALIDE" : "VALID";
             BottomRiskText.Text = french ? "✓ VALIDE" : "✓ VALID";
             BottomRiskText.Foreground = (Brush)FindResource("SuccessBrush");
@@ -1144,12 +1305,12 @@ public partial class MainWindow : Window
         if (message.StartsWith("Local icon:", StringComparison.Ordinal)) return message.Replace("Local icon:", "Icône locale :");
         return message switch
         {
-            "IconPath is empty; a generic icon is displayed." => "IconPath est vide ; une icône générique est affichée.",
-            "IconPath syntax is invalid. Use /Game/Folder/Asset.Asset." => "La syntaxe d’IconPath est invalide. Utilisez /Game/Dossier/Asset.Asset.",
+            "CharacterIconPath is empty; a generic icon is displayed." => "CharacterIconPath est vide ; une icône générique est affichée.",
+            "CharacterIconPath syntax is invalid. Use /Game/Folder/Asset.Asset." => "La syntaxe de CharacterIconPath est invalide. Utilisez /Game/Dossier/Asset.Asset.",
             "The requested icon was found, but another exported icon better matches this preset." => "L’icône demandée existe, mais une autre icône exportée semble mieux correspondre à ce preset.",
             "Icon resolved from the configured FModel export folder." => "Icône trouvée dans le dossier d’export FModel configuré.",
             "The requested asset was not exported, but a likely matching icon was found." => "L’asset demandé n’a pas été exporté, mais une icône correspondante probable a été trouvée.",
-            "IconPath could not be resolved; a generic icon is displayed." => "IconPath est introuvable ; une icône générique est affichée.",
+            "CharacterIconPath could not be resolved; a generic icon is displayed." => "CharacterIconPath est introuvable ; une icône générique est affichée.",
             _ => message
         };
     }

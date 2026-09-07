@@ -1,0 +1,28 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cerese_base_weapon",
+  "DisplayName": "Cerese - Main Weapon [Weapon Base]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Cerese",
+  "WeaponActionSourceBlueprintPath": "/Game/Design/DsCharacter/Player/Cerese/Weapon/DsWP_Cerese.DsWP_Cerese_C",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Player/Cerese/ch_cerese_wp_mesh.ch_cerese_wp_mesh",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_wp_mi.ch_cerese_wp_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_wp_ice_mi.ch_cerese_wp_ice_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Material/old/opp.opp"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Cerese_Weapon.Cerese_Weapon"
+}

@@ -1,0 +1,38 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_astria_swimsuit_01_weapon_dlc",
+  "DisplayName": "Astria - Swimsuit 01 Weapon [Weapon DLC]",
+  "PresetName": "Astria",
+  "PresetVariant": "Swimsuit 01 Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Astria",
+  "Requirements": [
+    "AstriaDLC"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Astria/Astira_swimsuit_01/Materials/ch_Astria_swimsuit_01_wp_mi.ch_Astria_swimsuit_01_wp_mi"
+    }
+  ],
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Astria_Default",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Astria/ch_Astria_swimsuit_01_general_wp.ch_Astria_swimsuit_01_general_wp"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_C",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Astria/ch_Astria_swimsuit_01_wp_body.ch_Astria_swimsuit_01_wp_body"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_Enable",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Astria/ch_Astria_swimsuit_01_wp_part01.ch_Astria_swimsuit_01_wp_part01"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_Disable",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Astria/ch_Astria_swimsuit_01_wp_part02.ch_Astria_swimsuit_01_wp_part02"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Astria_Weapon_DLC_01.Astria_Weapon_DLC_01"
+}

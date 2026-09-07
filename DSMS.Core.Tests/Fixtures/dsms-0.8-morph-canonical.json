@@ -1,0 +1,32 @@
+{
+  "Version": 3,
+  "UniqueID": "test_morph_08_canonical",
+  "DisplayName": "DSMS 0.8 canonical morph fixture",
+  "PresetName": "Canonical fixture",
+  "PresetVariant": "Extended morph",
+  "Type": "Costume",
+  "TargetCharacterID": "Astria",
+  "Requirements": ["None"],
+  "BodyPath": "/Game/MODS/Test/Mesh/TestBody.TestBody",
+  "FaceMorphPath": "/Game/Test/Test_ingame_face.Test_ingame_face",
+  "PhysicsAnimBlueprintPath": "/Game/Test/DsABP_Test_Physics.DsABP_Test_Physics_C",
+  "BodyMorphTargets": [
+    {
+      "MorphName": "body_extended",
+      "Value": 2.25,
+      "Description": "Extended body range.",
+      "Min": -1.5,
+      "Max": 3.0,
+      "Locked": false,
+      "FutureMorphMetadata": { "Mode": "Curve" }
+    }
+  ],
+  "FaceMorphTargets": [
+    {
+      "MorphName": "face_default_bounds",
+      "Value": 1.0
+    }
+  ],
+  "CharacterIconPath": "/Game/Test/Icon.Icon",
+  "FuturePresetMetadata": { "Revision": 1 }
+}

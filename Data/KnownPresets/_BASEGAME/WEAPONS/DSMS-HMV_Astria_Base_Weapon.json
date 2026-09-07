@@ -1,0 +1,32 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_astria_base_weapon",
+  "DisplayName": "Astria - Base Weapon [Weapon Base]",
+  "PresetName": "Astria",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Astria",
+  "Requirements": [
+    "None"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Astria_Default",
+      "WeaponPath": "/Game/Art/Weapon/Player/Astria/ch_Astria_mesh_general_wp.ch_Astria_mesh_general_wp"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Astria/ch_Astria_mesh_wp_body.ch_Astria_mesh_wp_body"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_Enable",
+      "WeaponPath": "/Game/Art/Weapon/Player/Astria/ch_Astria_mesh_wp_part01.ch_Astria_mesh_wp_part01"
+    },
+    {
+      "ComponentMatch": "DsWP_Astria_Disable",
+      "WeaponPath": "/Game/Art/Weapon/Player/Astria/ch_Astria_mesh_wp_part02.ch_Astria_mesh_wp_part02"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Astria_Weapon.Astria_Weapon"
+}

@@ -34,6 +34,7 @@ public static class UiLocalizer
         ["QUICK SAFETY"] = "SÉCURITÉ RAPIDE",
         ["Use full Unreal object paths. Never paste Windows paths in a preset."] = "Utilisez des chemins d’objet Unreal complets. Ne collez jamais de chemins Windows dans un preset.",
         ["♙  Active recipe"] = "♙  Recette active",
+        ["◫  Details presentation preview"] = "◫  Aperçu de présentation Details",
         ["▣  Icon preview"] = "▣  Aperçu de l’icône",
         ["Import image…"] = "Importer une image…",
         ["Apply suggested path"] = "Appliquer le chemin suggéré",
@@ -46,6 +47,19 @@ public static class UiLocalizer
         ["Slot"] = "Index",
         ["Material instance path"] = "Chemin de la Material Instance",
         ["Current material match (optional)"] = "Matériau actuel ciblé (facultatif)",
+        ["⌁  Morph Targets"] = "⌁  Morph Targets",
+        ["Body morphs"] = "Morphs du corps",
+        ["Face morphs"] = "Morphs du visage",
+        ["Add morph"] = "Ajouter un morph",
+        ["Remove selected"] = "Supprimer la sélection",
+        ["Move up"] = "Monter",
+        ["Move down"] = "Descendre",
+        ["Morph name"] = "Nom du morph",
+        ["Default value"] = "Valeur par défaut",
+        ["Minimum"] = "Minimum",
+        ["Maximum"] = "Maximum",
+        ["Locked"] = "Verrouillé",
+        ["Description"] = "Description",
         ["▱  Options"] = "▱  Options",
         ["Clear native body material overrides"] = "Effacer les matériaux natifs du corps",
         ["Clear native face material overrides"] = "Effacer les matériaux natifs du visage",
@@ -175,6 +189,7 @@ public static class UiLocalizer
             "DSMS016" => issue.Message.Replace("Runtime normalized class path:", "Chemin de classe normalisé par le runtime :", StringComparison.Ordinal),
             "DSMS017" => "Le nom de l’asset du package et le nom de l’objet après le point doivent être strictement identiques.",
             "DSMS018" => "Le nom d’objet de l’Animation Blueprint doit être le nom de l’asset suivi de « _C ».",
+            "DSMS019" => "WeaponActionSourceBlueprintPath est utilisé uniquement par les presets Weapon ; le runtime l’ignore pour ce type de preset.",
             "DSMS020" => "Renseignez WeaponPath, WeaponPaths, ou activez WeaponMaterialsOnly.",
             "DSMS021" => "WeaponPath et WeaponPaths sont présents ensemble ; conservez uniquement la stratégie voulue.",
             "DSMS022" => "WeaponMaterialsOnly exige au moins un remplacement de matériau d’arme.",
@@ -184,7 +199,8 @@ public static class UiLocalizer
             "DSMS032" => "Un même index de matériau est déclaré plusieurs fois.",
             "DSMS033" => "Le nom du morph target est obligatoire.",
             "DSMS034" => "Un même morph target est déclaré plusieurs fois.",
-            "DSMS035" => "DSMS accepte uniquement les valeurs de morph target comprises entre 0,0 et 1,0.",
+            "DSMS035" => issue.Message.Replace("Value must be between", "La valeur doit être comprise entre", StringComparison.Ordinal)
+                .Replace(" and ", " et ", StringComparison.Ordinal),
             "DSMS036" => "Le tableau doit contenir au moins une valeur.",
             "DSMS037" => "La valeur doit être une chaîne non vide.",
             "DSMS038" => "Cette valeur est déclarée plusieurs fois.",
@@ -193,6 +209,12 @@ public static class UiLocalizer
             "DSMS041" => "BodyOutlinePath réutilise BodyPath ; cela n’est valide qu’avec des matériaux d’outline adaptés à cette géométrie.",
             "DSMS042" => "Recette d’outline auxiliaire reconnue : la géométrie de BodyPath est réutilisée avec ses matériaux dédiés tandis que le composant natif est masqué.",
             "DSMS043" => "MaterialMatch est pris en charge uniquement par WeaponMaterials.",
+            "DSMS044" => "Description doit être une chaîne non vide lorsqu’elle est présente.",
+            "DSMS045" => issue.Message.Replace("Value must", "Value doit", StringComparison.Ordinal)
+                .Replace("Min must", "Min doit", StringComparison.Ordinal)
+                .Replace("Max must", "Max doit", StringComparison.Ordinal)
+                .Replace("be a finite number", "être un nombre fini", StringComparison.Ordinal),
+            "DSMS046" => "Min doit être strictement inférieur à Max.",
             "DSMS110" => TranslateFModelSuggestion(issue.Message,
                 "FModel a trouvé cet asset avec une casse ou une orthographe différente.", "Suggested path:", "Chemin suggéré :"),
             "DSMS111" => TranslateFModelSuggestion(issue.Message,
@@ -203,7 +225,7 @@ public static class UiLocalizer
             "DSMS101" => issue.Message.Replace("Could not read the preset:", "Impossible de lire le preset :", StringComparison.Ordinal),
             "DSMS102" => issue.Message.Replace("Duplicate UniqueID", "UniqueID dupliqué", StringComparison.Ordinal)
                 .Replace(" in:", " dans :", StringComparison.Ordinal),
-            "DSMS090" => "Champ inconnu : vérifiez sa prise en charge par le runtime Lua actuel.",
+            "DSMS090" => "Champ inconnu conservé pour la compatibilité future : vérifiez sa prise en charge par le runtime Lua actuel.",
             _ => issue.Message
         };
         return issue with { Message = message };

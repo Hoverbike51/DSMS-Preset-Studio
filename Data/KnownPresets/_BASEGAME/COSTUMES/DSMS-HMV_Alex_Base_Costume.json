@@ -1,0 +1,52 @@
+{
+  "Version": 3,
+  "UniqueID": "Alex_Player",
+  "DisplayName": "Alex - Main Outfit [Costume Base]",
+  "PresetName": "Alex",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Alex",
+  "Requirements": ["None"],
+
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Alex/Meshs/ch_Alex_mesh_body_PhysicsAsset.ch_Alex_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Alex/DsABP_Alex_Physics.DsABP_Alex_Physics_C",
+
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Alex/Meshs/ch_Alex_ingame_face_mesh.ch_Alex_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Alex/Meshs/ch_Alex_face_mesh.ch_Alex_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_face_mi.ch_Alex_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_eye_mi.ch_Alex_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+
+  "BodyPath": "/Game/Art/Character/Player/DS_Alex/Meshs/ch_Alex_mesh_body.ch_Alex_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_bot_mi.ch_Alex_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_top_mi.ch_Alex_top_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_top_skin_mi.ch_Alex_top_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Alex/Materials/ch_Alex_hair_mi.ch_Alex_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Alex.Img_Character_Signal_Alex"
+}

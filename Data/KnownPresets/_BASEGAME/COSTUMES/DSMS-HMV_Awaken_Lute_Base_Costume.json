@@ -1,0 +1,60 @@
+{
+  "Version": 3,
+  "UniqueID": "Awaken_lute_Player",
+  "DisplayName": "Lute (Awaken) - Main Outfit [Costume Base]",
+  "PresetName": "Lute (Awaken)",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Awaken_Lute",
+  "Requirements": ["None"],
+
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Meshs/ch_awaken_lute_mesh_body_PhysicsAsset.ch_awaken_lute_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Awaken_Lute/DsABP_awaken_lute_Physics.DsABP_awaken_lute_Physics_C",
+
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Meshs/ch_awakenlute_ingame_face_mesh.ch_awakenlute_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Awaken_Lute/Meshs/ch_awaken_lute_mesh_face.ch_awaken_lute_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_face_mi.ch_awaken_lute_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_eye_mi.ch_awaken_lute_eye1_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_eye_mi.ch_awaken_lute_eye2_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+
+  "BodyPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Meshs/ch_awaken_lute_mesh_body.ch_awaken_lute_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_hair_mi.ch_awaken_lute_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_skin_mi.ch_awaken_lute_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_body_mi.ch_awaken_lute_body_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_cape_mi.ch_awaken_lute_cape_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Awaken_Lute/Materials/ch_awaken_lute_wing_mi.ch_awaken_lute_wing_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_AwakenLute.Img_Character_Signal_AwakenLute"
+}

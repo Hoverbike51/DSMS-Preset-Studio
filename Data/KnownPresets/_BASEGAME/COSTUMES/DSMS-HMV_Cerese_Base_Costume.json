@@ -1,0 +1,66 @@
+{
+  "Version": 3,
+  "UniqueID": "Cerese_Player",
+  "DisplayName": "Cerese - Main Outfit [Costume Base]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Cerese",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_body_mesh_PhysicsAsset.ch_cerese_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Cerese/DsABP_Cerese_Physics_Costume.DsABP_Cerese_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_ingame_face_mesh.ch_cerese_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_face_mesh.ch_cerese_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_face_mi.ch_cerese_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eye_mi.ch_cerese_eye_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/CH_rute_eye_sdw_Mi.CH_rute_eye_sdw_Mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eyebrow_mi.ch_cerese_eyebrow_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_body_mesh.ch_cerese_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_body_mi.ch_cerese_body_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_fur_mi.ch_cerese_fur_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_top_mi.ch_cerese_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/CH_rute_hair_sdw_Mi.CH_rute_hair_sdw_Mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_hair_mi.ch_cerese_hair_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_skin_mi.ch_cerese_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Cerese.Img_Character_Signal_Cerese"
+}

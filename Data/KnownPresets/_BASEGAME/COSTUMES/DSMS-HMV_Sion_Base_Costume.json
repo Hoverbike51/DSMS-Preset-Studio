@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Sion_Player",
+  "DisplayName": "Sion - Main Outfit [Costume Base]",
+  "PresetName": "Sion",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Sion",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Sion/Meshs/ch_sion_mesh_body_PhysicsAsset.ch_sion_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Sion/DsABP_Sion_Physics.DsABP_Sion_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Sion/Meshs/ch_sion_ingame_face_mesh.ch_sion_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Sion/Meshs/ch_sion_mesh_face.ch_sion_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_face_mi.ch_sion_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_eye_mi.ch_sion_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Sion/Meshs/ch_sion_mesh_body.ch_sion_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_bot_mi.ch_sion_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_hair_mi.ch_sion_hair_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_top_mi.ch_sion_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_bot_skin_mi.ch_sion_bot_skin_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Sion/Materials/ch_sion_top_skin_mi.ch_sion_top_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Sion.Img_Character_Signal_Sion"
+}

@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cassius_base_weapon",
+  "DisplayName": "Kalsion - Main Weapon [Weapon Base]",
+  "PresetName": "Kalsion",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Cassius",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Player/Cassius/ch_Cassius_mesh_wp.ch_Cassius_mesh_wp",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_wp_mi.ch_cassius_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Kalsion_Weapon.Kalsion_Weapon"
+}

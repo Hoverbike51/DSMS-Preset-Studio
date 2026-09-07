@@ -1,0 +1,56 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cassius_base_costume",
+  "DisplayName": "Kalsion - Main Outfit [Costume Base]",
+  "PresetName": "Kalsion",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Cassius",
+  "Requirements": ["None"],
+
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_mesh_PhysicsAsset.ch_Cassius_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Cassius/DsABP_Cassius_Physics.DsABP_Cassius_Physics_C",
+
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_ingame_face_mesh.ch_Cassius_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_face_mesh.ch_Cassius_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_face_mi.ch_cassius_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_eye_mi.ch_cassius_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+
+  "BodyPath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_mesh.ch_Cassius_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_cape_mi.ch_cassius_cape_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/NPC/Materials/ch_cassius_top_mi.ch_cassius_top_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_hair_mi.ch_cassius_hair_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/NPC/Materials/ch_cassius_bot_mi.ch_cassius_bot_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_helmet_mi.ch_cassius_helmet_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Cassius.Img_Character_Signal_Cassius"
+}

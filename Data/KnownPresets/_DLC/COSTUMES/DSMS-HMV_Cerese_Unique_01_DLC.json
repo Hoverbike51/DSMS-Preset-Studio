@@ -1,0 +1,68 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cerese_unique_01_dlc",
+  "DisplayName": "Cerese - Ophelia's Oath [Costume DLC]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Ophelia's Oath",
+  "Type": "Costume",
+  "TargetCharacterID": "Cerese",
+  "Requirements": ["CereseDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Meshs/ch_Cerese_Unique_01_mesh_PhysicsAsset.ch_Cerese_Unique_01_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Cerese/DsABP_Cerese_Unique_01_Physics_Costume.DsABP_Cerese_Unique_01_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_ingame_face_mesh.ch_cerese_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_face_mesh.ch_cerese_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_face_mi.ch_cerese_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eye_mi.ch_cerese_eye_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/CH_rute_eye_sdw_Mi.CH_rute_eye_sdw_Mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eyebrow_mi.ch_cerese_eyebrow_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "HiddenComponentMeshMatches": [
+    "ch_cerese_body_mesh_outline.ch_cerese_body_mesh_outline"
+  ],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Meshs/ch_Cerese_Unique_01_mesh_outline.ch_Cerese_Unique_01_mesh_outline",
+  "BodyPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Meshs/ch_Cerese_Unique_01_mesh.ch_Cerese_Unique_01_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/CH_rute_hair_sdw_Mi.CH_rute_hair_sdw_Mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_body_mi.ch_Cerese_Unique_01_body_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_hair_mi.ch_Cerese_Unique_01_hair_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_top_fur_mi.ch_Cerese_Unique_01_top_fur_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_top_mi.ch_Cerese_Unique_01_top_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_body_skin_mi.ch_Cerese_Unique_01_body_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Cerese_Unique_02.Img_Character_Signal_Cerese_Unique_02"
+}

@@ -11,13 +11,21 @@ public static class PresetSerializer
         ReadCommentHandling = JsonCommentHandling.Skip,
         AllowTrailingCommas = true,
         WriteIndented = true,
-        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+        DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+        Converters = { new MorphTargetOverrideJsonConverter() }
     };
 
-    public static PresetDocument Deserialize(string json) =>
-        JsonSerializer.Deserialize<PresetDocument>(json, Options)
-        ?? throw new JsonException("The JSON document is empty.");
+    public static PresetDocument Deserialize(string json)
+    {
+        var document = JsonSerializer.Deserialize<PresetDocument>(json, Options)
+            ?? throw new JsonException("The JSON document is empty.");
+        document.NormalizeIconPathForType();
+        return document;
+    }
 
-    public static string Serialize(PresetDocument document) =>
-        JsonSerializer.Serialize(document, Options) + Environment.NewLine;
+    public static string Serialize(PresetDocument document)
+    {
+        document.NormalizeIconPathForType();
+        return JsonSerializer.Serialize(document, Options) + Environment.NewLine;
+    }
 }

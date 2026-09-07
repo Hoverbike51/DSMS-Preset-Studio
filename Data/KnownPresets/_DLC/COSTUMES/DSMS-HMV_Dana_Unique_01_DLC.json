@@ -1,0 +1,47 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_dana_unique_01_dlc",
+  "DisplayName": "Dana - Wild Strawberry Waitress [Costume DLC]",
+  "PresetName": "Dana",
+  "PresetVariant": "Wild Strawberry Waitress",
+  "Type": "Costume",
+  "TargetCharacterID": "Dana",
+  "Requirements": ["DanaDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Meshs/ch_dana_Unique_01_body_mesh_PhysicsAsset.ch_dana_Unique_01_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Dana/DsABP_Dana_Unique_01_Physics_Costume.DsABP_Dana_Unique_01_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Dana/Meshs/ch_dana_ingame_face_mesh.ch_dana_ingame_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_face_mi.ch_dana_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_eye_mi.ch_dana_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Meshs/ch_dana_Unique_01_body_mesh.ch_dana_Unique_01_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Materials/Dana_unique_01_skin_mi.Dana_unique_01_skin_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Materials/Dana_unique_01_bot_mi.Dana_unique_01_bot_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Materials/Dana_unique_01_top_mi.Dana_unique_01_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Materials/Dana_unique_01_hair_mi.Dana_unique_01_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Dana_Unique_01.Img_Character_Signal_Dana_Unique_01"
+}

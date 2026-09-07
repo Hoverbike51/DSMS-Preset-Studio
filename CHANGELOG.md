@@ -1,5 +1,23 @@
 # DSMS Preset Studio — Changelog
 
+## Version 0.6.0
+
+- Implements the DSMS Mod Loader 0.8 Morph Target contract for `Description`, `Locked`, `Min` and `Max`, including all documented runtime aliases.
+- Adds optional `PresetName` and `PresetVariant` authoring with a live details-panel preview and the same fallback and hiding behaviour as Mod Loader 0.8.
+- Uses `CharacterIconPath` for non-Weapon presets and `WeaponIconPath` for Weapon presets, while importing legacy aliases and older Weapon `CharacterIconPath` values deterministically.
+- Adds the optional Weapon-only `WeaponActionSourceBlueprintPath` field introduced by Mod Loader 0.8, including its snake_case import alias, canonical class-path normalization, validation, FModel lookup and Visual Builder control.
+- Adds Body and Face Morph Target tables to the Visual Builder with add, remove and reorder controls.
+- Uses the runtime defaults `Min = 0`, `Max = 1` when optional bounds are omitted, while accepting explicit extended ranges such as `-1.5` to `3.0`.
+- Validates finite values, `Min < Max`, range membership and non-empty descriptions without clamping, swapping bounds or silently changing authored values.
+- Preserves unknown properties at the preset, material, weapon-entry and Morph Target levels during load, edit and save.
+- Synchronizes all 71 known presets, the four official DEMI presets and the Astria Swimsuit reference preset with their DSMS 0.8 metadata.
+- Resynchronizes the latest active presentation labels for eight Castella customs, four DEMI customs and Astria Coral Summer Mischief.
+- Reconciles the complete regression corpus: the two unresolved Awaken Lute eye-material path mismatches remain explicit expected diagnostics, while extended unlocked and fixed locked Morph Target coverage uses dedicated deterministic fixtures.
+- Resynchronizes the four active Ornette/Cerese Weapon references that use evidence-backed action-source Blueprints.
+- Fixes UI and text opacity so accent text, semantic text, JSON tokens, selection surfaces, status badges, borders and controls follow the correct independent opacity channel in both Studio and Theme Designer.
+- Adds the official DSMS 0.8 costume template, updated recipe guidance, JSON schema changes and regression fixtures.
+- Promotes DSMS Mod Loader 0.8 to the tested and recommended compatibility target after user validation of the completed source update.
+
 ## Version 0.5.3
 
 - Adds full DSMS ModLoader 0.7.2 support for `FaceOutlinePath`, `FaceOutlineMaterials` and `FaceOutlineClearMaterialOverrides` across the model, visual builder, validation, repair, FModel checks and JSON schema.
@@ -69,5 +87,3 @@
 - Supports English (UK) and French descriptions while preserving all technical DSMS field names in English.
 - Adds the HoverMods Vault About panel, explicit application/ModLoader versions and an offline placeholder for future GitHub update checks.
 - Adds validation result filters for errors, warnings and information.
-
----

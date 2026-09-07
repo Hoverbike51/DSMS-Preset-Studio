@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_aria_rare_weapon",
+  "DisplayName": "Aria - Rare Weapon [Weapon Base]",
+  "PresetName": "Aria",
+  "PresetVariant": "Rare Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Aria",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Aria/ch_Aria_Rare_01_mesh_wp.ch_Aria_Rare_01_mesh_wp",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_wp_mi.ch_aria_rare_01_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Aria_Weapon.Aria_Weapon"
+}

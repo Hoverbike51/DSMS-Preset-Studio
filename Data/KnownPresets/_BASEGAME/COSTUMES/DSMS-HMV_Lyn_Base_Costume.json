@@ -1,0 +1,46 @@
+{
+  "Version": 3,
+  "UniqueID": "lyn_Player",
+  "DisplayName": "Lyn - Main Outfit [Costume Base]",
+  "PresetName": "Lyn",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "lyn",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_lyn/Meshs/ch_lyn_mesh_body_PhysicsAsset.ch_lyn_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/lyn/DsABP_Lyn_Physics.DsABP_Lyn_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_lyn/Meshs/ch_lyn_ingame_face_mesh.ch_lyn_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_lyn/Meshs/ch_lyn_face_mesh.ch_lyn_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_lyn/Materials/ch_lyn_face_mi.ch_lyn_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_lyn/Materials/ch_lyn_eye_mi.ch_lyn_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_lyn/Meshs/ch_lyn_mesh_body.ch_lyn_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_lyn/Materials/ch_lyn_skin_mi.ch_lyn_skin_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_lyn/Materials/ch_lyn_body_mi.ch_lyn_body_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_lyn/Materials/ch_lyn_hair_mi.ch_lyn_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Lyn.Img_Character_Signal_Lyn"
+}

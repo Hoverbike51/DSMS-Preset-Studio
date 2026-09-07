@@ -33,9 +33,9 @@
     </Style>
 
     <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="#153C43"/>
+        <Setter Property="Background" Value="{DynamicResource PrimarySurfaceBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
 
@@ -46,9 +46,9 @@
     </Style>
 
     <Style x:Key="ToolbarPrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ToolbarButtonStyle}">
-        <Setter Property="Background" Value="#153C43"/>
+        <Setter Property="Background" Value="{DynamicResource PrimarySurfaceBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
 
@@ -94,7 +94,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="True"><Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource BorderBrush}"/></Trigger>
-                        <Trigger Property="IsSelected" Value="True"><Setter TargetName="ItemBorder" Property="Background" Value="#17434A"/><Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/></Trigger>
+                        <Trigger Property="IsSelected" Value="True"><Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource SelectionBrush}"/><Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/></Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -143,8 +143,8 @@
                 <ControlTemplate TargetType="CheckBox">
                     <Grid>
                         <Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition/></Grid.ColumnDefinitions>
-                        <Border x:Name="Track" Width="38" Height="20" CornerRadius="10" Background="#526071" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <Ellipse x:Name="Thumb" Width="14" Height="14" Fill="#F4F7FB" HorizontalAlignment="Left" Margin="3,0,0,0"/>
+                        <Border x:Name="Track" Width="38" Height="20" CornerRadius="10" Background="{DynamicResource ControlTrackBrush}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <Ellipse x:Name="Thumb" Width="14" Height="14" Fill="{DynamicResource ControlThumbBrush}" HorizontalAlignment="Left" Margin="3,0,0,0"/>
                         </Border>
                         <ContentPresenter Grid.Column="1" Margin="7,0,0,0" VerticalAlignment="Center"/>
                     </Grid>
@@ -206,7 +206,7 @@
         <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="8,5"/>
-        <Style.Triggers><Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="#17434A"/><Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/></Trigger></Style.Triggers>
+        <Style.Triggers><Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="{DynamicResource SelectionBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/></Trigger></Style.Triggers>
     </Style>
 
     <Style x:Key="CardStyle" TargetType="Border">

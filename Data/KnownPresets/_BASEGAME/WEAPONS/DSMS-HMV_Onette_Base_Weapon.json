@@ -1,0 +1,20 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_onette_base_weapon",
+  "DisplayName": "Ornette - Main Weapon [Weapon Base]",
+  "PresetName": "Ornette",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Onette",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Player/Onette/ch_onette_mesh_wp_new.ch_onette_mesh_wp_new",
+  "WeaponActionSourceBlueprintPath": "/Game/Design/DsCharacter/Player/Onette/Weapon/DsWP_Onette.DsWP_Onette_C",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_Onette_wp_mi.ch_Onette_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Onette_Weapon.Onette_Weapon"
+}

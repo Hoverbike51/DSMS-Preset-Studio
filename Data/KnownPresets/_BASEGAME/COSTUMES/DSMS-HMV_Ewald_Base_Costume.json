@@ -1,0 +1,46 @@
+{
+  "Version": 3,
+  "UniqueID": "Ewald_Player",
+  "DisplayName": "Ewald - Main Outfit [Costume Base]",
+  "PresetName": "Ewald",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Ewald",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Ewald/Meshs/ch_ewald_mesh_body_PhysicsAsset.ch_ewald_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Ewald/DsABP_Ewald_Physics.DsABP_Ewald_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Ewald/Meshs/ch_ewald_ingame_face_mesh.ch_ewald_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Ewald/Meshs/ch_ewald_mesh_face.ch_ewald_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ewald/Materials/ch_Ewald_face_mi.ch_Ewald_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ewald/Materials/ch_Ewald_eye_mi.ch_Ewald_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Ewald/Meshs/ch_ewald_mesh_body.ch_ewald_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ewald/Materials/ch_Ewald_top_mi.ch_Ewald_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ewald/Materials/ch_Ewald_hair_mi.ch_Ewald_hair_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ewald/Materials/ch_Ewald_bottom_mi.ch_Ewald_bottom_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Ewald.Img_Character_Signal_Ewald"
+}

@@ -1,0 +1,56 @@
+{
+  "Version": 3,
+  "UniqueID": "Astria_Player",
+  "DisplayName": "Astria - Main Outfit [Costume Base]",
+  "PresetName": "Astria",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Astria",
+  "Requirements": ["None"],
+
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Astria/Meshs/ch_Astria_mesh_body_PhysicsAsset.ch_Astria_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Astria/DsABP_Astria_Physics.DsABP_Astria_Physics_C",
+
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Astria/Meshs/ch_Astria_ingame_face_mesh.ch_Astria_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Astria/Meshs/ch_Astria_mesh_face.ch_Astria_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_face_mi.ch_Astria_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_eye_mi.ch_Astria_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+
+  "BodyPath": "/Game/Art/Character/Player/DS_Astria/Meshs/ch_Astria_mesh_body.ch_Astria_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_skin_mi.ch_Astria_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_hair_mi.ch_Astria_hair_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_bot_mi.ch_Astria_bot_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_helmet_mi.ch_Astria_helmet_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Astria/Materials/ch_Astria_top_mi.ch_Astria_top_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Astria.Img_Character_Signal_Astria"
+}

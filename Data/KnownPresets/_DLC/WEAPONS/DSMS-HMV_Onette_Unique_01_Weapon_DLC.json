@@ -1,0 +1,20 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_onette_unique_01_weapon_dlc",
+  "DisplayName": "Ornette - Eve of Dawn [Weapon DLC]",
+  "PresetName": "Ornette",
+  "PresetVariant": "Eve of Dawn",
+  "Type": "Weapon",
+  "TargetCharacterID": "Onette",
+  "Requirements": ["OnetteDLC"],
+  "WeaponActionSourceBlueprintPath": "/Game/Design/DsCharacter/Player/Onette/Weapon/DsWP_Onette_Unique_01_wp.DsWP_Onette_Unique_01_wp_C",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Materials/ch_onette_Unique_01_wp_mi.ch_onette_Unique_01_wp_mi"
+    }
+  ],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Onette/ch_onette_unique_mesh_wp.ch_onette_unique_mesh_wp",
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Ornette_Weapon_DLC_01.Ornette_Weapon_DLC_01"
+}

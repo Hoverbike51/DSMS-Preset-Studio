@@ -13,7 +13,7 @@
                     BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,0,0,1"
                     MouseLeftButtonDown="Header_MouseLeftButtonDown">
                 <Grid Margin="16,0,8,0">
-                    <TextBlock Text="DSMS PRESET STUDIO" Foreground="{DynamicResource PrimaryBrush}"
+                    <TextBlock Text="DSMS PRESET STUDIO" Foreground="{DynamicResource PrimaryTextBrush}"
                                FontWeight="Bold" VerticalAlignment="Center"/>
                     <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Center"
                             Width="34" Height="30" Padding="0" Click="Later_Click"/>

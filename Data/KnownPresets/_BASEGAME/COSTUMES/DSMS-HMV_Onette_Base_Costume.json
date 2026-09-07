@@ -1,0 +1,82 @@
+{
+  "Version": 3,
+  "UniqueID": "Onette_Player",
+  "DisplayName": "Ornette - Main Outfit [Costume Base]",
+  "PresetName": "Ornette",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Onette",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_mesh_body_PhysicsAsset.ch_onette_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Onette/DsABP_Onette_Physics_Costume.DsABP_Onette_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_ingame_face_mesh.ch_onette_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_face_mesh.ch_onette_face_mesh",
+  "FaceOutlinePath": "/Game/Art/Character/Player/DS_Onette/meshs/ch_onette_ingame_face_mesh_outline.ch_onette_ingame_face_mesh_outline",
+  "FaceOutlineClearMaterialOverrides": true,
+  "FaceOutlineMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Material/outline_face_mi.outline_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Material/outline_face_mi.outline_face_mi"
+    }
+  ],
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_face_mi.ch_onette_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_eye_mi.ch_onette_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_mesh_body.ch_onette_mesh_body",
+  "BodyOutlinePath": "/Game/Art/Character/Player/DS_Onette/meshs/ch_onette_mesh_body_outline.ch_onette_mesh_body_outline",
+  "BodyOutlineClearMaterialOverrides": true,
+  "BodyOutlineMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Material/outline_ch_cine_hair_mi.outline_ch_cine_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/outline/ch_onnette_outline_mi.ch_onnette_outline_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/outline/ch_onnette_outline_mi.ch_onnette_outline_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/outline/ch_onnette_outline_mi.ch_onnette_outline_mi"
+    }
+  ],
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_hair_mi.ch_onette_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_skin_mi.ch_onette_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_top_mi.ch_onette_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_bot_mi.ch_onette_bot_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Onette.Img_Character_Signal_Onette"
+}

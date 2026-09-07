@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_theresia_base_weapon",
+  "DisplayName": "Theresia - Main Weapon [Weapon Base]",
+  "PresetName": "Theresia",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Theresia",
+  "Requirements": ["None"],
+  "WeaponMaterialsOnly": true,
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_WP_mi.ch_theresia_WP_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Theresia_Weapon.Theresia_Weapon"
+}

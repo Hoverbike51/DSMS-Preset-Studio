@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_reina_base_weapon",
+  "DisplayName": "Reina - Main Weapon [Weapon Base]",
+  "PresetName": "Reina",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Reina",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Player/Reina/ch_reina_mesh_wp.ch_reina_mesh_wp",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_wp_mi.ch_reina_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Reina_Weapon.Reina_Weapon"
+}

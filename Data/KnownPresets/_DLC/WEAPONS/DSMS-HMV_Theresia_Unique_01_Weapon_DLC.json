@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_theresia_unique_01_weapon_dlc",
+  "DisplayName": "Theresia - Light-Shattering Judgment [Weapon DLC]",
+  "PresetName": "Theresia",
+  "PresetVariant": "Light-Shattering Judgment",
+  "Type": "Weapon",
+  "TargetCharacterID": "Theresia",
+  "Requirements": ["TheresiaDLC"],
+  "WeaponMaterialsOnly": true,
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Theresia/Theresia_Unique_01/Materials/ch_theresia_unique_01_wp_mi.ch_theresia_unique_01_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Theresia_Weapon_DLC_01.Theresia_Weapon_DLC_01"
+}

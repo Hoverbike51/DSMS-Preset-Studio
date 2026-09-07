@@ -1,0 +1,47 @@
+{
+  "Version": 3,
+  "UniqueID": "Dana_Player",
+  "DisplayName": "Dana - Main Outfit [Costume Base]",
+  "PresetName": "Dana",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Dana",
+  "Requirements": ["None"],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Dana/Meshs/ch_dana_mesh_body_PhysicsAsset.ch_dana_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Dana/DsABP_Dana_Physics.DsABP_Dana_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Dana/Meshs/ch_dana_ingame_face_mesh.ch_dana_ingame_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_face_mi.ch_dana_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_eye_mi.ch_dana_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Dana/Meshs/ch_dana_mesh_body.ch_dana_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_bot_mi.ch_dana_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_skin_mi.ch_dana_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_hair_mi.ch_dana_hair_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_top_mi.ch_dana_top_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Dana.Img_Character_Signal_Dana"
+}

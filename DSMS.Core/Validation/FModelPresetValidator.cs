@@ -40,7 +40,8 @@ public sealed class FModelPresetValidator(FModelAssetIndex index)
         yield return ("FaceOutlinePath", p.FaceOutlinePath, false);
         yield return ("AuxiliaryMeshPath", p.AuxiliaryMeshPath, false); yield return ("AuxiliaryPhysicsAssetPath", p.AuxiliaryPhysicsAssetPath, false);
         yield return ("LinkedBodyReplacementPath", p.LinkedBodyReplacementPath, false); yield return ("WeaponPath", p.WeaponPath, false);
-        yield return ("IconPath", p.IconPath, false);
+        yield return ("WeaponActionSourceBlueprintPath", p.WeaponActionSourceBlueprintPath, true);
+        yield return (p.IconFieldName, p.ActiveIconPath, false);
         if (p.WeaponPaths is not null) for (var i = 0; i < p.WeaponPaths.Count; i++) yield return ($"WeaponPaths[{i}].WeaponPath", p.WeaponPaths[i].WeaponPath, false);
         foreach (var item in Materials(p)) yield return item;
     }

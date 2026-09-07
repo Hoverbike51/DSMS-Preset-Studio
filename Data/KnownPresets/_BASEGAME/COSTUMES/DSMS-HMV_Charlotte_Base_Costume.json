@@ -1,0 +1,50 @@
+{
+  "Version": 3,
+  "UniqueID": "Charlotte_Player",
+  "DisplayName": "Charlotte - Main Outfit [Costume Base]",
+  "PresetName": "Charlotte",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Charlotte",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_body_PhysicsAsset.ch_charlotte_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Charlotte/DsABP_Charlotte_Physics.DsABP_Charlotte_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_ingame_face_mesh.ch_charlotte_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_face.ch_charlotte_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_face_mi.ch_Charlotte_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_eye_mi.ch_Charlotte_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_body.ch_charlotte_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_top_mi.ch_Charlotte_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_bot_mi.ch_Charlotte_bot_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_skin_mi.ch_Charlotte_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Charlotte/Materials/ch_Charlotte_shadow_mi.ch_Charlotte_shadow_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Charlotte.Img_Character_Signal_Charlotte"
+}

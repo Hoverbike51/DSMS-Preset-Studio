@@ -1,0 +1,68 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_kalien_unique_01_dlc",
+  "DisplayName": "Kalien - Vestment of the Great Spirit [Costume DLC]",
+  "PresetName": "Kalien",
+  "PresetVariant": "Vestment of the Great Spirit",
+  "Type": "Costume",
+  "TargetCharacterID": "kalien",
+  "Requirements": ["KalienDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Meshs/ch_kalien_Unique_01_body_PhysicsAsset.ch_kalien_Unique_01_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Kalien/DsABP_Kalien_Unique_Physics_Costume.DsABP_Kalien_Unique_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_ingame_face.ch_kalien_ingame_face",
+  "FacePath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_face_mesh.ch_kalien_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_face_mi.ch_kalien_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_eye_mi.ch_kalien_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Meshs/ch_kalien_Unique_01_hair.ch_kalien_Unique_01_hair",
+  "AuxiliaryPhysicsAssetPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Meshs/ch_kalien_Unique_01_hair_PhysicsAsset.ch_kalien_Unique_01_hair_PhysicsAsset",
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_top_mi.ch_kalien_unique_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_hair_mi.ch_kalien_unique_hair_mi"
+    }
+  ],
+  "BodyPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Meshs/ch_kalien_Unique_01_body.ch_kalien_Unique_01_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_skin_mi.ch_kalien_unique_skin_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_fur_mi.ch_kalien_unique_fur_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_top_mi.ch_kalien_unique_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_bot_mi.ch_kalien_unique_bot_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_kalien/Kalien_Unique_01/Materials/ch_kalien_unique_wep_mi.ch_kalien_unique_wep_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "LinkedBodyComponentMeshMatches": [
+    "ch_kalien_body_mesh"
+  ],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Kalien_Unique_01.Img_Character_Signal_Kalien_Unique_01"
+}

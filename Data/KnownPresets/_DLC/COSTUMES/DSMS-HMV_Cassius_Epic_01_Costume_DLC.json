@@ -1,0 +1,52 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cassius_epic_01_costume_dlc",
+  "DisplayName": "Kalsion - Roderick Royal Uniform [Costume DLC]",
+  "PresetName": "Kalsion",
+  "PresetVariant": "Roderick Royal Uniform",
+  "Type": "Costume",
+  "TargetCharacterID": "Cassius",
+  "Requirements": ["KalsionDLC"],
+
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Meshs/ch_Cassius_Epic_01_mesh_body_PhysicsAsset.ch_Cassius_Epic_01_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Cassius/DsABP_Cassius_Ceremony_Physics.DsABP_Cassius_Ceremony_Physics_C",
+
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_ingame_face_mesh.ch_Cassius_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Cassius/Meshs/ch_Cassius_face_mesh.ch_Cassius_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_face_mi.ch_cassius_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_eye_mi.ch_cassius_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+
+  "BodyPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Meshs/ch_Cassius_Epic_01_mesh_body.ch_Cassius_Epic_01_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cassius/Materials/ch_cassius_hair_mi.ch_cassius_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Materials/casius_epic_leg_mi.casius_epic_leg_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Materials/casius_epic_body02_mi.casius_epic_body02_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Materials/casius_epic_body01_mi.casius_epic_body01_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Cassius_Unique_01.Img_Character_Signal_Cassius_Unique_01"
+}

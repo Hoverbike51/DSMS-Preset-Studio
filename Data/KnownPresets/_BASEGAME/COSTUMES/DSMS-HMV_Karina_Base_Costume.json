@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Karina_Player",
+  "DisplayName": "Karina - Main Outfit [Costume Base]",
+  "PresetName": "Karina",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Karina",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Karina/Meshs/ch_karina_mesh_body_PhysicsAsset.ch_karina_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Karina/DsABP_Karina_Physics.DsABP_Karina_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Karina/Meshs/ch_karina_ingame_face_mesh.ch_karina_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Karina/Meshs/ch_karina_mesh_face.ch_karina_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_face_mi.ch_karina_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_eye_mi.ch_karina_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Karina/Meshs/ch_karina_mesh_body.ch_karina_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_bot_mi.ch_karina_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_top_mi.ch_karina_top_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_skin_mi.ch_karina_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_hat_mi.ch_karina_hat_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Karina/Materials/ch_karina_hair_mi.ch_karina_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Karina.Img_Character_Signal_Karina"
+}

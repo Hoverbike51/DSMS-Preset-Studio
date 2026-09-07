@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_reina_swimsuit_01_weapon_dlc",
+  "DisplayName": "Reina - Petals at the Wave's Edge [Weapon DLC]",
+  "PresetName": "Reina",
+  "PresetVariant": "Petals at the Wave's Edge",
+  "Type": "Weapon",
+  "TargetCharacterID": "Reina",
+  "Requirements": ["ReinaDLC"],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Reina/Reina_swimsuit_01_WP_mesh.Reina_swimsuit_01_WP_mesh",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_wp_mi.ch_Reina_swimsuit_01_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Reina_Weapon_DLC_01_.Reina_Weapon_DLC_01_"
+}

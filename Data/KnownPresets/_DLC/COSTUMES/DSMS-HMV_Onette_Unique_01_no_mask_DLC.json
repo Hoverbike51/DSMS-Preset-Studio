@@ -1,0 +1,56 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_onette_unique_01_no_mask_dlc",
+  "DisplayName": "Ornette - Phantom Thief of Dawn (No Mask) [Costume DLC]",
+  "PresetName": "Ornette",
+  "PresetVariant": "Phantom Thief of Dawn (No Mask)",
+  "Type": "Costume",
+  "TargetCharacterID": "Onette",
+  "Requirements": ["OnetteDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Meshs/ch_onette_unique_mesh_body_PhysicsAsset.ch_onette_unique_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Onette/DsABP_Onette_Unique_Physics_Costume.DsABP_Onette_Unique_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_ingame_face_mesh.ch_onette_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Onette/Meshs/ch_onette_face_mesh.ch_onette_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_face_mi.ch_onette_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Onette/materials/ch_onette_eye_mi.ch_onette_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "LinkedBodyComponentMeshMatches": [
+    "ch_onette_mesh_body_outline"
+  ],
+  "LinkedBodyReplacementPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Meshs/ch_onette_unique_mesh_body_outline.ch_onette_unique_mesh_body_outline",
+  "HiddenComponentMeshMatches": [
+    "ch_onette_mesh_body.ch_onette_mesh_body",
+    "ch_onette_unique_mesh_body_outline.ch_onette_unique_mesh_body_outline"
+  ],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Meshs/ch_onette_unique_mesh_body_nomask.ch_onette_unique_mesh_body_nomask",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Materials/ch_onette_Unique_01_hair_mi.ch_onette_Unique_01_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Materials/ch_onette_Unique_01_bot_mi.ch_onette_Unique_01_bot_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Materials/ch_onette_Unique_01_skin_mi.ch_onette_Unique_01_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Onette/Onette_Unique_01/Materials/ch_onette_Unique_01_top_mi.ch_onette_Unique_01_top_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Onette_Unique_01.Img_Character_Signal_Onette_Unique_01"
+}

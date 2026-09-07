@@ -1,0 +1,46 @@
+{
+  "Version": 3,
+  "UniqueID": "Reina_Player",
+  "DisplayName": "Reina - Main Outfit [Costume Base]",
+  "PresetName": "Reina",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Reina",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_mesh_body_PhysicsAsset.ch_reina_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Reina/DsABP_Reina_Physics.DsABP_Reina_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_ingame_face_mesh.ch_reina_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_face_mesh.ch_reina_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_face_mi.ch_reina_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_eye_mi.ch_reina_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_mesh_body.ch_reina_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_hair_mi.ch_reina_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_body_mi.ch_reina_body_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_skin_mi.ch_reina_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Reina.Img_Character_Signal_Reina"
+}

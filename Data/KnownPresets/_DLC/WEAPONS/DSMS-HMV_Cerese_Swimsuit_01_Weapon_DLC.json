@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cerese_swimsuit_01_weapon_dlc",
+  "DisplayName": "Cerese - Star upon the Waves [Weapon DLC]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Star upon the Waves",
+  "Type": "Weapon",
+  "TargetCharacterID": "Cerese",
+  "Requirements": ["CereseDLC"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_wp_mi.ch_cerese_swimsuit_01_wp_mi"
+    }
+  ],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Cerese/ch_Cerese_swimsuit_01_wp_mesh.ch_Cerese_swimsuit_01_wp_mesh",
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_01.Cerese_Weapon_DLC_01"
+}

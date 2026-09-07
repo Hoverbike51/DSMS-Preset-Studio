@@ -1,0 +1,46 @@
+{
+  "Version": 3,
+  "UniqueID": "Roxy_Player",
+  "DisplayName": "Roxy - Main Outfit [Costume Base]",
+  "PresetName": "Roxy",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Roxy",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Roxy/Meshs/ch_roxy_body_PhysicsAsset.ch_roxy_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Roxy/DsABP_Roxy_Physics.DsABP_Roxy_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Roxy/Meshs/ch_roxy_ingame_face_mesh.ch_roxy_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Roxy/Meshs/ch_roxy_face_mesh.ch_roxy_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Roxy/Materials/ch_roxxy_face_mi.ch_roxxy_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Roxy/Materials/ch_roxxy_eye_mi.ch_roxxy_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Roxy/Meshs/ch_roxy_body.ch_roxy_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Roxy/Materials/ch_roxxy_body_mi.ch_roxxy_body_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Roxy/Materials/ch_roxxy_skin_mi.ch_roxxy_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Roxy/Materials/ch_roxxy_hair_mi.ch_roxxy_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Roxy.Img_Character_Signal_Roxy"
+}

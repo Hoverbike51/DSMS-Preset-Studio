@@ -1,0 +1,50 @@
+{
+  "Version": 3,
+  "UniqueID": "kalien_Player",
+  "DisplayName": "Kalien - Main Outfit [Costume Base]",
+  "PresetName": "Kalien",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "kalien",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_body_mesh_PhysicsAsset.ch_kalien_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Kalien/DsABP_Kalien_Physics_Costume.DsABP_Kalien_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_ingame_face.ch_kalien_ingame_face",
+  "FacePath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_face_mesh.ch_kalien_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_face_mi.ch_kalien_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_eye_mi.ch_kalien_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_kalien/Meshs/ch_kalien_body_mesh.ch_kalien_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_hair_mi.ch_kalien_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_top_mi.ch_kalien_top_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_bot_mi.ch_kalien_bot_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_kalien/Materials/ch_kalien_skin_mi.ch_kalien_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Kalien.Img_Character_Signal_Kalien"
+}

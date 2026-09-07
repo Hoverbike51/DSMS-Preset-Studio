@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Text.Json;
 using DSMS.Core.Models;
 using DSMS.Core.Paths;
 
@@ -38,7 +39,7 @@ public sealed partial class PresetValidator
         }
 
         ValidateRequirements(report, preset.Requirements);
-        ValidateAssetPath(report, preset.IconPath, "IconPath", required: true, allowShortIconPath: true);
+        ValidateAssetPath(report, preset.ActiveIconPath, preset.IconFieldName, required: true, allowShortIconPath: true);
 
         if (string.Equals(type, "Weapon", StringComparison.OrdinalIgnoreCase))
             ValidateWeapon(report, preset);
@@ -55,6 +56,11 @@ public sealed partial class PresetValidator
         ValidateAssetPath(report, preset.LinkedBodyReplacementPath, "LinkedBodyReplacementPath");
         ValidateAnimBlueprint(report, preset.FollowerAnimBlueprintPath, "FollowerAnimBlueprintPath");
         ValidateAnimBlueprint(report, preset.PhysicsAnimBlueprintPath, "PhysicsAnimBlueprintPath");
+        ValidateAnimBlueprint(report, preset.WeaponActionSourceBlueprintPath, "WeaponActionSourceBlueprintPath");
+        if (!string.IsNullOrWhiteSpace(preset.WeaponActionSourceBlueprintPath) &&
+            !string.Equals(type, "Weapon", StringComparison.OrdinalIgnoreCase))
+            report.Warning("DSMS019", "WeaponActionSourceBlueprintPath",
+                "WeaponActionSourceBlueprintPath is used only by Weapon presets; the runtime ignores it for this preset type.");
 
         ValidateMaterials(report, preset.BodyMaterials, "BodyMaterials");
         ValidateMaterials(report, preset.BodyOutlineMaterials, "BodyOutlineMaterials");
@@ -78,8 +84,7 @@ public sealed partial class PresetValidator
             report.Warning("DSMS041", "BodyOutlinePath", "BodyOutlinePath reuses BodyPath. This is valid only when the outline materials are designed for that geometry.");
 
         if (preset.ExtraFields is { Count: > 0 })
-            foreach (var field in preset.ExtraFields.Keys.OrderBy(x => x))
-                report.Warning("DSMS090", field, "Unknown field: verify that the current Lua runtime supports it.");
+            ReportUnknownFields(report, preset.ExtraFields, null);
 
         return report;
     }
@@ -114,6 +119,7 @@ public sealed partial class PresetValidator
             var entry = preset.WeaponPaths[i];
             RequiredText(report, entry.ComponentMatch, $"WeaponPaths[{i}].ComponentMatch", "DSMS023");
             ValidateAssetPath(report, entry.WeaponPath, $"WeaponPaths[{i}].WeaponPath", required: true);
+            ReportUnknownFields(report, entry.ExtraFields, $"WeaponPaths[{i}]");
         }
     }
 
@@ -146,6 +152,7 @@ public sealed partial class PresetValidator
             if (!selectors.Add(selector))
                 report.Error("DSMS032", $"{field}[{i}]", $"Duplicate material selector {selector}.");
             ValidateAssetPath(report, item.MaterialPath, $"{field}[{i}].MaterialPath", required: true);
+            ReportUnknownFields(report, item.ExtraFields, $"{field}[{i}]");
         }
     }
 
@@ -159,8 +166,41 @@ public sealed partial class PresetValidator
             RequiredText(report, item.MorphName, $"{field}[{i}].MorphName", "DSMS033");
             if (!string.IsNullOrWhiteSpace(item.MorphName) && !names.Add(item.MorphName))
                 report.Error("DSMS034", $"{field}[{i}].MorphName", $"Duplicate morph target '{item.MorphName}'.");
-            if (item.Value is < 0f or > 1f)
-                report.Error("DSMS035", $"{field}[{i}].Value", "DSMS accepts morph target values only between 0.0 and 1.0.");
+            if (item.Description is not null && string.IsNullOrWhiteSpace(item.Description))
+                report.Error("DSMS044", $"{field}[{i}].Description", "Description must be a non-empty string when present.");
+
+            var valueIsFinite = float.IsFinite(item.Value);
+            var minIsFinite = item.Min is null || float.IsFinite(item.Min.Value);
+            var maxIsFinite = item.Max is null || float.IsFinite(item.Max.Value);
+            if (!valueIsFinite)
+                report.Error("DSMS045", $"{field}[{i}].Value", "Value must be a finite number.");
+            if (!minIsFinite)
+                report.Error("DSMS045", $"{field}[{i}].Min", "Min must be a finite number.");
+            if (!maxIsFinite)
+                report.Error("DSMS045", $"{field}[{i}].Max", "Max must be a finite number.");
+
+            if (minIsFinite && maxIsFinite)
+            {
+                var min = item.Min ?? 0f;
+                var max = item.Max ?? 1f;
+                if (min >= max)
+                    report.Error("DSMS046", $"{field}[{i}].Min", "Min must be lower than Max.");
+                else if (valueIsFinite && (item.Value < min || item.Value > max))
+                    report.Error("DSMS035", $"{field}[{i}].Value", $"Value must be between {min:G9} and {max:G9}.");
+            }
+            ReportUnknownFields(report, item.ExtraFields, $"{field}[{i}]");
+        }
+    }
+
+    private static void ReportUnknownFields(ValidationReport report,
+        IReadOnlyDictionary<string, JsonElement>? extraFields, string? parent)
+    {
+        if (extraFields is null) return;
+        foreach (var field in extraFields.Keys.OrderBy(x => x, StringComparer.Ordinal))
+        {
+            var location = string.IsNullOrWhiteSpace(parent) ? field : $"{parent}.{field}";
+            report.Info("DSMS090", location,
+                "Unknown field preserved for forward compatibility; verify that the current Lua runtime supports it.");
         }
     }
 

@@ -2,9 +2,11 @@
 
 **DSMS Preset Studio** is a Windows desktop application for creating, reviewing and validating **DragonSword: Awakening** presets for **DSMS ModLoader**.
 
-- Current Studio version: **0.5.3**
+- Current Studio version: **0.6.0**
 - Preset format: **DSMS JSON v3**
-- Recommended ModLoader version: **0.7.2**
+- Recommended ModLoader version: **0.8**
+
+Version 0.6.0 implements the DSMS Mod Loader 0.8 Morph Target, preset-presentation, type-specific icon and evidence-gated Weapon action-source contracts. Mod Loader 0.8 is now the tested and recommended compatibility target.
 
 ## What the application does
 
@@ -12,6 +14,11 @@
 - Opens and edits existing DSMS JSON v3 files.
 - Generates consistently formatted JSON.
 - Validates required fields, target character IDs, Unreal paths, material slots, morph targets, body and face outlines, auxiliary meshes and weapon components.
+- Edits Body and Face Morph Targets with optional descriptions, custom minimum/maximum ranges and runtime locking.
+- Authors the optional `PresetName` and `PresetVariant` details metadata while keeping `DisplayName` as the selector label.
+- Reads legacy icon aliases and writes `CharacterIconPath` for non-Weapon presets or `WeaponIconPath` for Weapon presets.
+- Authors the optional Weapon-only `WeaponActionSourceBlueprintPath` used by Mod Loader 0.8 to copy an evidence-backed `WeaponActionDataArray` from a source Blueprint.
+- Preserves unknown preset and nested object properties during load, edit and save.
 - Applies only deterministic and reviewable repairs.
 - Scans preset folders and reports duplicate `UniqueID` values.
 - Optionally verifies exported game assets against an FModel export folder.
@@ -51,6 +58,8 @@ The Visual Builder provides recipes for:
 
 Select the target character before entering asset paths. Public character names and internal aliases such as `Kalsion/Cassius` and `Ornette/Onette` are handled by the character catalog.
 
+`PresetName` and `PresetVariant` control the Mod Loader details panel. When `PresetName` is blank, Studio previews the runtime fallback obtained by removing bracketed segments from `DisplayName`; if that becomes empty, it uses `UniqueID`. A blank `PresetVariant` stays hidden. `DisplayName` itself remains unchanged and continues to identify the preset in selectors.
+
 ### 3. Enter Unreal asset paths
 
 Use Unreal object paths, never Windows paths:
@@ -64,6 +73,8 @@ The package asset and object name must normally match exactly. Animation Bluepri
 ```text
 /Game/Path/DsABP_Physics.DsABP_Physics_C
 ```
+
+For Weapon presets, `WeaponActionSourceBlueprintPath` uses the same generated-class form. Leave it empty unless FModel and runtime testing prove that the selected source Blueprint owns the compatible `WeaponActionDataArray`; Studio never guesses this path from a mesh name.
 
 Use **Material Instances only**, and make sure every `SlotIndex` matches the selected Skeletal Mesh.
 
@@ -108,7 +119,7 @@ FModel verification improves confidence but cannot prove runtime skeleton compat
 
 ## Icon preview
 
-Studio resolves `IconPath` from the configured FModel export folder. You can also import a PNG manually; it is copied into `Icons/Imported`.
+Studio resolves the type-specific icon path from the configured FModel export folder: `CharacterIconPath` for non-Weapon presets and `WeaponIconPath` for Weapon presets. Legacy `character_icon_path`, `weapon_icon_path`, `IconPath`, `IconPaths` and `icon_path` fields remain importable; an older Weapon `CharacterIconPath` is migrated automatically. Generated JSON writes only the correct canonical field. Short `/Game/.../Asset` paths are normalized to `/Game/.../Asset.Asset`. You can also import a PNG manually; it is copied into `Icons/Imported`.
 
 When no compatible image is found, Studio displays the generic Costume, Custom or Weapon icon.
 
@@ -117,6 +128,7 @@ When no compatible image is found, Studio displays the generic Costume, Custom o
 - Choose English or French.
 - Browse all bundled and imported themes with their name, author and provenance. Bundled themes are read-only `Official Theme System` themes authored by `HoverModsVault`.
 - Keep multiple custom themes, edit them in the offline HTML Theme Designer, and preview Visual Builder, JSON Editor and Settings.
+- Adjust UI and text opacity independently. UI opacity controls surfaces, borders, controls and status backgrounds; text opacity controls primary, secondary, accent, semantic and JSON token text.
 - Use a system theme as a base only through a renamed custom copy; exported/imported themes never receive official certification.
 - Configure the FModel export root.
 - Configure or detect the DSMS ModLoader Scripts folder.
@@ -141,17 +153,8 @@ Updates require confirmation and a valid SHA-256 checksum. Imported icons and se
 
 ## Development
 
-Build requirements:
-
-- Windows 10 or Windows 11, 64-bit.
-- .NET 8 SDK with the Windows Desktop workload available.
-- Visual Studio 2022 is optional; the command-line .NET SDK is sufficient.
-
-The repository does not require private NuGet feeds or embedded API keys.
-
 ```powershell
 dotnet build .\DSMS-Preset-Studio.sln -c Release
 dotnet run --project .\DSMS.Core.Tests -- "PATH_TO_PRESET_FOLDER"
 dotnet run --project .\DSMS.PresetStudio
 ```
----

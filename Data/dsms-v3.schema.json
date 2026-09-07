@@ -4,11 +4,24 @@
   "title": "DSMS ModLoader JSON preset v3",
   "type": "object",
   "additionalProperties": true,
-  "required": ["Version", "UniqueID", "DisplayName", "Type", "IconPath"],
+  "required": ["Version", "UniqueID", "DisplayName", "Type"],
+  "allOf": [
+    {
+      "if": { "properties": { "Type": { "const": "Weapon" } }, "required": ["Type"] },
+      "then": { "required": ["WeaponIconPath"] },
+      "else": { "required": ["CharacterIconPath"] }
+    },
+    {
+      "if": { "required": ["WeaponActionSourceBlueprintPath"] },
+      "then": { "properties": { "Type": { "const": "Weapon" } } }
+    }
+  ],
   "properties": {
     "Version": { "const": 3 },
     "UniqueID": { "type": "string", "minLength": 1 },
     "DisplayName": { "type": "string", "minLength": 1 },
+    "PresetName": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "PresetVariant": { "type": "string", "minLength": 1, "pattern": "\\S" },
     "Type": { "enum": ["Custom", "Costume", "Weapon", "Mounts", "NPC"] },
     "TargetCharacterID": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
     "Requirements": { "$ref": "#/$defs/uniqueStrings" },
@@ -49,16 +62,19 @@
           "ComponentMatch": { "type": "string", "minLength": 1 },
           "WeaponPath": { "$ref": "#/$defs/objectPath" }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       }
     },
     "WeaponClearMaterialOverrides": { "type": "boolean" },
     "WeaponMaterials": { "$ref": "#/$defs/weaponMaterials" },
     "WeaponMaterialsOnly": { "type": "boolean" },
-    "IconPath": { "$ref": "#/$defs/objectPath" }
+    "WeaponActionSourceBlueprintPath": { "$ref": "#/$defs/classPath" },
+    "CharacterIconPath": { "$ref": "#/$defs/iconPath" },
+    "WeaponIconPath": { "$ref": "#/$defs/iconPath" }
   },
   "$defs": {
     "objectPath": { "type": "string", "pattern": "^/Game/.+\\.[^./]+$" },
+    "iconPath": { "type": "string", "pattern": "^/Game/.+(?:\\.[^./]+)?$" },
     "classPath": { "type": "string", "pattern": "^/Game/.+\\.[^./]+_C$" },
     "uniqueStrings": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
     "materials": {
@@ -70,7 +86,7 @@
           "SlotIndex": { "type": "integer", "minimum": 0 },
           "MaterialPath": { "$ref": "#/$defs/objectPath" }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       }
     },
     "weaponMaterials": {
@@ -87,7 +103,7 @@
           "MaterialMatch": { "type": "string", "minLength": 1 },
           "MaterialPath": { "$ref": "#/$defs/objectPath" }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       }
     },
     "morphs": {
@@ -97,9 +113,13 @@
         "required": ["MorphName", "Value"],
         "properties": {
           "MorphName": { "type": "string", "minLength": 1 },
-          "Value": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+          "Value": { "type": "number" },
+          "Description": { "type": "string", "minLength": 1, "pattern": "\\S" },
+          "Min": { "type": "number", "default": 0.0 },
+          "Max": { "type": "number", "default": 1.0 },
+          "Locked": { "type": "boolean", "default": false }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       }
     }
   }

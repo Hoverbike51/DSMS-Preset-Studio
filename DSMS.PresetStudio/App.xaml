@@ -14,11 +14,24 @@
             <SolidColorBrush x:Key="BorderBrush" Color="#2A405A"/>
             <SolidColorBrush x:Key="PrimaryBrush" Color="#23CFE5"/>
             <SolidColorBrush x:Key="SecondaryBrush" Color="#8B7CFF"/>
+            <SolidColorBrush x:Key="PrimaryTextBrush" Color="#23CFE5"/>
+            <SolidColorBrush x:Key="SecondaryTextBrush" Color="#8B7CFF"/>
+            <SolidColorBrush x:Key="PrimaryContrastTextBrush" Color="#071118"/>
+            <SolidColorBrush x:Key="PrimarySurfaceBrush" Color="#23CFE5" Opacity="0.18"/>
+            <SolidColorBrush x:Key="SelectionBrush" Color="#23CFE5" Opacity="0.30"/>
+            <SolidColorBrush x:Key="ControlTrackBrush" Color="#2A405A"/>
+            <SolidColorBrush x:Key="ControlThumbBrush" Color="#F4F7FB"/>
             <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F4F7FB"/>
             <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A8B5C7"/>
             <SolidColorBrush x:Key="SuccessBrush" Color="#35D07F"/>
             <SolidColorBrush x:Key="WarningBrush" Color="#F5B942"/>
             <SolidColorBrush x:Key="ErrorBrush" Color="#FF6174"/>
+            <SolidColorBrush x:Key="SuccessSurfaceBrush" Color="#35D07F" Opacity="0.22"/>
+            <SolidColorBrush x:Key="WarningSurfaceBrush" Color="#F5B942" Opacity="0.22"/>
+            <SolidColorBrush x:Key="ErrorSurfaceBrush" Color="#FF6174" Opacity="0.22"/>
+            <SolidColorBrush x:Key="SuccessBorderBrush" Color="#35D07F"/>
+            <SolidColorBrush x:Key="WarningBorderBrush" Color="#F5B942"/>
+            <SolidColorBrush x:Key="ErrorBorderBrush" Color="#FF6174"/>
             <SolidColorBrush x:Key="JsonPropertyBrush" Color="#23CFE5"/>
             <SolidColorBrush x:Key="JsonStringBrush" Color="#35D07F"/>
             <SolidColorBrush x:Key="JsonNumberBrush" Color="#F5B942"/>
@@ -27,6 +40,9 @@
             <SolidColorBrush x:Key="UpdateReadyBrush" Color="#35D07F"/>
             <SolidColorBrush x:Key="UpdateCheckingBrush" Color="#F5B942"/>
             <SolidColorBrush x:Key="UpdateErrorBrush" Color="#FF6174"/>
+            <SolidColorBrush x:Key="UpdateReadyBorderBrush" Color="#35D07F"/>
+            <SolidColorBrush x:Key="UpdateCheckingBorderBrush" Color="#F5B942"/>
+            <SolidColorBrush x:Key="UpdateErrorBorderBrush" Color="#FF6174"/>
             <FontFamily x:Key="AppFontFamily">Segoe UI</FontFamily>
             <sys:Double x:Key="AppFontSize">13</sys:Double>
             <ResourceDictionary.MergedDictionaries>

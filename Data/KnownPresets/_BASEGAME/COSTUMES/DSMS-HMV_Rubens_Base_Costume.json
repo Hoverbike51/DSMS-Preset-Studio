@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Rubens_Player",
+  "DisplayName": "Rubens - Main Outfit [Costume Base]",
+  "PresetName": "Rubens",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Rubens",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Rubens/Meshs/ch_rubens_mesh_body_PhysicsAsset.ch_rubens_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Rubens/DsABP_Rubens_Physics.DsABP_Rubens_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Rubens/Meshs/ch_rubens_ingame_mesh_face.ch_rubens_ingame_mesh_face",
+  "FacePath": "/Game/Art/Character/Player/DS_Rubens/Meshs/ch_rubens_mesh_face.ch_rubens_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/ch_rubens_face_mi.ch_rubens_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/ch_rubens_eye_mi.ch_rubens_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Player/DS_Rubens/Meshs/ch_rubens_mesh_head.ch_rubens_mesh_head",
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/CH_rubens_hair_mi.CH_rubens_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/CH_rubens_bot_mi.CH_rubens_bot_mi"
+    }
+  ],
+  "BodyPath": "/Game/Art/Character/Player/DS_Rubens/Meshs/ch_rubens_mesh_body.ch_rubens_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/CH_rubens_top_mi.CH_rubens_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Rubens/Materials/CH_rubens_bot_mi.CH_rubens_bot_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Rubens.Img_Character_Signal_Rubens"
+}

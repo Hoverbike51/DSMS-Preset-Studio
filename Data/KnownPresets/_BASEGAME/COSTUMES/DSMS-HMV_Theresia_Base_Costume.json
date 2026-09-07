@@ -1,0 +1,62 @@
+{
+  "Version": 3,
+  "UniqueID": "Theresia_Player",
+  "DisplayName": "Theresia - Main Outfit [Costume Base]",
+  "PresetName": "Theresia",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Theresia",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Mesh_Body_PhysicsAsset.ch_Theresia_Mesh_Body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Theresia/DsABP_Theresia_Physics_Costume.DsABP_Theresia_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Mesh_Ingame_Face.ch_Theresia_Mesh_Ingame_Face",
+  "FacePath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Face_Mesh.ch_Theresia_Face_Mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_face_hat_mi.ch_theresia_face_hat_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_eye_mi.ch_theresia_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Mesh_Hair01.ch_Theresia_Mesh_Hair01",
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_bot_mi.ch_theresia_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_thersia_hair_mi.ch_thersia_hair_mi"
+    }
+  ],
+  "BodyPath": "/Game/Art/Character/Player/DS_Theresia/Meshs/ch_Theresia_Mesh_Body.ch_Theresia_Mesh_Body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_bot_mi.ch_theresia_bot_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_bot_skin_mi.ch_theresia_bot_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_top_mi.ch_theresia_top_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Theresia/Materials/ch_theresia_top_skin_mi.ch_theresia_top_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Theresia.Img_Character_Signal_Theresia"
+}

@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Lute_Player",
+  "DisplayName": "Lute - Main Outfit [Costume Base]",
+  "PresetName": "Lute",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Lute",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Lute/Meshs/ch_lute_mesh_body_PhysicsAsset.ch_lute_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Lute/DsABP_Lute_Physics.DsABP_Lute_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Lute/Meshs/ch_lute_mesh_face_ingame_morph.ch_lute_mesh_face_ingame_morph",
+  "FacePath": "/Game/Art/Character/Player/DS_Lute/Meshs/ch_lute_mesh_face.ch_lute_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_face_mi.CH_rute_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_eye_mi.CH_rute_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Lute/Meshs/ch_lute_mesh_body.ch_lute_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_top_mi.CH_rute_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_body_mi.CH_rute_body_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_body_skin_mi.CH_rute_body_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_mi.CH_rute_hair_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_sdw_M.CH_rute_hair_sdw_M"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Lute.Img_Character_Signal_Lute"
+}

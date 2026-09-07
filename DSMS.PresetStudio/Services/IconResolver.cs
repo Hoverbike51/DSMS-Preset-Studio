@@ -17,12 +17,13 @@ public static partial class IconResolver
     public static IconResolution Resolve(PresetDocument preset, string? fmodelRoot)
     {
         Directory.CreateDirectory(ImportedDirectory);
-        var iconPath = preset.IconPath?.Trim();
+        var iconPath = preset.ActiveIconPath?.Trim();
+        var iconField = preset.IconFieldName;
         var generic = GenericPath(preset.Type);
         if (string.IsNullOrWhiteSpace(iconPath))
-            return new(generic, "Generic", "IconPath is empty; a generic icon is displayed.");
+            return new(generic, "Generic", $"{iconField} is empty; a generic icon is displayed.");
         if (!ValidUnrealPath().IsMatch(iconPath))
-            return new(generic, "Generic", "IconPath syntax is invalid. Use /Game/Folder/Asset.Asset.");
+            return new(generic, "Generic", $"{iconField} syntax is invalid. Use /Game/Folder/Asset.Asset.");
 
         var assetName = AssetName(iconPath);
         var local = FindLocal(assetName);
@@ -41,7 +42,7 @@ public static partial class IconResolver
             if (suggestion is not null)
                 return new(generic, "Generic", "The requested asset was not exported, but a likely matching icon was found.", suggestion.Value.Path);
         }
-        return new(generic, "Generic", "IconPath could not be resolved; a generic icon is displayed.");
+        return new(generic, "Generic", $"{iconField} could not be resolved; a generic icon is displayed.");
     }
 
     public static string Import(string sourceFile, string? preferredAssetName = null)

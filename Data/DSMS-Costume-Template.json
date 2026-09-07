@@ -1,0 +1,55 @@
+{
+  "Version": 3,
+  "UniqueID": "character_costume_unique_id",
+  "DisplayName": "Character - Costume Name",
+  "PresetName": "Character",
+  "PresetVariant": "Costume Name",
+  "Type": "Costume",
+  "TargetCharacterID": "CharacterID",
+  "Requirements": ["None"],
+
+  "PhysicsAssetPath": "/Game/MODS/ModAuthor/ModName/Mesh/SK_Body_PhysicsAsset.SK_Body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Path/To/ABP_Costume_Physics.ABP_Costume_Physics_C",
+
+  "FaceMorphPath": "/Game/MODS/ModAuthor/ModName/Mesh/SK_Ingame_Face.SK_Ingame_Face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/MODS/ModAuthor/ModName/Materials/MI_Face.MI_Face"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/MODS/ModAuthor/ModName/Materials/MI_Eyes.MI_Eyes"
+    }
+  ],
+  "FaceMorphTargets": [
+    {
+      "MorphName": "costume_morph_name",
+      "Value": 1.0,
+      "Description": "Fixed face morph required by this costume.",
+      "Locked": true
+    }
+  ],
+
+  "BodyPath": "/Game/MODS/ModAuthor/ModName/Mesh/SK_Body.SK_Body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/MODS/ModAuthor/ModName/Materials/MI_Costume.MI_Costume"
+    }
+  ],
+  "BodyMorphTargets": [
+    {
+      "MorphName": "costume_body_morph_name",
+      "Value": 1.0,
+      "Description": "Adjusts the custom body shape.",
+      "Min": -1.5,
+      "Max": 3.0,
+      "Locked": false
+    }
+  ],
+
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Default_Costume.Default_Costume"
+}

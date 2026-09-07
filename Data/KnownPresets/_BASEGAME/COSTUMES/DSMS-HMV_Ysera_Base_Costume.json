@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Ysera_Player",
+  "DisplayName": "Ysera - Main Outfit [Costume Base]",
+  "PresetName": "Ysera",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Ysera",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_body_PhysicsAsset.ch_ysera_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Ysera/DsABP_Ysera_Physics.DsABP_Ysera_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_ingame_face_mesh.ch_ysera_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_face.ch_ysera_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_face_mi.Ch_ysera_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_eye_mi.Ch_ysera_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_body.ch_ysera_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_a_mi.Ch_ysera_a_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_askin_mi.Ch_ysera_askin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_b_mi.Ch_ysera_b_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_bskin_mi.Ch_ysera_bskin_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ysera/Materials/Ch_ysera_hair_mi.Ch_ysera_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Ysera.Img_Character_Signal_Ysera"
+}

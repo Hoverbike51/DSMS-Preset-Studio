@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cassius_epic_01_weapon_dlc",
+  "DisplayName": "Kalsion - Roderick Royal Uniform Weapon [Weapon DLC]",
+  "PresetName": "Kalsion",
+  "PresetVariant": "Roderick Royal Uniform Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Cassius",
+  "Requirements": ["KalsionDLC"],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Cassius/ch_Cassius_Epic_01_mesh_wp.ch_Cassius_Epic_01_mesh_wp",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cassius/Cassius_Epic_01/Materials/Cassius_Epic_01_wp_mi.Cassius_Epic_01_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Kalsion_Weapon_DLC_01.Kalsion_Weapon_DLC_01"
+}

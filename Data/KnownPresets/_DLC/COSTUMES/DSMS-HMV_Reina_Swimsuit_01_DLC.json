@@ -1,0 +1,51 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_reina_swimsuit_01_dlc",
+  "DisplayName": "Reina - White Flower of the Blue Waves [Costume DLC]",
+  "PresetName": "Reina",
+  "PresetVariant": "White Flower of the Blue Waves",
+  "Type": "Costume",
+  "TargetCharacterID": "Reina",
+  "Requirements": ["ReinaDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Meshs/Reina_swimsuit_01_body_mesh_PhysicsAsset.Reina_swimsuit_01_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Reina/DsABP_Reina_SwimSuit_Physics.DsABP_Reina_SwimSuit_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_ingame_face_mesh.ch_reina_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_face_mesh.ch_reina_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_face_mi.ch_reina_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_eye_mi.ch_reina_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "LinkedBodyComponentMeshMatches": [
+    "ch_reina_mesh_body"
+  ],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Meshs/Reina_swimsuit_01_body_mesh.Reina_swimsuit_01_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_hair_mi.ch_Reina_swimsuit_01_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_hair_sdw.ch_Reina_swimsuit_01_hair_sdw"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_skin_mi.ch_Reina_swimsuit_01_skin_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_body_mi.ch_Reina_swimsuit_01_body_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Reina_Unique_01.Img_Character_Signal_Reina_Unique_01"
+}

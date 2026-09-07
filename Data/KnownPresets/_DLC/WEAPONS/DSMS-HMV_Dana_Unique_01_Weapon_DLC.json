@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_dana_unique_01_weapon_dlc",
+  "DisplayName": "Dana - Wild Strawberry Waitress Weapon [Weapon DLC]",
+  "PresetName": "Dana",
+  "PresetVariant": "Wild Strawberry Waitress Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Dana",
+  "Requirements": ["DanaDLC"],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Dana/ch_dana_Unique_01_WP_mesh.ch_dana_Unique_01_WP_mesh",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Materials/Dana_unique_01_wp_mi.Dana_unique_01_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Dana_Weapon_DLC_01.Dana_Weapon_DLC_01"
+}

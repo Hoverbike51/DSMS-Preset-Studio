@@ -20,6 +20,8 @@ public sealed class PresetRepairer(CharacterCatalog characterCatalog)
 
         preset.UniqueID = Trim(preset.UniqueID, "UniqueID", changes);
         preset.DisplayName = Trim(preset.DisplayName, "DisplayName", changes);
+        preset.PresetName = Trim(preset.PresetName, "PresetName", changes);
+        preset.PresetVariant = Trim(preset.PresetVariant, "PresetVariant", changes);
         preset.Type = Trim(preset.Type, "Type", changes);
         if (preset.Type?.Equals("Character", StringComparison.OrdinalIgnoreCase) == true)
         {
@@ -51,9 +53,14 @@ public sealed class PresetRepairer(CharacterCatalog characterCatalog)
         NormalizeAssetPath(preset.AuxiliaryPhysicsAssetPath, value => preset.AuxiliaryPhysicsAssetPath = value, "AuxiliaryPhysicsAssetPath", changes);
         NormalizeAssetPath(preset.LinkedBodyReplacementPath, value => preset.LinkedBodyReplacementPath = value, "LinkedBodyReplacementPath", changes);
         NormalizeAssetPath(preset.WeaponPath, value => preset.WeaponPath = value, "WeaponPath", changes);
-        NormalizeAssetPath(preset.IconPath, value => preset.IconPath = value, "IconPath", changes);
+        preset.NormalizeIconPathForType();
+        var iconField = preset.IconFieldName;
+        NormalizeAssetPath(preset.ActiveIconPath, value => preset.ActiveIconPath = value, iconField, changes);
         NormalizeAnimPath(preset.FollowerAnimBlueprintPath, value => preset.FollowerAnimBlueprintPath = value, "FollowerAnimBlueprintPath", changes);
         NormalizeAnimPath(preset.PhysicsAnimBlueprintPath, value => preset.PhysicsAnimBlueprintPath = value, "PhysicsAnimBlueprintPath", changes);
+        NormalizeAnimPath(preset.WeaponActionSourceBlueprintPath,
+            value => preset.WeaponActionSourceBlueprintPath = value,
+            "WeaponActionSourceBlueprintPath", changes);
 
         NormalizeMaterials(preset.BodyMaterials, "BodyMaterials", changes);
         NormalizeMaterials(preset.BodyOutlineMaterials, "BodyOutlineMaterials", changes);
@@ -143,46 +150,23 @@ public sealed class PresetRepairer(CharacterCatalog characterCatalog)
                 $"{field}[{i}].MaterialPath", changes);
         }
 
-        var normalized = materials
-            .GroupBy(x => (x.SlotIndex, Match: x.MaterialMatch ?? "", Path: x.MaterialPath ?? ""))
-            .Select(x => x.First())
-            .OrderBy(x => x.SlotIndex ?? int.MaxValue)
-            .ThenBy(x => x.MaterialMatch, StringComparer.OrdinalIgnoreCase)
-            .ToList();
-        if (materials.Count != normalized.Count || !materials.SequenceEqual(normalized))
-        {
-            materials.Clear();
-            materials.AddRange(normalized);
-            changes.Add(new(field, "Removed exact duplicates and sorted the material slots."));
-        }
+        // Preserve authored ordering and extension data. Duplicate selectors are reported by validation
+        // and must be resolved explicitly instead of silently dropping a future nested property.
     }
 
     private static void NormalizeMorphs(List<MorphTargetOverride>? morphs, string field,
         ICollection<RepairChange> changes)
     {
         if (morphs is null) return;
-        foreach (var morph in morphs)
-            morph.MorphName = Trim(morph.MorphName, field, changes);
-
-        var normalized = morphs
-            .Where(x => !string.IsNullOrWhiteSpace(x.MorphName))
-            .GroupBy(x => (x.MorphName!, x.Value), new MorphPairComparer())
-            .Select(x => x.First())
-            .ToList();
-        if (morphs.Count != normalized.Count)
+        for (var i = 0; i < morphs.Count; i++)
         {
-            morphs.Clear();
-            morphs.AddRange(normalized);
-            changes.Add(new(field, "Removed empty or exact duplicate morph target entries."));
+            var morph = morphs[i];
+            morph.MorphName = Trim(morph.MorphName, $"{field}[{i}].MorphName", changes);
+            if (morph.Description is null) continue;
+            var description = morph.Description.Trim();
+            if (!string.Equals(description, morph.Description, StringComparison.Ordinal))
+                changes.Add(new($"{field}[{i}].Description", "Removed leading or trailing whitespace."));
+            morph.Description = description;
         }
-    }
-
-    private sealed class MorphPairComparer : IEqualityComparer<(string Name, float Value)>
-    {
-        public bool Equals((string Name, float Value) x, (string Name, float Value) y) =>
-            x.Value.Equals(y.Value) && x.Name.Equals(y.Name, StringComparison.OrdinalIgnoreCase);
-
-        public int GetHashCode((string Name, float Value) obj) =>
-            HashCode.Combine(StringComparer.OrdinalIgnoreCase.GetHashCode(obj.Name), obj.Value);
     }
 }

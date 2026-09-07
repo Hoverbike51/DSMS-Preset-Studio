@@ -21,7 +21,7 @@
                     <TextBlock Text="DSMS PRESET STUDIO" FontSize="25" FontWeight="Bold" Foreground="{DynamicResource TextPrimaryBrush}"/>
                     <TextBlock x:Name="HeaderSubtitleText" Text="DragonSword: Awakening · DSMS ModLoader compatibility · JSON v3" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,3,0,0"/>
                 </StackPanel>
-                <Border Grid.Column="1" x:Name="RiskBadge" Background="#176A3A" BorderBrush="{DynamicResource SuccessBrush}" BorderThickness="1"
+                <Border Grid.Column="1" x:Name="RiskBadge" Background="{DynamicResource SuccessSurfaceBrush}" BorderBrush="{DynamicResource SuccessBorderBrush}" BorderThickness="1"
                         CornerRadius="15" Padding="15,6" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal"><TextBlock Text="✓" Margin="0,0,7,0" FontWeight="Bold"/><TextBlock x:Name="RiskText" Text="VALID" FontWeight="Bold"/></StackPanel>
                 </Border>
@@ -54,7 +54,7 @@
                         <StackPanel Grid.Column="0">
                             <Button x:Name="IdentityStepButton" Tag="Identity" Click="StepButton_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,8" Padding="12">
                                 <Grid Width="210"><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/></Grid.ColumnDefinitions>
-                                    <Border x:Name="IdentityStepBadge" Background="{DynamicResource PrimaryBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="1" Foreground="#071118" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+                                    <Border x:Name="IdentityStepBadge" Background="{DynamicResource PrimaryBrush}" CornerRadius="6" Width="31" Height="31"><TextBlock Text="1" Foreground="{DynamicResource PrimaryContrastTextBrush}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
                                     <StackPanel Grid.Column="1"><TextBlock Text="Identity" FontWeight="SemiBold"/><TextBlock Text="Preset identity" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11"/></StackPanel>
                                 </Grid>
                             </Button>
@@ -78,7 +78,7 @@
                             </Button>
                             <Border Style="{StaticResource CardStyle}" Margin="0,8,0,0">
                                 <StackPanel>
-                                    <TextBlock Text="QUICK SAFETY" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/>
+                                    <TextBlock Text="QUICK SAFETY" Foreground="{DynamicResource PrimaryTextBrush}" FontWeight="SemiBold"/>
                                     <TextBlock Text="Use full Unreal object paths. Never paste Windows paths in a preset." Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                                 </StackPanel>
                             </Border>
@@ -88,17 +88,20 @@
                             <StackPanel>
                                 <Border x:Name="IdentitySection" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
                                     <StackPanel>
-                                        <TextBlock Text="♙  Preset identity" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryBrush}"/>
+                                        <TextBlock Text="♙  Preset identity" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryTextBrush}"/>
                                         <Grid Margin="0,14,0,0">
                                             <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
                                             <TextBlock Text="Recipe" VerticalAlignment="Center"/><ComboBox Grid.Column="1" x:Name="RecipeCombo" SelectionChanged="RecipeCombo_SelectionChanged"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Name}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
                                             <TextBlock Grid.Row="1" Text="Preset type" VerticalAlignment="Center" Margin="0,9,0,0"/><ComboBox Grid.Row="1" Grid.Column="1" x:Name="TypeCombo" Margin="0,9,0,0" SelectionChanged="TypeCombo_SelectionChanged"/>
                                             <TextBlock Grid.Row="2" Text="Character" VerticalAlignment="Center" Margin="0,9,0,0"/><ComboBox Grid.Row="2" Grid.Column="1" x:Name="CharacterCombo" SelectionChanged="CharacterCombo_SelectionChanged" Margin="0,9,0,0"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
                                             <TextBlock Grid.Row="3" Text="TargetCharacterID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="TargetIdBox" Margin="0,9,0,0"/>
-                                            <TextBlock Grid.Row="4" Text="UniqueID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="UniqueIdBox" Margin="0,9,0,0"/>
-                                            <TextBlock Grid.Row="5" Text="DisplayName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="DisplayNameBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="4" Text="UniqueID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="UniqueIdBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
+                                            <TextBlock Grid.Row="5" Text="DisplayName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="DisplayNameBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
+                                            <TextBlock Grid.Row="6" Text="PresetName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="6" Grid.Column="1" x:Name="PresetNameBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
+                                            <TextBlock Grid.Row="7" Text="PresetVariant" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="7" Grid.Column="1" x:Name="PresetVariantBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
                                         </Grid>
+                                        <TextBlock x:Name="PresentationHintText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,10,0,0"/>
                                     </StackPanel>
                                 </Border>
 
@@ -113,7 +116,7 @@
                                             <TextBlock Grid.Row="2" Text="FacePath (optional)" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="FacePathBox" Margin="0,9,0,0"/>
                                             <TextBlock Grid.Row="3" Text="PhysicsAssetPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="PhysicsAssetPathBox" Margin="0,9,0,0"/>
                                             <TextBlock Grid.Row="4" Text="Physics ABP" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="PhysicsAbpPathBox" Margin="0,9,0,0"/>
-                                            <TextBlock Grid.Row="5" Text="IconPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="IconPathBox" Margin="0,9,0,0" TextChanged="IconPathBox_TextChanged"/>
+                                            <TextBlock Grid.Row="5" x:Name="IconPathLabel" Text="CharacterIconPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="CharacterIconPathBox" Margin="0,9,0,0" TextChanged="CharacterIconPathBox_TextChanged"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
@@ -123,11 +126,12 @@
                                         <TextBlock Text="⚙  Advanced meshes" Style="{StaticResource SectionTitleStyle}"/>
                                         <Grid Margin="0,14,0,0">
                                             <Grid.ColumnDefinitions><ColumnDefinition Width="138"/><ColumnDefinition/></Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+                                            <Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
                                             <TextBlock Text="BodyOutlinePath" VerticalAlignment="Center"/><TextBox Grid.Column="1" x:Name="BodyOutlinePathBox"/>
                                             <TextBlock Grid.Row="1" Text="FaceOutlinePath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="1" Grid.Column="1" x:Name="FaceOutlinePathBox" Margin="0,9,0,0"/>
                                             <TextBlock Grid.Row="2" Text="AuxiliaryMeshPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="2" Grid.Column="1" x:Name="AuxiliaryMeshPathBox" Margin="0,9,0,0"/>
                                             <TextBlock Grid.Row="3" Text="WeaponPath" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="3" Grid.Column="1" x:Name="WeaponPathBox" Margin="0,9,0,0"/>
+                                            <TextBlock Grid.Row="4" x:Name="WeaponActionSourceBlueprintPathLabel" Text="WeaponActionSourceBlueprintPath" VerticalAlignment="Center" Margin="0,9,0,0" Visibility="Collapsed"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="WeaponActionSourceBlueprintPathBox" Margin="0,9,0,0" Visibility="Collapsed"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
@@ -141,9 +145,21 @@
                                 <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
                                     <StackPanel>
                                         <TextBlock Text="♙  Active recipe" Style="{StaticResource SectionTitleStyle}"/>
-                                        <TextBlock x:Name="RecipeNameText" Text="Full costume replacement" Foreground="{DynamicResource PrimaryBrush}" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="RecipeNameText" Text="Full costume replacement" Foreground="{DynamicResource PrimaryTextBrush}" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
                                         <TextBlock x:Name="RecipeDescriptionText" TextWrapping="Wrap" Foreground="{DynamicResource TextPrimaryBrush}" Margin="0,7,0,0"/>
                                         <TextBlock x:Name="RecipeFieldsText" TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,9,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="◫  Details presentation preview" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TextBlock x:Name="PresetNamePreviewText" Foreground="{DynamicResource PrimaryTextBrush}" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+                                        <StackPanel x:Name="PresetVariantPreviewRow" Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="PresetVariant: " Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                            <TextBlock x:Name="PresetVariantPreviewText"/>
+                                        </StackPanel>
+                                        <TextBlock x:Name="PresetVariantHiddenText" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,5,0,0"/>
                                     </StackPanel>
                                 </Border>
 
@@ -155,7 +171,7 @@
                                         </Border>
                                         <StackPanel Grid.Column="2">
                                             <TextBlock Text="▣  Icon preview" Style="{StaticResource SectionTitleStyle}"/>
-                                            <TextBlock x:Name="IconSourceText" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold" Margin="0,9,0,0"/>
+                                            <TextBlock x:Name="IconSourceText" Foreground="{DynamicResource PrimaryTextBrush}" FontWeight="SemiBold" Margin="0,9,0,0"/>
                                             <TextBlock x:Name="IconStatusText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,5,0,0"/>
                                             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                                 <Button Content="Import image…" Click="ImportIcon_Click" Margin="0,0,7,0"/>
@@ -180,6 +196,57 @@
                                             <TabItem Header="Weapon"><DataGrid x:Name="WeaponMaterialsGrid" AutoGenerateColumns="False" CanUserAddRows="True" MinHeight="190" HorizontalScrollBarVisibility="Auto"><DataGrid.Columns><DataGridTextColumn Header="Slot" Binding="{Binding SlotIndex}" Width="70"/><DataGridTextColumn Header="Current material match (optional)" Binding="{Binding MaterialMatch}" Width="230"/><DataGridTextColumn Header="Material instance path" Binding="{Binding MaterialPath}" Width="*" MinWidth="650"/></DataGrid.Columns></DataGrid></TabItem>
                                         </TabControl>
                                         <TextBlock x:Name="MaterialHintText" Foreground="{DynamicResource WarningBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <Border x:Name="MorphTargetsSection" Style="{StaticResource CardStyle}" Margin="0,0,0,10">
+                                    <StackPanel>
+                                        <TextBlock Text="⌁  Morph Targets" Style="{StaticResource SectionTitleStyle}"/>
+                                        <TabControl x:Name="MorphTargetsTabs" Background="Transparent" BorderThickness="0" Margin="0,8,0,0">
+                                            <TabItem Header="Body morphs">
+                                                <Grid>
+                                                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/></Grid.RowDefinitions>
+                                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,7">
+                                                        <Button Tag="Body" Content="Add morph" Click="AddMorph_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Body" Content="Remove selected" Click="RemoveMorph_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Body" Content="Move up" Click="MoveMorphUp_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Body" Content="Move down" Click="MoveMorphDown_Click"/>
+                                                    </StackPanel>
+                                                    <DataGrid Grid.Row="1" x:Name="BodyMorphTargetsGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" SelectionMode="Single" MinHeight="210" HorizontalScrollBarVisibility="Auto">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Morph name" Binding="{Binding MorphName, UpdateSourceTrigger=PropertyChanged}" Width="180"/>
+                                                            <DataGridTextColumn Header="Default value" Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Width="105"/>
+                                                            <DataGridTextColumn Header="Minimum" Binding="{Binding Min, UpdateSourceTrigger=PropertyChanged}" Width="90"/>
+                                                            <DataGridTextColumn Header="Maximum" Binding="{Binding Max, UpdateSourceTrigger=PropertyChanged}" Width="90"/>
+                                                            <DataGridCheckBoxColumn Header="Locked" Binding="{Binding Locked, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                                            <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="360"/>
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem Header="Face morphs">
+                                                <Grid>
+                                                    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/></Grid.RowDefinitions>
+                                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,7">
+                                                        <Button Tag="Face" Content="Add morph" Click="AddMorph_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Face" Content="Remove selected" Click="RemoveMorph_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Face" Content="Move up" Click="MoveMorphUp_Click" Margin="0,0,7,0"/>
+                                                        <Button Tag="Face" Content="Move down" Click="MoveMorphDown_Click"/>
+                                                    </StackPanel>
+                                                    <DataGrid Grid.Row="1" x:Name="FaceMorphTargetsGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="True" SelectionMode="Single" MinHeight="210" HorizontalScrollBarVisibility="Auto">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Header="Morph name" Binding="{Binding MorphName, UpdateSourceTrigger=PropertyChanged}" Width="180"/>
+                                                            <DataGridTextColumn Header="Default value" Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}" Width="105"/>
+                                                            <DataGridTextColumn Header="Minimum" Binding="{Binding Min, UpdateSourceTrigger=PropertyChanged}" Width="90"/>
+                                                            <DataGridTextColumn Header="Maximum" Binding="{Binding Max, UpdateSourceTrigger=PropertyChanged}" Width="90"/>
+                                                            <DataGridCheckBoxColumn Header="Locked" Binding="{Binding Locked, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                                            <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="360"/>
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </Grid>
+                                            </TabItem>
+                                        </TabControl>
+                                        <TextBlock x:Name="MorphHintText" Foreground="{DynamicResource WarningBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                                     </StackPanel>
                                 </Border>
 
@@ -214,7 +281,7 @@
                         </Border>
                         <Border Grid.Column="2" Style="{StaticResource CardStyle}">
                             <StackPanel>
-                                <TextBlock Text="ADVANCED MODE" Foreground="{DynamicResource PrimaryBrush}" FontWeight="SemiBold"/>
+                                <TextBlock Text="ADVANCED MODE" Foreground="{DynamicResource PrimaryTextBrush}" FontWeight="SemiBold"/>
                                 <TextBlock Text="Edit every JSON v3 field directly. Format and validate before returning to the Visual Builder." TextWrapping="Wrap" Foreground="{DynamicResource TextSecondaryBrush}" Margin="0,10,0,0"/>
                                 <TextBlock Text="Technical field names and Unreal paths are never localized." TextWrapping="Wrap" Foreground="{DynamicResource WarningBrush}" Margin="0,15,0,0"/>
                             </StackPanel>
@@ -229,7 +296,7 @@
                             <StackPanel>
                                 <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
                                     <StackPanel>
-                                        <TextBlock Text="⚙  Settings" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryBrush}"/>
+                                        <TextBlock Text="⚙  Settings" Style="{StaticResource SectionTitleStyle}" Foreground="{DynamicResource PrimaryTextBrush}"/>
                                         <TextBlock x:Name="SettingsDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                                     </StackPanel>
                                 </Border>
@@ -289,7 +356,7 @@
                                 <Border Style="{StaticResource CardStyle}" Margin="0,0,0,12">
                                     <StackPanel>
                                         <TextBlock Text="ⓘ  About" Style="{StaticResource SectionTitleStyle}"/>
-                                        <TextBlock Text="HoverMods Vault" Foreground="{DynamicResource PrimaryBrush}" FontSize="20" FontWeight="Bold" Margin="0,12,0,0"/>
+                                        <TextBlock Text="HoverMods Vault" Foreground="{DynamicResource PrimaryTextBrush}" FontSize="20" FontWeight="Bold" Margin="0,12,0,0"/>
                                         <TextBlock Text="DSMS Preset Studio" FontSize="16" FontWeight="SemiBold" Margin="0,3,0,0"/>
                                         <TextBlock x:Name="AboutDescriptionText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,10,0,0"/>
                                         <Grid Margin="0,15,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
@@ -333,10 +400,10 @@
                         <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                         <TextBlock x:Name="IssueHeader" Text="◇  Validation results" Style="{StaticResource SectionTitleStyle}" VerticalAlignment="Center"/>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Button Tag="All" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="All "/><TextBlock x:Name="AllCountText" Text="0" Foreground="{DynamicResource PrimaryBrush}"/></StackPanel></Button>
+                            <Button Tag="All" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="All "/><TextBlock x:Name="AllCountText" Text="0" Foreground="{DynamicResource PrimaryTextBrush}"/></StackPanel></Button>
                             <Button Tag="Error" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="Errors "/><TextBlock x:Name="ErrorCountText" Text="0" Foreground="{DynamicResource ErrorBrush}"/></StackPanel></Button>
                             <Button Tag="Warning" Click="FilterIssues_Click" Padding="10,5" Margin="0,0,7,0"><StackPanel Orientation="Horizontal"><TextBlock Text="Warnings "/><TextBlock x:Name="WarningCountText" Text="0" Foreground="{DynamicResource WarningBrush}"/></StackPanel></Button>
-                            <Button Tag="Info" Click="FilterIssues_Click" Padding="10,5"><StackPanel Orientation="Horizontal"><TextBlock Text="Info "/><TextBlock x:Name="InfoCountText" Text="0" Foreground="{DynamicResource SecondaryBrush}"/></StackPanel></Button>
+                            <Button Tag="Info" Click="FilterIssues_Click" Padding="10,5"><StackPanel Orientation="Horizontal"><TextBlock Text="Info "/><TextBlock x:Name="InfoCountText" Text="0" Foreground="{DynamicResource SecondaryTextBrush}"/></StackPanel></Button>
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">

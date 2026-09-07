@@ -1,0 +1,19 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_dana_base_weapon",
+  "DisplayName": "Dana - Main Weapon [Weapon Base]",
+  "PresetName": "Dana",
+  "PresetVariant": "Main Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Dana",
+  "Requirements": ["None"],
+  "WeaponPath": "/Game/Art/Weapon/Player/Dana/ch_dana_mesh_wp.ch_dana_mesh_wp",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Dana/Materials/ch_dana_wp_mi.ch_dana_wp_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Dana_Weapon.Dana_Weapon"
+}

@@ -1,0 +1,50 @@
+{
+  "Version": 3,
+  "UniqueID": "Ryza_Player",
+  "DisplayName": "Ryza - Main Outfit [Costume Base]",
+  "PresetName": "Ryza",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Ryza",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Ryza/Meshs/ch_Ryza_mesh_PhysicsAsset.ch_Ryza_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Ryza/DsABP_Ryza_Physics.DsABP_Ryza_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Ryza/Meshs/ch_Ryza_ingame_face_mesh.ch_Ryza_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Ryza/Meshs/ch_Ryza_face_mesh.ch_Ryza_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/CH_Ryza_eye_mi.CH_Ryza_eye_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/CH_Ryza_face_MI.CH_Ryza_face_MI"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Ryza/Meshs/ch_Ryza_mesh.ch_Ryza_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/Ch_ryza_in_mi.Ch_ryza_in_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/CH_Ryza_hair_mi.CH_Ryza_hair_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/Ch_ryza_out_mi.Ch_ryza_out_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Ryza/Materials/Ch_ryza_skin_mi.Ch_ryza_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Ryza.Img_Character_Signal_Ryza"
+}

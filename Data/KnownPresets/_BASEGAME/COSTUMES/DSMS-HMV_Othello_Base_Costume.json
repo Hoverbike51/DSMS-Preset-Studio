@@ -1,0 +1,52 @@
+{
+  "Version": 3,
+  "UniqueID": "Othello_Player",
+  "DisplayName": "Othello - Main Outfit [Costume Base]",
+  "PresetName": "Othello",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Othello",
+  "Requirements": ["None"],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_mesh_body_PhysicsAsset.ch_othello_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Othello/DsABP_Othello_Physics.DsABP_Othello_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_ingame_face_mesh.ch_othello_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_mesh_face.ch_othello_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_face_mi.ch_othello_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_eye_mi.ch_othello_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_mesh_body.ch_othello_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_top_mi.ch_othello_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_cape_mi.ch_othello_cape_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_Leg_mi.ch_othello_Leg_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_hair_mi.ch_othello_hair_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_shadow_mi.ch_othello_shadow_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Othello.Img_Character_Signal_Othello"
+}

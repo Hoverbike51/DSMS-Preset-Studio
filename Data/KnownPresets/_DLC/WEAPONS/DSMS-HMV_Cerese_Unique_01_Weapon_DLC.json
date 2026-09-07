@@ -1,0 +1,28 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cerese_unique_01_weapon_dlc",
+  "DisplayName": "Cerese - Vow of Silence [Weapon DLC]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Vow of Silence",
+  "Type": "Weapon",
+  "TargetCharacterID": "Cerese",
+  "WeaponActionSourceBlueprintPath": "/Game/Design/DsCharacter/Player/Cerese/Weapon/DsWP_Cerese_Costume.DsWP_Cerese_Costume_C",
+  "Requirements": ["CereseDLC"],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Cerese/ch_Cerese_Unique_01_wp_mesh.ch_Cerese_Unique_01_wp_mesh",
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_wp_mi.ch_Cerese_Unique_01_wp_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Material/old/opp.opp"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_wp_ice_mi.ch_Cerese_Unique_01_wp_ice_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_02.Cerese_Weapon_DLC_02"
+}

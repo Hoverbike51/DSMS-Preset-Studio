@@ -1,0 +1,95 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_cerese_swimsuit_01_dlc",
+  "DisplayName": "Cerese - Moonlight on the Night Sea [Costume DLC]",
+  "PresetName": "Cerese",
+  "PresetVariant": "Moonlight on the Night Sea",
+  "Type": "Costume",
+  "TargetCharacterID": "Cerese",
+  "Requirements": ["CereseDLC"],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Meshs/ch_Cerese_swimsuit_01_body_mesh_PhysicsAsset.ch_Cerese_swimsuit_01_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Cerese/DsABP_Cerese_SwimSuit_Physics_Costume.DsABP_Cerese_SwimSuit_Physics_Costume_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_ingame_face_mesh.ch_cerese_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Cerese/Meshs/ch_cerese_face_mesh.ch_cerese_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_face_mi.ch_cerese_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eye_mi.ch_cerese_eye_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/CH_rute_eye_sdw_Mi.CH_rute_eye_sdw_Mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_eyebrow_mi.ch_cerese_eyebrow_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "HiddenComponentMeshMatches": [
+    "ch_cerese_body_mesh_outline.ch_cerese_body_mesh_outline"
+  ],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Meshs/ch_Cerese_swimsuit_01_body_mesh.ch_Cerese_swimsuit_01_body_mesh",
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_body_outline_mi.ch_cerese_body_outline_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_hair_outline_mi.ch_cerese_swimsuit_01_hair_outline_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_hair_outline_mi.ch_cerese_swimsuit_01_hair_outline_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_body_outline_mi.ch_cerese_body_outline_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_body_outline_mi.ch_cerese_body_outline_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Cerese/Materials/ch_cerese_skirt_outline_mi.ch_cerese_skirt_outline_mi"
+    }
+  ],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Meshs/ch_Cerese_swimsuit_01_body_mesh.ch_Cerese_swimsuit_01_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_grass_mi.ch_cerese_swimsuit_01_grass_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_Cerese_Unique_01_hair_mi.ch_Cerese_Unique_01_hair_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_swimsuit_01/Materials/ch_Reina_swimsuit_01_hair_sdw.ch_Reina_swimsuit_01_hair_sdw"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_body_mi.ch_cerese_swimsuit_01_body_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_skin_mi.ch_cerese_swimsuit_01_skin_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_swimsuit_01/Materials/ch_cerese_swimsuit_01_body_mi.ch_cerese_swimsuit_01_body_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Cerese_Unique_01.Img_Character_Signal_Cerese_Unique_01"
+}

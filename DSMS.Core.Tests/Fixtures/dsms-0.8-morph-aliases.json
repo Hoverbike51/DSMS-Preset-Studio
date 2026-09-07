@@ -1,0 +1,37 @@
+{
+  "Version": 3,
+  "UniqueID": "test_morph_08_aliases",
+  "DisplayName": "DSMS 0.8 alias fixture",
+  "preset_name": "Alias fixture",
+  "preset_variant": "Legacy field import",
+  "Type": "Weapon",
+  "TargetCharacterID": "Astria",
+  "Requirements": ["None"],
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Test/MI_Body.MI_Body",
+      "FutureMaterialMetadata": "preserve"
+    }
+  ],
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "example_component",
+      "WeaponPath": "/Game/Test/Weapon.Weapon",
+      "FutureWeaponMetadata": true
+    }
+  ],
+  "BodyMorphTargets": [
+    {
+      "Name": "alias_extended",
+      "value": 2.5,
+      "description": "Alias metadata",
+      "MinValue": -2.0,
+      "max_value": 4.0,
+      "locked": true,
+      "FutureMorphMetadata": 42
+    }
+  ],
+  "IconPaths": "/Game/Test/Icon.Icon",
+  "FuturePresetMetadata": "preserve"
+}

@@ -1,0 +1,54 @@
+{
+  "Version": 3,
+  "UniqueID": "Johnny_Player",
+  "DisplayName": "Johnny - Main Outfit [Costume Base]",
+  "PresetName": "Johnny",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Johnny",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Johnny/Meshs/ch_johnny_mesh_body_PhysicsAsset.ch_johnny_mesh_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Johnny/DsABP_Johnny_Physics.DsABP_Johnny_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Johnny/Meshs/ch_jony_mesh_ingame_face.ch_jony_mesh_ingame_face",
+  "FacePath": "/Game/Art/Character/Player/DS_Johnny/Meshs/ch__johnny_mesh_face.ch__johnny_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_face_mi.ch_jony_base_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_eye_mi.ch_jony_base_eye_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_hair_mi.ch_jony_base_hair_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Johnny/Meshs/ch_johnny_mesh_body.ch_johnny_mesh_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_top_mi.ch_jony_base_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_bot_mi.ch_jony_base_bot_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_cape_mi.ch_jony_base_cape_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Johnny/materials/ch_jony_base_hair_mi.ch_jony_base_hair_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Johnny.Img_Character_Signal_Johnny"
+}

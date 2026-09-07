@@ -1,0 +1,43 @@
+{
+  "Version": 3,
+  "UniqueID": "Jerome_Player",
+  "DisplayName": "Jerome - Main Outfit [Costume Base]",
+  "PresetName": "Jerome",
+  "PresetVariant": "Main Outfit",
+  "Type": "Costume",
+  "TargetCharacterID": "Jerome",
+  "Requirements": ["None"],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Jerome/Meshs/ch_jerome_body_PhysicsAsset.ch_jerome_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Jerome/DsABP_Jerome_Physics.DsABP_Jerome_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Jerome/Meshs/ch_jerome_ingame_face_mesh.ch_jerome_ingame_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Jerome/Materials/ch_jerome_face_mi.ch_jerome_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Jerome/Materials/ch_jerome_eye_mi.ch_jerome_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Player/DS_Jerome/Meshs/ch_jerome_body.ch_jerome_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Jerome/Materials/ch_jerome_hair_mi.ch_jerome_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Jerome/Materials/ch_jerome_top_mi.ch_jerome_top_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Jerome/Materials/ch_jerome_bottom_mi.ch_jerome_bottom_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Jerome.Img_Character_Signal_Jerome"
+}

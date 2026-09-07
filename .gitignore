@@ -3,6 +3,11 @@ bin/
 obj/
 Release/
 artifacts/
+publish/
+dist/
+out/
+*.nupkg
+*.snupkg
 
 # Local package caches
 .nuget/
@@ -29,6 +34,22 @@ coverage/
 DSMS.PresetStudio/Icons/Imported/*
 !DSMS.PresetStudio/Icons/Imported/README.txt
 *.log
+*.tmp
+*.bak
+*.dmp
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+*.pfx
+*.p12
+*.pem
+*.key
+*.snk
 
 # Operating-system files
 .DS_Store
