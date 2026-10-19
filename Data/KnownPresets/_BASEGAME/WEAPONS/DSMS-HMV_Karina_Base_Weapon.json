@@ -1,0 +1,22 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_karina_base_weapon",
+  "DisplayName": "Karina - Base Weapon [Weapon Base]",
+  "PresetName": "Karina",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Karina",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Karina_gun_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Karina/ch_karina_mesh_wp_gun.ch_karina_mesh_wp_gun"
+    },
+    {
+      "ComponentMatch": "DsWP_Karina_sword_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Karina/ch_karina_mesh_wp_sword.ch_karina_mesh_wp_sword"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

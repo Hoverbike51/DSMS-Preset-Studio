@@ -21,7 +21,7 @@
     "UniqueID": { "type": "string", "minLength": 1 },
     "DisplayName": { "type": "string", "minLength": 1 },
     "PresetName": { "type": "string", "minLength": 1, "pattern": "\\S" },
-    "PresetVariant": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "PresetVariant": { "type": "string", "minLength": 1, "pattern": "\\S", "description": "Details preview label. Keep at or below 34 characters in general; 35–36 is reserved for visually confirmed exceptions. This is authoring guidance, not a runtime schema limit." },
     "Type": { "enum": ["Custom", "Costume", "Weapon", "Mounts", "NPC"] },
     "TargetCharacterID": { "type": "string", "pattern": "^[A-Za-z0-9_-]+$" },
     "Requirements": { "$ref": "#/$defs/uniqueStrings" },

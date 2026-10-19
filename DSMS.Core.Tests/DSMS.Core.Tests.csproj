@@ -7,6 +7,7 @@
   <ItemGroup>
     <Content Include="Fixtures\*.json" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="..\Data\KnownPresets\**\*.json"><Link>Fixtures\KnownPresets\%(RecursiveDir)%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Content Include="..\DSMS.PresetStudio\compatibility.json"><Link>compatibility.json</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
   </ItemGroup>
 
   <PropertyGroup>

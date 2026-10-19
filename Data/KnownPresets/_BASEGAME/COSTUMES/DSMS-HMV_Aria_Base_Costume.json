@@ -6,26 +6,16 @@
   "PresetVariant": "Main Outfit",
   "Type": "Costume",
   "TargetCharacterID": "Aria",
-  "Requirements": ["None"],
-
+  "Requirements": [
+    "None"
+  ],
   "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_body_PhysicsAsset.ch_aria_mesh_body_PhysicsAsset",
   "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Aria/DsABP_Aria_Physics.DsABP_Aria_Physics_C",
-
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_ingame_face.ch_aria_mesh_ingame_face",
   "FacePath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_face.ch_aria_mesh_face",
   "FaceClearMaterialOverrides": true,
-  "FaceMaterials": [
-    {
-      "SlotIndex": 0,
-      "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_face_mi.ch_aria_base_face_mi"
-    },
-    {
-      "SlotIndex": 1,
-      "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_eye_mi.ch_aria_base_eye_mi"
-    }
-  ],
+  "FaceMaterials": [],
   "FaceMorphTargets": [],
-
   "BodyPath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_body.ch_aria_mesh_body",
   "BodyClearMaterialOverrides": true,
   "BodyMaterials": [
@@ -34,15 +24,22 @@
       "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_hair_mi.ch_aria_base_hair_mi"
     },
     {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_wp_mi.ch_aria_base_wp_mi"
+    },
+    {
       "SlotIndex": 2,
       "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_skin_mi.ch_aria_base_skin_mi"
     },
     {
       "SlotIndex": 3,
       "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_body_mi.ch_aria_base_body_mi"
+    },
+    {
+      "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_lens.ch_aria_lens"
     }
   ],
   "BodyMorphTargets": [],
-
   "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Aria.Img_Character_Signal_Aria"
 }

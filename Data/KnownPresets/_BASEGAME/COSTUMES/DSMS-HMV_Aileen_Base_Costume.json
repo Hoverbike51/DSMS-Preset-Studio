@@ -1,16 +1,16 @@
 {
   "Version": 3,
   "UniqueID": "Aileen_Player",
-  "DisplayName": "Aileen - Main Outfit [Costume Base]",
-  "PresetName": "Aileen",
+  "DisplayName": "Eileen - Main Outfit [Costume Base]",
+  "PresetName": "Eileen",
   "PresetVariant": "Main Outfit",
   "Type": "Costume",
   "TargetCharacterID": "Aileen",
-  "Requirements": ["None"],
-
+  "Requirements": [
+    "None"
+  ],
   "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_mesh_body_PhysicsAsset.ch_aileen_mesh_body_PhysicsAsset",
   "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Aileen/DsABP_Aileen_Physics.DsABP_Aileen_Physics_C",
-
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_ingame_face_mesh.ch_aileen_ingame_face_mesh",
   "FacePath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_face_mesh.ch_aileen_face_mesh",
   "FaceClearMaterialOverrides": true,
@@ -25,7 +25,6 @@
     }
   ],
   "FaceMorphTargets": [],
-
   "BodyPath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_mesh_body.ch_aileen_mesh_body",
   "BodyClearMaterialOverrides": true,
   "BodyMaterials": [
@@ -47,6 +46,5 @@
     }
   ],
   "BodyMorphTargets": [],
-
-  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Default_Costume.Default_Costume"
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Eileen.Img_Character_Signal_Eileen"
 }

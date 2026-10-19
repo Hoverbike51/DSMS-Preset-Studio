@@ -916,6 +916,29 @@ public partial class MainWindow : Window
         PresetVariantHiddenText.Text = Localized(
             "PresetVariant is omitted: the runtime hides this line.",
             "PresetVariant est omis : le runtime masque cette ligne.");
+
+        var variantLength = PresetVariantBox.Text.Length;
+        if (variantLength > 36)
+        {
+            PresetVariantLengthText.Text = Localized(
+                $"{variantLength} characters · exceeds the 36-character exceptional preview limit",
+                $"{variantLength} caractères · dépasse la limite exceptionnelle de 36 caractères");
+            PresetVariantLengthText.Foreground = (Brush)FindResource("ErrorBrush");
+        }
+        else if (variantLength > 34)
+        {
+            PresetVariantLengthText.Text = Localized(
+                $"{variantLength} characters · exceptional range (general limit: 34)",
+                $"{variantLength} caractères · plage exceptionnelle (limite générale : 34)");
+            PresetVariantLengthText.Foreground = (Brush)FindResource("WarningBrush");
+        }
+        else
+        {
+            PresetVariantLengthText.Text = Localized(
+                $"{variantLength}/34 characters · general preview limit",
+                $"{variantLength}/34 caractères · limite générale de l’aperçu");
+            PresetVariantLengthText.Foreground = (Brush)FindResource("TextSecondaryBrush");
+        }
     }
 
     private void RefreshIconPreview()

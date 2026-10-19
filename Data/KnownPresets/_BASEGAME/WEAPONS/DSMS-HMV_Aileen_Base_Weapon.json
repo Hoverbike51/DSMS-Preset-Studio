@@ -1,0 +1,20 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_aileen_base_weapon",
+  "DisplayName": "Eileen - Base Weapon [Weapon Base]",
+  "PresetName": "Eileen",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Aileen",
+  "Requirements": [
+    "None"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Aileen_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Aileen/wp_aileen_mi.wp_aileen_mi"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Eileen_Weapon.Eileen_Weapon"
+}

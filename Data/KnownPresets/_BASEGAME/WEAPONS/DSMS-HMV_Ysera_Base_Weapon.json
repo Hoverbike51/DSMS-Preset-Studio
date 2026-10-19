@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_ysera_base_weapon",
+  "DisplayName": "Ysera - Base Weapon [Weapon Base]",
+  "PresetName": "Ysera",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Ysera",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Ysera_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Ysera/ch_ysera_mesh_wp.ch_ysera_mesh_wp"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

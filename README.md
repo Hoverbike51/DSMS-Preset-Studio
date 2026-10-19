@@ -2,11 +2,11 @@
 
 **DSMS Preset Studio** is a Windows desktop application for creating, reviewing and validating **DragonSword: Awakening** presets for **DSMS ModLoader**.
 
-- Current Studio version: **0.6.0**
+- Current Studio version: **0.6.1**
 - Preset format: **DSMS JSON v3**
-- Recommended ModLoader version: **0.8**
+- Recommended ModLoader version: **0.8.1**
 
-Version 0.6.0 implements the DSMS Mod Loader 0.8 Morph Target, preset-presentation, type-specific icon and evidence-gated Weapon action-source contracts. Mod Loader 0.8 is now the tested and recommended compatibility target.
+Version 0.6.1 promotes the unchanged JSON v3 authoring contract to the locally validated DSMS Mod Loader 0.8.1 line. It adds no-loss round-trip coverage for the current preset corpus and presentation-length guidance without imposing a runtime-incompatible schema maximum.
 
 ## What the application does
 
@@ -15,9 +15,9 @@ Version 0.6.0 implements the DSMS Mod Loader 0.8 Morph Target, preset-presentati
 - Generates consistently formatted JSON.
 - Validates required fields, target character IDs, Unreal paths, material slots, morph targets, body and face outlines, auxiliary meshes and weapon components.
 - Edits Body and Face Morph Targets with optional descriptions, custom minimum/maximum ranges and runtime locking.
-- Authors the optional `PresetName` and `PresetVariant` details metadata while keeping `DisplayName` as the selector label.
+- Authors the optional `PresetName` and `PresetVariant` details metadata while keeping `DisplayName` as the selector label, with a live 34-character general-limit indicator and an explicit 35–36-character exception range.
 - Reads legacy icon aliases and writes `CharacterIconPath` for non-Weapon presets or `WeaponIconPath` for Weapon presets.
-- Authors the optional Weapon-only `WeaponActionSourceBlueprintPath` used by Mod Loader 0.8 to copy an evidence-backed `WeaponActionDataArray` from a source Blueprint.
+- Authors the optional Weapon-only `WeaponActionSourceBlueprintPath` used by Mod Loader 0.8+ to copy an evidence-backed `WeaponActionDataArray` from a source Blueprint.
 - Preserves unknown preset and nested object properties during load, edit and save.
 - Applies only deterministic and reviewable repairs.
 - Scans preset folders and reports duplicate `UniqueID` values.
@@ -58,7 +58,7 @@ The Visual Builder provides recipes for:
 
 Select the target character before entering asset paths. Public character names and internal aliases such as `Kalsion/Cassius` and `Ornette/Onette` are handled by the character catalog.
 
-`PresetName` and `PresetVariant` control the Mod Loader details panel. When `PresetName` is blank, Studio previews the runtime fallback obtained by removing bracketed segments from `DisplayName`; if that becomes empty, it uses `UniqueID`. A blank `PresetVariant` stays hidden. `DisplayName` itself remains unchanged and continues to identify the preset in selectors.
+`PresetName` and `PresetVariant` control the Mod Loader details panel. When `PresetName` is blank, Studio previews the runtime fallback obtained by removing bracketed segments from `DisplayName`; if that becomes empty, it uses `UniqueID`. A blank `PresetVariant` stays hidden. Keep `PresetVariant` at 34 characters or fewer in general; 35–36 characters are accepted only as a visually confirmed exception. Longer values remain valid JSON but receive an overflow warning. `DisplayName` itself remains unchanged and continues to identify the preset in selectors.
 
 ### 3. Enter Unreal asset paths
 

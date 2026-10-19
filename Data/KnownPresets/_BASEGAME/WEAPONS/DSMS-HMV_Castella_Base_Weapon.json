@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_castella_base_weapon",
+  "DisplayName": "Castella - Base Weapon [Weapon Base]",
+  "PresetName": "Castella",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Castella",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Castella_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Castela/ch_castella_mesh_weapon.ch_castella_mesh_weapon"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Castella_Weapon.Castella_Weapon"
+}

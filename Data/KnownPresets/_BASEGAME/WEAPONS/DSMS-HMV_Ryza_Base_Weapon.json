@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_ryza_base_weapon",
+  "DisplayName": "Ryza - Base Weapon [Weapon Base]",
+  "PresetName": "Ryza",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Ryza",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Ryza_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Ryza/ch_Ryza_mesh_wp.ch_Ryza_mesh_wp"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

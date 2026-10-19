@@ -1,0 +1,22 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_tarte_base_weapon",
+  "DisplayName": "Tarte - Base Weapon [Weapon Base]",
+  "PresetName": "Tarte",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Tarte",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Tarte_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Tarte/ch_tarte_mesh_R_wp.ch_tarte_mesh_R_wp"
+    },
+    {
+      "ComponentMatch": "DsWP_Tarte_Book_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Tarte/ch_tarte_mesh_L_book.ch_tarte_mesh_L_book"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Tarte_Weapon.Tarte_Weapon"
+}

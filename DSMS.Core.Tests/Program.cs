@@ -14,6 +14,35 @@ void Expect(string name, bool condition) { Console.WriteLine($"[{(condition ? "P
 string Fixture(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", name);
 bool ThrowsJson(string json) { try { PresetSerializer.Deserialize(json); return false; } catch (JsonException) { return true; } }
 JsonElement JsonValue(string json) { using var document = JsonDocument.Parse(json); return document.RootElement.Clone(); }
+bool JsonSemanticallyEqual(string leftJson, string rightJson)
+{
+    using var leftDocument = JsonDocument.Parse(leftJson);
+    using var rightDocument = JsonDocument.Parse(rightJson);
+    return JsonElementsSemanticallyEqual(leftDocument.RootElement, rightDocument.RootElement);
+}
+bool JsonElementsSemanticallyEqual(JsonElement left, JsonElement right)
+{
+    if (left.ValueKind != right.ValueKind)
+        return left.ValueKind == JsonValueKind.Number && right.ValueKind == JsonValueKind.Number &&
+               left.GetDouble().Equals(right.GetDouble());
+
+    return left.ValueKind switch
+    {
+        JsonValueKind.Object =>
+            left.EnumerateObject().Count() == right.EnumerateObject().Count() &&
+            left.EnumerateObject().All(property =>
+                right.TryGetProperty(property.Name, out var rightValue) &&
+                JsonElementsSemanticallyEqual(property.Value, rightValue)),
+        JsonValueKind.Array =>
+            left.GetArrayLength() == right.GetArrayLength() &&
+            left.EnumerateArray().Zip(right.EnumerateArray()).All(pair => JsonElementsSemanticallyEqual(pair.First, pair.Second)),
+        JsonValueKind.String => left.GetString() == right.GetString(),
+        JsonValueKind.Number => left.GetDouble().Equals(right.GetDouble()),
+        JsonValueKind.True or JsonValueKind.False => left.GetBoolean() == right.GetBoolean(),
+        JsonValueKind.Null or JsonValueKind.Undefined => true,
+        _ => left.GetRawText() == right.GetRawText()
+    };
+}
 PresetDocument ValidCostume() => new()
 {
     Version = 3, UniqueID = "test_astria_costume", DisplayName = "Astria - Test [Costume Custom]",
@@ -143,6 +172,16 @@ Expect("PresetName fallback removes bracketed segments and collapses whitespace"
 Expect("PresetName fallback uses UniqueID when DisplayName becomes empty", uniqueIdFallback.Name == "fallback_id");
 Expect("explicit PresetName is trimmed and blank PresetVariant is hidden", explicitPresentation.Name == "Explicit name" && explicitPresentation.Variant is null);
 
+var generalVariant = ValidCostume(); generalVariant.PresetVariant = new string('A', 34);
+var exceptionalVariant = ValidCostume(); exceptionalVariant.PresetVariant = new string('B', 36);
+var overflowingVariant = ValidCostume(); overflowingVariant.PresetVariant = new string('C', 37);
+Expect("34-character PresetVariant stays inside the general preview limit",
+    !validator.Validate(generalVariant, "DSMS-Test.json").Issues.Any(x => x.Code is "DSMS047" or "DSMS048"));
+Expect("35–36 character PresetVariant is accepted as an informational visual exception",
+    validator.Validate(exceptionalVariant, "DSMS-Test.json").Issues.Any(x => x.Code == "DSMS047" && x.Severity == ValidationSeverity.Info));
+Expect("PresetVariant above 36 characters receives a preview-overflow warning",
+    validator.Validate(overflowingVariant, "DSMS-Test.json").Issues.Any(x => x.Code == "DSMS048" && x.Severity == ValidationSeverity.Warning));
+
 var invalidBounds = ValidCostume(); invalidBounds.BodyMorphTargets = [new() { MorphName = "invalid_bounds", Value = 1f, Min = 2f, Max = 2f }];
 Expect("Min greater than or equal to Max is rejected", validator.Validate(invalidBounds, "DSMS-Test.json").Issues.Any(x => x.Code == "DSMS046" && x.Field == "BodyMorphTargets[0].Min"));
 var belowRange = ValidCostume(); belowRange.BodyMorphTargets = [new() { MorphName = "below_range", Value = -2f, Min = -1.5f, Max = 3f }];
@@ -174,22 +213,16 @@ Expect("morph repair trims text without dropping order or metadata",
 
 var referenceDirectory = Fixture("KnownPresets");
 var referenceFiles = Directory.GetFiles(referenceDirectory, "*.json", SearchOption.AllDirectories);
-Expect("all 71 DSMS 0.8 known presets are included", referenceFiles.Length == 71);
+Expect("all 83 DSMS 0.8.1 known presets are included", referenceFiles.Length == 83);
 foreach (var referenceFile in referenceFiles)
 {
-    var referencePreset = PresetSerializer.Deserialize(File.ReadAllText(referenceFile));
+    var referenceSource = File.ReadAllText(referenceFile);
+    var referencePreset = PresetSerializer.Deserialize(referenceSource);
+    var referenceSerialized = PresetSerializer.Serialize(referencePreset);
     var referenceReport = validator.Validate(referencePreset, Path.GetFileName(referenceFile));
-    if (Path.GetFileName(referenceFile).Equals("DSMS-HMV_Awaken_Lute_Base_Costume.json", StringComparison.OrdinalIgnoreCase))
-    {
-        Expect("Awaken Lute keeps its two known unresolved eye material mismatches explicit",
-            referenceReport.ErrorCount == 2 &&
-            referenceReport.Issues.Count(issue => issue.Code == "DSMS017" &&
-                issue.Field is "FaceMaterials[1].MaterialPath" or "FaceMaterials[2].MaterialPath") == 2);
-    }
-    else
-    {
-        Expect($"reference preset {Path.GetFileName(referenceFile)} validates", referenceReport.ErrorCount == 0);
-    }
+    Expect($"reference preset {Path.GetFileName(referenceFile)} validates", referenceReport.ErrorCount == 0);
+    Expect($"reference preset {Path.GetFileName(referenceFile)} survives a semantic no-loss round trip",
+        JsonSemanticallyEqual(referenceSource, referenceSerialized));
     if (referencePreset.UsesWeaponIcon)
         Expect($"weapon reference {Path.GetFileName(referenceFile)} uses WeaponIconPath",
             !string.IsNullOrWhiteSpace(referencePreset.WeaponIconPath) && referencePreset.CharacterIconPath is null);
@@ -210,6 +243,15 @@ Expect("dedicated DSMS 0.8 fixtures cover extended unlocked and fixed locked mor
     aliasesRoundTrip.BodyMorphTargets![0].Min == -2f && aliasesRoundTrip.BodyMorphTargets[0].Max == 4f &&
     aliasesRoundTrip.BodyMorphTargets[0].Locked == true &&
     !string.IsNullOrWhiteSpace(aliasesRoundTrip.BodyMorphTargets[0].Description));
+
+using (var compatibilityDocument = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "compatibility.json"))))
+{
+    var compatibilityRoot = compatibilityDocument.RootElement;
+    Expect("Studio compatibility metadata tests Mod Loader 0.8.1",
+        compatibilityRoot.GetProperty("TestedModLoaderVersions").EnumerateArray().Any(x => x.GetString() == "0.8.1"));
+    Expect("Studio compatibility metadata recommends Mod Loader 0.8.1",
+        compatibilityRoot.GetProperty("RecommendedModLoaderVersion").GetString() == "0.8.1");
+}
 
 var repairTarget = ValidCostume(); repairTarget.Version = 2; repairTarget.Type = "Character"; repairTarget.TargetCharacterID = "Kalsion";
 repairTarget.PresetName = " Test name "; repairTarget.PresetVariant = " Variant "; repairTarget.CharacterIconPath = "/Game/Test/Icon"; repairTarget.PhysicsAnimBlueprintPath = "/Game/Test/DsABP_Test_Physics"; repairTarget.Requirements = null;
@@ -250,6 +292,13 @@ if (args.Length > 0)
             Console.WriteLine($"[{issue.Severity}] {Path.GetFileName(file.FilePath)} {issue.Code} {issue.Field}: {issue.Message}");
     Expect("repository contains presets", repository.FileCount > 0);
     Expect("repository scan reports issues without modifying source files", repository.Files.All(x => File.Exists(x.FilePath)));
+    foreach (var file in repository.Files.Where(x => x.Preset is not null))
+    {
+        var source = File.ReadAllText(file.FilePath);
+        var serialized = PresetSerializer.Serialize(file.Preset!);
+        Expect($"repository preset {Path.GetFileName(file.FilePath)} survives a semantic no-loss round trip",
+            JsonSemanticallyEqual(source, serialized));
+    }
 }
 if (args.Length > 1)
 {

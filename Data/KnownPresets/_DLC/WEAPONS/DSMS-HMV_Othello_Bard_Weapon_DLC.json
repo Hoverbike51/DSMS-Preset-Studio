@@ -1,0 +1,26 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_othello_bard_weapon_dlc",
+  "DisplayName": "Othello - Lute of the Hidden Eve [Weapon DLC]",
+  "PresetName": "Othello",
+  "PresetVariant": "Lute of the Hidden Eve",
+  "Type": "Weapon",
+  "TargetCharacterID": "Othello",
+  "Requirements": [
+    "OthelloDLC"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_bard_wp_mi.ch_othello_bard_wp_mi"
+    }
+  ],
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Othello_C",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Othello/ch_othello_bard_WP_mesh.ch_othello_bard_WP_mesh"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Othello_Weapon_DLC_01_.Othello_Weapon_DLC_01_"
+}

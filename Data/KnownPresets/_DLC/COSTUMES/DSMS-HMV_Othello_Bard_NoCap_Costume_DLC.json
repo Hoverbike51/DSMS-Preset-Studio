@@ -1,0 +1,63 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_othello_bard_nocap_costume",
+  "DisplayName": "Othello - Minstrel of the Black Stage (No Cap) [Costume DLC]",
+  "PresetName": "Othello",
+  "PresetVariant": "Minstrel of the Black Stage (No Cap)",
+  "Type": "Costume",
+  "TargetCharacterID": "Othello",
+  "Requirements": [
+    "OthelloDLC"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Meshs/ch_othello_bard_body_mesh_PhysicsAsset.ch_othello_bard_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Othello/DsABP_Othello_Bard_Physics.DsABP_Othello_Bard_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_ingame_face_mesh.ch_othello_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Othello/Mesh/ch_othello_mesh_face.ch_othello_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_face_mi.ch_othello_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_eye_mi.ch_othello_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Meshs/ch_othello_bard_body_mesh.ch_othello_bard_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_bard_body_mi.ch_othello_bard_body_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_bard_acc_mi.ch_othello_bard_acc_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_bard_skin_mi.ch_othello_bard_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Meshs/ch_othello_bard_nocap_hair_mesh.ch_othello_bard_nocap_hair_mesh",
+  "AuxiliaryPhysicsAssetPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Meshs/ch_othello_bard_nocap_hair_mesh_PhysicsAsset.ch_othello_bard_nocap_hair_mesh_PhysicsAsset",
+  "AuxiliarySpawnOnly": true,
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Othello/Othello_Bard/Maturials/ch_othello_bard_hair_mi.ch_othello_bard_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Othello/Material/ch_othello_shadow_mi.ch_othello_shadow_mi"
+    }
+  ],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Othello_Unique_01.Img_Character_Signal_Othello_Unique_01",
+  "HiddenComponentMeshMatches": [
+    "ch_othello_mesh_body.ch_othello_mesh_body"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_awaken_lute_base_weapon",
+  "DisplayName": "Awaken Lute - Base Weapon [Weapon Base]",
+  "PresetName": "Awaken Lute",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Awaken_Lute",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Awaken_Lute_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Awaken_Lute/ch_awaken_lute_mesh_WP.ch_awaken_lute_mesh_WP"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

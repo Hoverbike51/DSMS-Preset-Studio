@@ -1,0 +1,22 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_alex_base_weapon",
+  "DisplayName": "Alex - Base Weapon [Weapon Base]",
+  "PresetName": "Alex",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Alex",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Alex_sword_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Alex/ch_Alex_wp_sword.ch_Alex_wp_sword"
+    },
+    {
+      "ComponentMatch": "DsWP_Alex_shield_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Alex/ch_Alex_wp_shield.ch_Alex_wp_shield"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Alex_Weapon.Alex_Weapon"
+}

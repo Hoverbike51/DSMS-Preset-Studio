@@ -1,5 +1,14 @@
 # DSMS Preset Studio — Changelog
 
+## Version 0.6.1
+
+- Promotes DSMS Mod Loader 0.8.1 to the tested and recommended compatibility target after representative runtime validation and a fresh Studio no-loss round trip.
+- Keeps JSON schema 3 and the complete 0.8 model/serializer contract unchanged because Loader 0.8.1 introduces no field, alias, default or preset-semantics delta.
+- Adds live `PresetVariant` character guidance: 34 characters is the general Details-preview safety limit, 35–36 is an allowed visually confirmed exception range, and values above 36 receive a warning without becoming schema-invalid.
+- Adds English/French validation messages, Visual Builder guidance, schema documentation and recipe warnings for the presentation-length policy.
+- Extends automated coverage to prove semantic no-loss round trips for all 83 current KnownPresets and the active Loader 0.8.1 preset repository.
+- Retains Aria Epic 01 and Aria Rare 01 as authoring references only while their runtime copies remain deliberately disabled pending a separate repair.
+
 ## Version 0.6.0
 
 - Implements the DSMS Mod Loader 0.8 Morph Target contract for `Description`, `Locked`, `Min` and `Max`, including all documented runtime aliases.

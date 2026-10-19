@@ -21,6 +21,7 @@ public sealed partial class PresetValidator
             report.Error("DSMS002", "Version", "The active DSMS compatibility profile requires JSON schema Version 3.");
         RequiredText(report, preset.UniqueID, "UniqueID", "DSMS003");
         RequiredText(report, preset.DisplayName, "DisplayName", "DSMS004");
+        ValidatePresetVariant(report, preset.PresetVariant);
 
         if (string.IsNullOrWhiteSpace(preset.Type) || !AcceptedTypes.Contains(preset.Type))
             report.Error("DSMS005", "Type", "Accepted values are Custom, Costume, Weapon, Mounts and NPC.");
@@ -131,6 +132,23 @@ public sealed partial class PresetValidator
             return;
         }
         ValidateStringArray(report, values, "Requirements", requireOne: true);
+    }
+
+    private static void ValidatePresetVariant(ValidationReport report, string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return;
+
+        var length = value.Length;
+        if (length > 36)
+        {
+            report.Warning("DSMS048", "PresetVariant",
+                $"PresetVariant contains {length} characters and exceeds the 36-character exceptional preview limit.");
+        }
+        else if (length > 34)
+        {
+            report.Info("DSMS047", "PresetVariant",
+                $"PresetVariant contains {length} characters. The general preview limit is 34; use 35–36 only as a visually confirmed exception.");
+        }
     }
 
     private static void ValidateMaterials(ValidationReport report, List<MaterialOverride>? values, string field, bool allowMaterialMatch = false)

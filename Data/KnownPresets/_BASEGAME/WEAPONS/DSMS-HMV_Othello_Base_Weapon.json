@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_othello_base_weapon",
+  "DisplayName": "Othello - Base Weapon [Weapon Base]",
+  "PresetName": "Othello",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Othello",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Othello_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Othello/ch_othello_mesh_wp.ch_othello_mesh_wp"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Othello_Weapon.Othello_Weapon"
+}
