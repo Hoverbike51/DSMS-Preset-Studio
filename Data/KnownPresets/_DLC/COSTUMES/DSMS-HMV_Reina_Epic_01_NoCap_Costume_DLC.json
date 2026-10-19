@@ -1,0 +1,60 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_reina_epic_01_nocap_costume",
+  "DisplayName": "Reina - Royal Ceremonial Knight Uniform (No Cap) [Costume DLC]",
+  "PresetName": "Reina",
+  "PresetVariant": "Royal Ceremonial Knight (No Cap)",
+  "Type": "Costume",
+  "TargetCharacterID": "Reina",
+  "Requirements": [
+    "ReinaDLC"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Mesh/ch_Reina_epic_01_body_mesh_PhysicsAsset.ch_Reina_epic_01_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Reina/DsABP_Reina_Epic_Physics.DsABP_Reina_Epic_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_ingame_face_mesh.ch_reina_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Reina/Meshs/ch_reina_face_mesh.ch_reina_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_face_mi.ch_reina_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Reina/Materials/ch_reina_eye_mi.ch_reina_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Mesh/ch_Reina_epic_01_body_mesh.ch_Reina_epic_01_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_rare_01_leg_mi.ch_reina_rare_01_leg_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_rare_01_leg_skin_mi.ch_reina_rare_01_leg_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_rare_01_body_mi.ch_reina_rare_01_body_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_rare_01_body_skin_mi.ch_reina_rare_01_body_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Mesh/ch_Reina_epic_01_nocap_hair_mesh.ch_Reina_epic_01_nocap_hair_mesh",
+  "AuxiliaryPhysicsAssetPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Mesh/ch_Reina_epic_01_nocap_hair_mesh_PhysicsAsset.ch_Reina_epic_01_nocap_hair_mesh_PhysicsAsset",
+  "AuxiliarySpawnOnly": true,
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_epic_hair_mi.ch_reina_epic_hair_mi"
+    }
+  ],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Reina_Epic_01.Img_Character_Signal_Reina_Epic_01"
+}

@@ -9,7 +9,7 @@
   "Requirements": [
     "None"
   ],
-  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_body_PhysicsAsset.ch_charlotte_mesh_body_PhysicsAsset",
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_PhysicsAsset.ch_charlotte_mesh_PhysicsAsset",
   "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Charlotte/DsABP_Charlotte_Physics.DsABP_Charlotte_Physics_C",
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_ingame_face_mesh.ch_charlotte_ingame_face_mesh",
   "FacePath": "/Game/Art/Character/Player/DS_Charlotte/Meshs/ch_charlotte_mesh_face.ch_charlotte_mesh_face",

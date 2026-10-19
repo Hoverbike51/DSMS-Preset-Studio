@@ -38,14 +38,22 @@
     },
     {
       "SlotIndex": 2,
-      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_body_skin_mi.CH_rute_body_skin_mi"
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_top_mi.CH_rute_top_mi"
     },
     {
       "SlotIndex": 3,
-      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_mi.CH_rute_hair_mi"
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_body_skin_mi.CH_rute_body_skin_mi"
     },
     {
       "SlotIndex": 4,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_top_mi.CH_rute_top_mi"
+    },
+    {
+      "SlotIndex": 5,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_mi.CH_rute_hair_mi"
+    },
+    {
+      "SlotIndex": 6,
       "MaterialPath": "/Game/Art/Character/Player/DS_Lute/Materials_steam/CH_rute_hair_sdw_M.CH_rute_hair_sdw_M"
     }
   ],

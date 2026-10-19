@@ -1,0 +1,26 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_aileen_epic_01_weapon_dlc",
+  "DisplayName": "Eileen - Blue March Banner Lance [Weapon DLC]",
+  "PresetName": "Eileen",
+  "PresetVariant": "Blue March Banner Lance",
+  "Type": "Weapon",
+  "TargetCharacterID": "Aileen",
+  "Requirements": [
+    "AileenDLC"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_wp_mi.ch_Aileen_rare_01_wp_mi"
+    }
+  ],
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Aileen_C",
+      "WeaponPath": "/Game/Art/Weapon/Costume/DS_Aileen/ch_Aileen_Epic_01_WP.ch_Aileen_Epic_01_WP"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Aileen_Weapon_DLC_01.Aileen_Weapon_DLC_01"
+}

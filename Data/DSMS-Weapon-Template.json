@@ -1,0 +1,23 @@
+{
+  "Version": 3,
+  "UniqueID": "author_character_weapon_unique_id",
+  "DisplayName": "Character - Weapon Name",
+  "PresetName": "Character",
+  "PresetVariant": "Weapon Name",
+  "Type": "Weapon",
+  "TargetCharacterID": "CharacterID",
+  "Requirements": ["None"],
+
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "wp_main",
+      "WeaponPath": "/Game/MODS/ModAuthor/ModName/Mesh/SK_wp_main.SK_wp_main"
+    },
+    {
+      "ComponentMatch": "wp_secondary",
+      "WeaponPath": "/Game/MODS/ModAuthor/ModName/Mesh/SK_wp_secondary.SK_wp_secondary"
+    }
+  ],
+
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

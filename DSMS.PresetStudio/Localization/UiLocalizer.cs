@@ -215,6 +215,8 @@ public static class UiLocalizer
                 .Replace("Max must", "Max doit", StringComparison.Ordinal)
                 .Replace("be a finite number", "être un nombre fini", StringComparison.Ordinal),
             "DSMS046" => "Min doit être strictement inférieur à Max.",
+            "DSMS047" => issue.Message.Replace("characters. The general preview limit is 34; use 35–36 only as a visually confirmed exception.", "caractères. La limite générale de l’aperçu est de 34 ; utilisez 35–36 uniquement comme exception confirmée visuellement.", StringComparison.Ordinal),
+            "DSMS048" => issue.Message.Replace("characters and exceeds the 36-character exceptional preview limit.", "caractères et dépasse la limite exceptionnelle de 36 caractères de l’aperçu.", StringComparison.Ordinal),
             "DSMS110" => TranslateFModelSuggestion(issue.Message,
                 "FModel a trouvé cet asset avec une casse ou une orthographe différente.", "Suggested path:", "Chemin suggéré :"),
             "DSMS111" => TranslateFModelSuggestion(issue.Message,

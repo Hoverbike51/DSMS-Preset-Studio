@@ -1,0 +1,22 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_lute_base_weapon",
+  "DisplayName": "Lute - Base Weapon [Weapon Base]",
+  "PresetName": "Lute",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Lute",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Lute_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Lute/ch_lute_mesh_sword.ch_lute_mesh_sword"
+    },
+    {
+      "ComponentMatch": "DsWP_Lute_staff_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Lute/ch_lute_mesh_staff.ch_lute_mesh_staff"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Lute_Weapon.Lute_Weapon"
+}

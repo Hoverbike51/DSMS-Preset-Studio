@@ -6,7 +6,7 @@
     "Type": "Costume",
     "RequiredFields": ["TargetCharacterID", "BodyPath", "FaceMorphPath", "PhysicsAssetPath", "PhysicsAnimBlueprintPath", "CharacterIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "BodyMaterials", "FaceMaterials", "FacePath", "BodyMorphTargets", "FaceMorphTargets"],
-    "Warnings": ["Body, skeleton and Animation Blueprint must be compatible.", "Material slot indexes must match the selected skeletal mesh.", "Morph Target Min and Max are optional and default to 0 and 1. Locked hides a morph from runtime editing; Description explains its purpose."]
+    "Warnings": ["Body, skeleton and Animation Blueprint must be compatible.", "Material slot indexes must match the selected skeletal mesh.", "Morph Target Min and Max are optional and default to 0 and 1. Locked hides a morph from runtime editing; Description explains its purpose.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "costume-retexture",
@@ -15,7 +15,7 @@
     "Type": "Costume",
     "RequiredFields": ["TargetCharacterID", "BodyPath", "BodyMaterials", "CharacterIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "BodyClearMaterialOverrides", "FaceMaterials"],
-    "Warnings": ["DSMS supports Material Instances only.", "Do not guess material slots; inspect the skeletal mesh first."]
+    "Warnings": ["DSMS supports Material Instances only.", "Do not guess material slots; inspect the skeletal mesh first.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "weapon-single",
@@ -24,7 +24,7 @@
     "Type": "Weapon",
     "RequiredFields": ["TargetCharacterID", "WeaponPath", "WeaponIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "WeaponActionSourceBlueprintPath", "WeaponMaterials", "WeaponClearMaterialOverrides"],
-    "Warnings": ["The weapon component selected at runtime must be compatible with the replacement mesh.", "Use WeaponActionSourceBlueprintPath only when FModel/runtime evidence proves the source Blueprint owns the compatible WeaponActionDataArray."]
+    "Warnings": ["The weapon component selected at runtime must be compatible with the replacement mesh.", "Use WeaponActionSourceBlueprintPath only when FModel/runtime evidence proves the source Blueprint owns the compatible WeaponActionDataArray.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "weapon-multi",
@@ -33,7 +33,7 @@
     "Type": "Weapon",
     "RequiredFields": ["TargetCharacterID", "WeaponPaths", "WeaponIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "WeaponActionSourceBlueprintPath", "WeaponMaterials"],
-    "Warnings": ["Every WeaponPaths entry needs a unique and sufficiently specific ComponentMatch.", "Use WeaponActionSourceBlueprintPath only when one evidenced action source is compatible with every replaced weapon component."]
+    "Warnings": ["Every WeaponPaths entry needs a unique and sufficiently specific ComponentMatch.", "Use WeaponActionSourceBlueprintPath only when one evidenced action source is compatible with every replaced weapon component.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "weapon-retexture",
@@ -42,7 +42,7 @@
     "Type": "Weapon",
     "RequiredFields": ["TargetCharacterID", "WeaponMaterialsOnly", "WeaponMaterials", "WeaponIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "WeaponClearMaterialOverrides"],
-    "Warnings": ["Set WeaponMaterialsOnly to true and do not invent a WeaponPath."]
+    "Warnings": ["Set WeaponMaterialsOnly to true and do not invent a WeaponPath.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "custom-outline",
@@ -51,7 +51,7 @@
     "Type": "Custom",
     "RequiredFields": ["TargetCharacterID", "BodyPath", "BodyOutlinePath", "BodyOutlineMaterials", "FaceMorphPath", "CharacterIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "BodyOutlineClearMaterialOverrides", "FaceOutlinePath", "FaceOutlineMaterials", "FaceOutlineClearMaterialOverrides", "PhysicsAssetPath", "PhysicsAnimBlueprintPath"],
-    "Warnings": ["BodyOutlinePath must reference compatible geometry and skeleton data.", "FaceOutlinePath must reference a face outline mesh compatible with the in-game face.", "Never place the same mesh in AuxiliaryMeshPath and BodyPath."]
+    "Warnings": ["BodyOutlinePath must reference compatible geometry and skeleton data.", "FaceOutlinePath must reference a face outline mesh compatible with the in-game face.", "Never place the same mesh in AuxiliaryMeshPath and BodyPath.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   },
   {
     "Id": "auxiliary-hide",
@@ -60,6 +60,6 @@
     "Type": "Costume",
     "RequiredFields": ["TargetCharacterID", "BodyPath", "HiddenComponentMeshMatches", "CharacterIconPath"],
     "RecommendedFields": ["PresetName", "PresetVariant", "AuxiliaryMeshPath", "AuxiliaryMaterials", "AuxiliaryPhysicsAssetPath"],
-    "Warnings": ["Use exact component mesh selectors.", "If AuxiliaryMeshPath is identical to BodyPath, confirm that DSMS replaces an existing component instead of spawning a duplicate."]
+    "Warnings": ["Use exact component mesh selectors.", "If AuxiliaryMeshPath is identical to BodyPath, confirm that DSMS replaces an existing component instead of spawning a duplicate.", "Keep PresetVariant at 34 characters or fewer in general; 35–36 requires a visually confirmed exception."]
   }
 ]

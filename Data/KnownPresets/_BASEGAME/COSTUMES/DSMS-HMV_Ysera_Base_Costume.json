@@ -9,7 +9,7 @@
   "Requirements": [
     "None"
   ],
-  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_body_PhysicsAsset.ch_ysera_mesh_body_PhysicsAsset",
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_body_Physics.ch_ysera_mesh_body_Physics",
   "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Ysera/DsABP_Ysera_Physics.DsABP_Ysera_Physics_C",
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_ingame_face_mesh.ch_ysera_ingame_face_mesh",
   "FacePath": "/Game/Art/Character/Player/DS_Ysera/Meshs/ch_ysera_mesh_face.ch_ysera_mesh_face",

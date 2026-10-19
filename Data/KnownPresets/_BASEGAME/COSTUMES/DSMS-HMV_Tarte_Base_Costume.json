@@ -6,8 +6,10 @@
   "PresetVariant": "Main Outfit",
   "Type": "Costume",
   "TargetCharacterID": "Tarte",
-  "Requirements": ["None"],
-  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_mesh_body_PhysicsAsset.ch_tarte_mesh_body_PhysicsAsset",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_mesh_PhysicsAsset.ch_tarte_mesh_PhysicsAsset",
   "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Tarte/DsABP_Tarte_Physics.DsABP_Tarte_Physics_C",
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Tarte/Meshs/ch_tarte_ingame_face.ch_tarte_ingame_face",
   "FaceClearMaterialOverrides": true,

@@ -1,0 +1,64 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_aileen_epic_01_cap_costume",
+  "DisplayName": "Eileen - Blue March Apprentice Uniform [Costume DLC]",
+  "PresetName": "Eileen",
+  "PresetVariant": "Blue March Apprentice",
+  "Type": "Costume",
+  "TargetCharacterID": "Aileen",
+  "Requirements": [
+    "AileenDLC"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Mesh/ch_Aileen_Epic_01_body_mesh_PhysicsAsset.ch_Aileen_Epic_01_body_mesh_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Aileen/DsABP_Aileen_Epic_Physics.DsABP_Aileen_Epic_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_ingame_face_mesh.ch_aileen_ingame_face_mesh",
+  "FacePath": "/Game/Art/Character/Player/DS_Aileen/Meshs/ch_aileen_face_mesh.ch_aileen_face_mesh",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_epic_face_mi.ch_Aileen_epic_face_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_aileen_epic_eye_mi.ch_aileen_epic_eye_mi"
+    }
+  ],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Mesh/ch_Aileen_Epic_01_body_mesh.ch_Aileen_Epic_01_body_mesh",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_body_mi.ch_Aileen_rare_01_body_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_body_skin_mi.ch_Aileen_rare_01_body_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_leg_mi.ch_Aileen_rare_01_leg_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_skin_mi.ch_Aileen_rare_01_skin_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Mesh/ch_Aileen_Epic_01_cap_hair_mesh.ch_Aileen_Epic_01_cap_hair_mesh",
+  "AuxiliaryPhysicsAssetPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Mesh/ch_Aileen_Epic_01_cap_hair_mesh_PhysicsAsset.ch_Aileen_Epic_01_cap_hair_mesh_PhysicsAsset",
+  "AuxiliarySpawnOnly": true,
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_rare_01_hat_mi.ch_Aileen_rare_01_hat_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aileen/Aileen_epic_01/Materials/ch_Aileen_epic_hair_mi.ch_Aileen_epic_hair_mi"
+    }
+  ],
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/DLC/Img_Character_Signal_Eileen_Epic_01.Img_Character_Signal_Eileen_Epic_01"
+}

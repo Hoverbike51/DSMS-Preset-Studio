@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_sion_base_weapon",
+  "DisplayName": "Sion - Base Weapon [Weapon Base]",
+  "PresetName": "Sion",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Sion",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Sion_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Sion/ch_sion_weapon.ch_sion_weapon"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Sion_Weapon.Sion_Weapon"
+}

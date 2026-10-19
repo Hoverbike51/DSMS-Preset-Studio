@@ -6,9 +6,11 @@
   "PresetVariant": "Wild Strawberry Waitress",
   "Type": "Costume",
   "TargetCharacterID": "Dana",
-  "Requirements": ["DanaDLC"],
+  "Requirements": [
+    "DanaDLC"
+  ],
   "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Dana/Dana_unique_01/Meshs/ch_dana_Unique_01_body_mesh_PhysicsAsset.ch_dana_Unique_01_body_mesh_PhysicsAsset",
-  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Dana/DsABP_Dana_Unique_01_Physics_Costume.DsABP_Dana_Unique_01_Physics_Costume_C",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Dana/DsABP_Dana_Unique_Physics.DsABP_Dana_Unique_Physics_C",
   "FaceMorphPath": "/Game/Art/Character/Player/DS_Dana/Meshs/ch_dana_ingame_face_mesh.ch_dana_ingame_face_mesh",
   "FaceClearMaterialOverrides": true,
   "FaceMaterials": [

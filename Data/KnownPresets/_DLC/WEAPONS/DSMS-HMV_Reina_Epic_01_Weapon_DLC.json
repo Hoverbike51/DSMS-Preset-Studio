@@ -1,0 +1,21 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_reina_epic_01_weapon_dlc",
+  "DisplayName": "Reina - Royal Ceremonial Sword [Weapon DLC]",
+  "PresetName": "Reina",
+  "PresetVariant": "Royal Ceremonial Sword",
+  "Type": "Weapon",
+  "TargetCharacterID": "Reina",
+  "Requirements": [
+    "ReinaDLC"
+  ],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Reina/Reina_epic_01/Materials/ch_reina_rare_01_wp_mi.ch_reina_rare_01_wp_mi"
+    }
+  ],
+  "WeaponPath": "/Game/Art/Weapon/Costume/DS_Reina/ch_Reina_epic_01_WP_mesh.ch_Reina_epic_01_WP_mesh",
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Reina_Weapon_DLC_02_.Reina_Weapon_DLC_02_"
+}

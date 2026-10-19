@@ -1,0 +1,18 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_roxy_base_weapon",
+  "DisplayName": "Roxy - Base Weapon [Weapon Base]",
+  "PresetName": "Roxy",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Roxy",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Roxy_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Roxy/ch_roxy_weapon.ch_roxy_weapon"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Roxy_Weapon.Roxy_Weapon"
+}

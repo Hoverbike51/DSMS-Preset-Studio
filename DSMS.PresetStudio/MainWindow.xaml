@@ -99,7 +99,11 @@
                                             <TextBlock Grid.Row="4" Text="UniqueID" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="4" Grid.Column="1" x:Name="UniqueIdBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
                                             <TextBlock Grid.Row="5" Text="DisplayName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="5" Grid.Column="1" x:Name="DisplayNameBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
                                             <TextBlock Grid.Row="6" Text="PresetName" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="6" Grid.Column="1" x:Name="PresetNameBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
-                                            <TextBlock Grid.Row="7" Text="PresetVariant" VerticalAlignment="Center" Margin="0,9,0,0"/><TextBox Grid.Row="7" Grid.Column="1" x:Name="PresetVariantBox" Margin="0,9,0,0" TextChanged="PresentationField_TextChanged"/>
+                                            <TextBlock Grid.Row="7" Text="PresetVariant" VerticalAlignment="Top" Margin="0,14,0,0"/>
+                                            <StackPanel Grid.Row="7" Grid.Column="1" Margin="0,9,0,0">
+                                                <TextBox x:Name="PresetVariantBox" TextChanged="PresentationField_TextChanged" ToolTip="General Details-preview safety limit: 34 characters; 35–36 requires a visually confirmed exception."/>
+                                                <TextBlock x:Name="PresetVariantLengthText" Foreground="{DynamicResource TextSecondaryBrush}" FontSize="11" Margin="2,4,0,0"/>
+                                            </StackPanel>
                                         </Grid>
                                         <TextBlock x:Name="PresentationHintText" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap" Margin="0,10,0,0"/>
                                     </StackPanel>

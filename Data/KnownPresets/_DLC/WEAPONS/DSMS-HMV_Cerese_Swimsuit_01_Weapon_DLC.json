@@ -6,7 +6,9 @@
   "PresetVariant": "Star upon the Waves",
   "Type": "Weapon",
   "TargetCharacterID": "Cerese",
-  "Requirements": ["CereseDLC"],
+  "Requirements": [
+    "CereseDLC"
+  ],
   "WeaponClearMaterialOverrides": true,
   "WeaponMaterials": [
     {
@@ -15,5 +17,5 @@
     }
   ],
   "WeaponPath": "/Game/Art/Weapon/Costume/DS_Cerese/ch_Cerese_swimsuit_01_wp_mesh.ch_Cerese_swimsuit_01_wp_mesh",
-  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_01.Cerese_Weapon_DLC_01"
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_02.Cerese_Weapon_DLC_02"
 }

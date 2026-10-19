@@ -7,7 +7,9 @@
   "Type": "Weapon",
   "TargetCharacterID": "Cerese",
   "WeaponActionSourceBlueprintPath": "/Game/Design/DsCharacter/Player/Cerese/Weapon/DsWP_Cerese_Costume.DsWP_Cerese_Costume_C",
-  "Requirements": ["CereseDLC"],
+  "Requirements": [
+    "CereseDLC"
+  ],
   "WeaponPath": "/Game/Art/Weapon/Costume/DS_Cerese/ch_Cerese_Unique_01_wp_mesh.ch_Cerese_Unique_01_wp_mesh",
   "WeaponClearMaterialOverrides": true,
   "WeaponMaterials": [
@@ -24,5 +26,5 @@
       "MaterialPath": "/Game/Art/Character/Costume/DS_Cerese/Cerese_Unique_01/Materials/ch_Cerese_Unique_01_wp_ice_mi.ch_Cerese_Unique_01_wp_ice_mi"
     }
   ],
-  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_02.Cerese_Weapon_DLC_02"
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/DLC/Cerese_Weapon_DLC_01.Cerese_Weapon_DLC_01"
 }

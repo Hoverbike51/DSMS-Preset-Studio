@@ -1,0 +1,22 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_viola_base_weapon",
+  "DisplayName": "Viola - Base Weapon [Weapon Base]",
+  "PresetName": "Viola",
+  "PresetVariant": "Base Weapon",
+  "Type": "Weapon",
+  "TargetCharacterID": "Viola",
+  "Requirements": ["None"],
+  "WeaponClearMaterialOverrides": true,
+  "WeaponPaths": [
+    {
+      "ComponentMatch": "DsWP_Viola_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Viola/ch_viola_wp_mesh.ch_viola_wp_mesh"
+    },
+    {
+      "ComponentMatch": "DsWP_NotCombat_Viola_C",
+      "WeaponPath": "/Game/Art/Weapon/Player/Viola/ch_viola_NotCombat_wp_mesh.ch_viola_NotCombat_wp_mesh"
+    }
+  ],
+  "WeaponIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Weapons/Default_Weapon.Default_Weapon"
+}

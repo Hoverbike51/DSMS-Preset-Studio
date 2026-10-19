@@ -1,0 +1,63 @@
+{
+  "Version": 3,
+  "UniqueID": "hmv_aria_rare_01_costume",
+  "DisplayName": "Aria - Rare 01 [Costume Base]",
+  "PresetName": "Aria",
+  "PresetVariant": "Rare 01",
+  "Type": "Costume",
+  "TargetCharacterID": "Aria",
+  "Requirements": [
+    "None"
+  ],
+  "PhysicsAssetPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Mesh/ch_Aria_Rare_01_body_PhysicsAsset.ch_Aria_Rare_01_body_PhysicsAsset",
+  "PhysicsAnimBlueprintPath": "/Game/Design/DsCharacter/DsPhysics/PC/Aria/DsABP_Aria_Physics.DsABP_Aria_Physics_C",
+  "FaceMorphPath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_ingame_face.ch_aria_mesh_ingame_face",
+  "FacePath": "/Game/Art/Character/Player/DS_Aria/Meshs/ch_aria_mesh_face.ch_aria_mesh_face",
+  "FaceClearMaterialOverrides": true,
+  "FaceMaterials": [],
+  "FaceMorphTargets": [],
+  "BodyPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Mesh/ch_Aria_Rare_01_body.ch_Aria_Rare_01_body",
+  "BodyClearMaterialOverrides": true,
+  "BodyMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_top_mi.ch_aria_rare_01_top_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_skin_mi.ch_aria_rare_01_skin_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_bot_mi.ch_aria_rare_01_bot_mi"
+    },
+    {
+      "SlotIndex": 3,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_wp_mi.ch_aria_rare_01_wp_mi"
+    }
+  ],
+  "BodyMorphTargets": [],
+  "AuxiliaryMeshPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Mesh/ch_Aria_Rare_01_hair.ch_Aria_Rare_01_hair",
+  "AuxiliaryPhysicsAssetPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Mesh/ch_Aria_Rare_01_hair_PhysicsAsset.ch_Aria_Rare_01_hair_PhysicsAsset",
+  "AuxiliarySpawnOnly": true,
+  "AuxiliaryClearMaterialOverrides": true,
+  "AuxiliaryMaterials": [
+    {
+      "SlotIndex": 0,
+      "MaterialPath": "/Game/Art/Character/Player/DS_Aria/Materials/ch_aria_base_hair_mi.ch_aria_base_hair_mi"
+    },
+    {
+      "SlotIndex": 1,
+      "MaterialPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Materials/ch_aria_rare_01_bot_mi.ch_aria_rare_01_bot_mi"
+    },
+    {
+      "SlotIndex": 2,
+      "MaterialPath": "/Game/Art/Character/Material/test/ui/glass.glass"
+    }
+  ],
+  "LinkedBodyComponentMeshMatches": [
+    "ch_aria_mesh_glasses"
+  ],
+  "LinkedBodyReplacementPath": "/Game/Art/Character/Costume/DS_Aria/aria_rare_01/Mesh/ch_Aria_Rare_01_glasses.ch_Aria_Rare_01_glasses",
+  "CharacterIconPath": "/Game/MODS/HoverModsVault/DSDataBase/UI/Characters/Img_Character_Signal_Aria.Img_Character_Signal_Aria"
+}
